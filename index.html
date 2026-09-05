@@ -37,56 +37,157 @@
 <link rel="preload" as="image" href="hel-hero-clean.png">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0A0A0A;--fg:#EDE9E3;--line:rgba(255,255,255,0.12);--gold:#8B3A1F;--muted:rgba(237,233,227,0.62)}
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+:root{
+  --bg:#0A0A0A;
+  --fg:#EDE9E3;
+  --line:rgba(255,255,255,0.10);
+  --gold:#8B3A1F;
+  --muted:rgba(237,233,227,0.62);
+  --paper:#141210;
+  --cell:#0F0E0D;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{background:var(--bg);color:var(--fg);font-family:'IBM Plex Mono',monospace;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-html{overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
 .mono{font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.14em;font-size:10px;color:var(--gold)}
-a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:16px 24px}
+
+/* ---------- NAV ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(10,10,10,0.82);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 28px;
+}
 .nav .logo{letter-spacing:.18em;font-size:11px;color:#fff}
-.nav-right{display:flex;gap:22px}.nav-right a{font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,0.6);transition:.2s}.nav-right a:hover{color:#fff}
-.wrap{max-width:1120px;margin:0 auto;padding:0 24px}.narrow{max-width:600px;margin:0 auto}
-.hero{position:relative;width:100vw;margin-left:calc(50% - 50vw);height:92vh;min-height:680px;background:#0A0A0A url('hel-hero-clean.png') center 32% / cover no-repeat;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
-.hero-bg{position:absolute;inset:0;background-image:url('hel-hero-clean.png'), url('hel-hero-wide.png');background-size:cover;background-position:center 32%;background-repeat:no-repeat}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.48) 48%, rgba(0,0,0,0.88) 100%)}
-.hero-top{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;padding:18px 24px;z-index:2;opacity:0.7}
+.nav-right{display:flex;gap:26px}
+.nav-right a{font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,0.6);transition:color .2s}
+.nav-right a:hover{color:#fff}
+
+/* ---------- LAYOUT ---------- */
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.narrow{max-width:620px;margin:0 auto;padding:0 24px}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;width:100vw;margin-left:calc(50% - 50vw);
+  height:92vh;min-height:680px;
+  background:#0A0A0A url('hel-hero-clean.png') center 32% / cover no-repeat;
+  overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('hel-hero-clean.png'), url('hel-hero-wide.png');
+  background-size:cover;background-position:center 32%;background-repeat:no-repeat;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.48) 48%, rgba(0,0,0,0.88) 100%);
+}
+.hero-top{
+  position:absolute;top:0;left:0;right:0;z-index:2;
+  display:flex;justify-content:space-between;padding:22px 28px;opacity:0.7;
+}
 .hero-content{position:relative;z-index:2;max-width:900px;padding:0 24px;margin-top:40px}
-.hero h1{font-family:'Instrument Serif',Georgia,serif;color:#fff;font-size:clamp(48px,9vw,96px);line-height:.9;letter-spacing:-.02em;font-weight:400;margin:0 0 18px;text-shadow:0 2px 24px rgba(0,0,0,0.6)}
-.hero .sub{font-family:'IBM Plex Mono';color:#fff;font-size:11px;letter-spacing:.18em;opacity:0.75;margin-bottom:34px}
-.hero-watermark{position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);font-family:'Instrument Serif';font-size:clamp(120px,22vw,240px);line-height:.8;color:rgba(255,255,255,0.04);letter-spacing:.08em;pointer-events:none;z-index:1}
-.pill-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-block;background:transparent;color:#fff;font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.14em;padding:14px 22px;border:1px solid rgba(255,255,255,0.5);cursor:pointer;transition:.25s}
+.hero h1{
+  font-family:'Instrument Serif',Georgia,serif;color:#fff;
+  font-size:clamp(48px,9vw,96px);line-height:.9;letter-spacing:-.02em;font-weight:400;
+  margin:0 0 20px;text-shadow:0 2px 24px rgba(0,0,0,0.6);
+}
+.hero .sub{
+  font-family:'IBM Plex Mono';color:#fff;font-size:11px;letter-spacing:.18em;opacity:0.75;
+  margin-bottom:40px;
+}
+.hero-watermark{
+  position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);
+  font-family:'Instrument Serif';font-size:clamp(120px,22vw,240px);line-height:.8;
+  color:rgba(255,255,255,0.04);letter-spacing:.08em;pointer-events:none;z-index:1;
+}
+
+/* ---------- BUTTONS ---------- */
+.pill-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-block;background:transparent;color:#fff;
+  font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.14em;
+  padding:15px 24px;border:1px solid rgba(255,255,255,0.5);cursor:pointer;
+  transition:background .25s, color .25s, border-color .25s;
+}
 .btn:hover{background:#fff;color:#0A0A0A;border-color:#fff}
-.btn-gold{background:var(--gold);color:#fff;border-color:var(--gold)}.btn-gold:hover{background:#fff;color:#0A0A0A;border-color:#fff}
-.section{padding:80px 0;border-bottom:1px solid var(--line);position:relative}
-.section-dark{background:#0A0A0A}
-.section-paper{background:#141210;border-bottom:1px solid rgba(255,255,255,0.08)}
-.kicker{font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.22em;color:var(--gold);margin-bottom:18px;display:block}
-.h-big{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,3.8vw,42px);line-height:.98;letter-spacing:-.02em;font-weight:400;color:#fff;margin-bottom:22px}
-.h-small{font-family:'Instrument Serif';font-size:22px;line-height:1.1;color:#fff;margin:28px 0 12px;font-weight:400}
-.p{font-family:'IBM Plex Mono';font-size:13.5px;line-height:1.75;color:var(--muted);margin:12px 0;letter-spacing:.01em}
+.btn-gold{background:var(--gold);color:#fff;border-color:var(--gold)}
+.btn-gold:hover{background:#fff;color:#0A0A0A;border-color:#fff}
+
+/* ---------- SECTIONS ---------- */
+.section{padding:96px 0;border-bottom:1px solid var(--line);position:relative}
+.section-dark{background:var(--bg)}
+.section-paper{background:var(--paper);border-bottom:1px solid rgba(255,255,255,0.08)}
+
+.kicker{font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.22em;color:var(--gold);margin-bottom:20px;display:block}
+.h-big{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,3.8vw,42px);line-height:1.04;letter-spacing:-.02em;font-weight:400;color:#fff;margin-bottom:26px}
+.h-small{font-family:'Instrument Serif';font-size:22px;line-height:1.2;color:#fff;margin:30px 0 14px;font-weight:400}
+
+.p{font-family:'IBM Plex Mono';font-size:13.5px;line-height:1.8;color:var(--muted);margin:14px 0;letter-spacing:.01em}
 .p strong{color:var(--fg);font-weight:400}
-.p-mono{font-family:'IBM Plex Mono';font-size:11.5px;line-height:1.8;color:rgba(237,233,227,0.52);letter-spacing:.02em}
-blockquote{border-left:1px solid var(--gold);padding-left:20px;margin:32px 0;font-family:'Instrument Serif';font-size:22px;line-height:1.32;color:#fff;font-style:italic;letter-spacing:-.01em}
-.divider{height:1px;background:var(--line);margin:40px 0}
+.p-mono{font-family:'IBM Plex Mono';font-size:11.5px;line-height:1.9;color:rgba(237,233,227,0.52);letter-spacing:.02em}
+
+blockquote{
+  border-left:1px solid var(--gold);padding-left:22px;margin:36px 0;
+  font-family:'Instrument Serif';font-size:22px;line-height:1.35;color:#fff;
+  font-style:italic;letter-spacing:-.01em;
+}
+
+.divider{height:1px;background:var(--line);margin:44px 0}
+
+/* ---------- LISTS ---------- */
 .list-minimal{list-style:none;margin:0;padding:0}
-.list-minimal li{font-family:'IBM Plex Mono';font-size:12px;line-height:1.6;color:var(--muted);padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between}
+.list-minimal li{
+  font-family:'IBM Plex Mono';font-size:12px;line-height:1.6;color:var(--muted);
+  padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.06);
+  display:flex;justify-content:space-between;gap:16px;
+}
 .list-minimal li span:first-child{color:rgba(255,255,255,0.9)}
-.card-dark{border:1px solid rgba(255,255,255,0.12);padding:28px;background:rgba(255,255,255,0.02)}
-.principle{font-family:'Instrument Serif';font-size:21px;line-height:1.15;color:#fff;border-bottom:1px solid rgba(255,255,255,0.08);padding:20px 0;display:flex;justify-content:space-between;gap:20px}
-.principle span{font-family:'IBM Plex Mono';font-size:10px;color:var(--gold);margin-top:6px}
-.never{font-family:'IBM Plex Mono';font-size:11.5px;line-height:2;color:rgba(237,233,227,0.45)}
-.never b{color:rgba(255,255,255,0.75);font-weight:400}
-.cta-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.1);margin-top:32px}
-.cta-cell{background:#0F0E0D;padding:28px;display:flex;flex-direction:column;gap:16px}
+
+/* ---------- CARDS / GRIDS ---------- */
+.card-dark{border:1px solid rgba(255,255,255,0.12);padding:32px;background:rgba(255,255,255,0.02)}
+
+.cta-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.1);margin-top:36px}
+.cta-cell{background:var(--cell);padding:32px;display:flex;flex-direction:column;gap:18px}
 .cta-cell h4{font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.18em;color:var(--gold)}
 .cta-cell p{font-family:'IBM Plex Mono';font-size:12px;line-height:1.6;color:var(--muted)}
-.three-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.08);margin-top:32px}
-.three-cell{background:#0F0E0D;padding:28px}
-@media(max-width:900px){.cta-grid{grid-template-columns:1fr}.three-grid{grid-template-columns:1fr}}
-@media(max-width:860px){.about-grid{grid-template-columns:1fr !important;gap:36px !important}#about{padding:80px 20px !important}.about-grid div{position:relative !important;top:auto !important}}
-footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;background:#080807}
+
+.three-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.08);margin-top:36px}
+.three-cell{background:var(--cell);padding:36px 32px}
+
+@media(max-width:900px){
+  .cta-grid{grid-template-columns:1fr}
+  .three-grid{grid-template-columns:1fr}
+}
+@media(max-width:860px){
+  .about-grid{grid-template-columns:1fr !important;gap:40px !important}
+  #about{padding:88px 22px !important}
+  .about-grid div{position:relative !important;top:auto !important}
+}
+
+/* ---------- PRINCIPLES ---------- */
+.hel-principles{margin-top:8px}
+.hel-principle{
+  display:flex;align-items:baseline;gap:26px;
+  padding:28px 0;border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.hel-principle:last-child{border-bottom:none}
+.hel-principle-num{
+  flex:0 0 30px;
+  font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.14em;color:var(--gold);
+  padding-top:5px;
+}
+.hel-principle p{
+  font-family:'Instrument Serif';font-size:21px;line-height:1.32;color:#fff;
+  font-weight:400;letter-spacing:-.01em;
+}
+
+footer{padding:56px 24px;border-top:1px solid var(--line);text-align:center;background:#080807}
 </style>
 </head>
 <body>
@@ -102,7 +203,7 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
       <a class="btn" href="#work">ENTER HEL</a>
       <a class="btn btn-gold" href="#sessions">BOOK A TRANSLATION</a>
     </div>
-    <div style="margin-top:28px; display:flex; justify-content:center;">
+    <div style="margin-top:32px; display:flex; justify-content:center;">
       <audio id="hel-audio" controls loop style="width:260px; height:32px; opacity:0.7; filter: invert(1) sepia(0.2) saturate(0.5);">
         <source src="hel-song.mp3" type="audio/mpeg">
       </audio>
@@ -112,23 +213,26 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
 </section>
 
 <main>
-<section class="section section-paper" id="work"><div class="narrow">
-<span class="kicker">PRONUNCIATION — START HERE</span>
-<div style="display:flex; align-items:baseline; gap:18px; flex-wrap:wrap; margin:6px 0 18px">
-<h2 class="h-big" style="margin:0; font-size:clamp(40px,7vw,64px); letter-spacing:-.03em">HEL</h2>
-<span style="font-family:'IBM Plex Mono'; font-size:14px; letter-spacing:.08em; color:var(--gold); background:rgba(139,58,31,0.14); border:1px solid rgba(139,58,31,0.35); padding:6px 10px">(HAY-uhl)</span>
-<span style="font-family:'IBM Plex Mono'; font-size:14px; letter-spacing:.04em; color:rgba(237,233,227,0.65)">/ˈheɪ.əl/</span>
-</div>
-<p class="p" style="color:#fff; font-family:'Instrument Serif'; font-size:22px; line-height:1.35; margin:0">One breath. Two beats.</p>
-<p class="p-mono" style="margin-top:14px; font-size:12.5px">Not <span style="color:#fff; text-decoration:line-through; text-decoration-color:var(--gold); text-decoration-thickness:1px">“hell.”</span> — <span style="color:#fff">HEL</span></p>
-<div class="divider"></div>
-<p class="p"><strong>HEL is a psychology-informed practice of deep listening, pattern recognition and creative translation.</strong></p>
-<p class="p">At the centre of HEL are private 1:1 Translation Sessions. You bring something you are trying to understand, a recurring pattern, conflicting feelings, a transition, a decision, an identity that no longer fits, or simply something you can feel but cannot quite put into words.</p>
-<p class="p">I listen for what sits underneath what you are saying: the patterns, contradictions, repetitions, connections and tensions that can be difficult to see when you are inside them.
 
-Then I translate what we uncover into a form you can return to — such as a written piece, personal map, visual, voice piece or another form that fits.</p>
-  <p class="p">Writing and sound are other expressions of the same practice.</p>
-</div></section>
+<section class="section section-paper" id="work">
+  <div class="narrow">
+    <span class="kicker">PRONUNCIATION — START HERE</span>
+    <div style="display:flex; align-items:baseline; gap:18px; flex-wrap:wrap; margin:6px 0 20px">
+      <h2 class="h-big" style="margin:0; font-size:clamp(40px,7vw,64px); letter-spacing:-.03em">HEL</h2>
+      <span style="font-family:'IBM Plex Mono'; font-size:14px; letter-spacing:.08em; color:var(--gold); background:rgba(139,58,31,0.14); border:1px solid rgba(139,58,31,0.35); padding:6px 10px">(HAY-uhl)</span>
+      <span style="font-family:'IBM Plex Mono'; font-size:14px; letter-spacing:.04em; color:rgba(237,233,227,0.65)">/ˈheɪ.əl/</span>
+    </div>
+    <p class="p" style="color:#fff; font-family:'Instrument Serif'; font-size:22px; line-height:1.35; margin:0">One breath. Two beats.</p>
+    <p class="p-mono" style="margin-top:16px; font-size:12.5px">Not <span style="color:#fff; text-decoration:line-through; text-decoration-color:var(--gold); text-decoration-thickness:1px">“hell.”</span> — <span style="color:#fff">HEL</span></p>
+    <div class="divider"></div>
+    <p class="p"><strong>HEL is a psychology-informed practice of deep listening, pattern recognition and creative translation.</strong></p>
+    <p class="p">At the centre of HEL are private 1:1 Translation Sessions. You bring something you are trying to understand, a recurring pattern, conflicting feelings, a transition, a decision, an identity that no longer fits, or simply something you can feel but cannot quite put into words.</p>
+    <p class="p">I listen for what sits underneath what you are saying: the patterns, contradictions, repetitions, connections and tensions that can be difficult to see when you are inside them.
+
+    Then I translate what we uncover into a form you can return to — such as a written piece, personal map, visual, voice piece or another form that fits.</p>
+    <p class="p">Writing and sound are other expressions of the same practice.</p>
+  </div>
+</section>
 
 <section class="section section-dark" id="work-forms">
   <div class="wrap">
@@ -137,11 +241,11 @@ Then I translate what we uncover into a form you can return to — such as a wri
       HOW HEL TAKES FORM.
     </span>
 
-    <h2 class="h-big" style="text-align:center; max-width:640px; margin:0 auto 12px">
+    <h2 class="h-big" style="text-align:center; max-width:640px; margin:0 auto 14px">
       Sessions. Writing. Sound.
     </h2>
 
-    <p class="p" style="text-align:center; max-width:560px; margin:0 auto 32px">
+    <p class="p" style="text-align:center; max-width:560px; margin:0 auto 36px">
       HEL gives form to what is hidden, contradictory or difficult to name — so it can be seen, understood, held or felt.
     </p>
 
@@ -166,7 +270,7 @@ Then I translate what we uncover into a form you can return to — such as a wri
           patterns / contradictions / repetition / unresolved tension / what keeps returning / what is missing / what you already sense but cannot yet name
         </p>
 
-        <div class="divider" style="margin:20px 0"></div>
+        <div class="divider" style="margin:24px 0"></div>
 
         <p class="p">
           From that, I create something you can return to:
@@ -176,11 +280,11 @@ Then I translate what we uncover into a form you can return to — such as a wri
           writing / personal map / manifesto / monologue / visual translation / audio / another form that fits
         </p>
 
-        <blockquote style="margin-top:24px">
+        <blockquote style="margin-top:28px">
           Yes. That's it. That's what I couldn't name.
         </blockquote>
 
-        <div style="margin-top:22px">
+        <div style="margin-top:26px">
           <a class="btn btn-gold" href="#sessions">[ BOOK A TRANSLATION ]</a>
         </div>
       </div>
@@ -210,7 +314,7 @@ Then I translate what we uncover into a form you can return to — such as a wri
           </strong>
         </p>
 
-        <div class="divider" style="margin:20px 0"></div>
+        <div class="divider" style="margin:24px 0"></div>
 
         <p class="p">
           If it makes you think—
@@ -224,7 +328,7 @@ Then I translate what we uncover into a form you can return to — such as a wri
           —that is enough.
         </p>
 
-        <div style="margin-top:22px">
+        <div style="margin-top:26px">
           <a class="btn" href="#writing">[ READ FIELD NOTES ]</a>
         </div>
       </div>
@@ -244,7 +348,7 @@ Then I translate what we uncover into a form you can return to — such as a wri
           Earth / Body / Intuition / Emergence.
         </p>
 
-        <div class="divider" style="margin:20px 0"></div>
+        <div class="divider" style="margin:24px 0"></div>
 
         <p class="p">
           Sound is another language HEL can use when words alone cannot carry the whole thing.
@@ -264,7 +368,7 @@ Then I translate what we uncover into a form you can return to — such as a wri
           </strong>
         </p>
 
-        <div style="margin-top:22px">
+        <div style="margin-top:26px">
           <a class="btn" href="#music">[ LISTEN ]</a>
         </div>
       </div>
@@ -273,12 +377,14 @@ Then I translate what we uncover into a form you can return to — such as a wri
   </div>
 </section>
 
-<section class="section section-dark" id="hel"><div class="narrow">
-<span class="kicker">FIELD NOTE 01</span>
-<h3 class="h-small">FOR HUMANS AT THRESHOLDS</h3>
-<p class="p">You may know something has changed before you know what comes next.</p>
-<p class="p">You may be questioning a part of your identity, circling the same decision, noticing a pattern you cannot explain, or feeling that something in your life no longer fits the way it used to.</p>
-  </div></section>
+<section class="section section-dark" id="hel">
+  <div class="narrow">
+    <span class="kicker">FIELD NOTE 01</span>
+    <h3 class="h-small">FOR HUMANS AT THRESHOLDS</h3>
+    <p class="p">You may know something has changed before you know what comes next.</p>
+    <p class="p">You may be questioning a part of your identity, circling the same decision, noticing a pattern you cannot explain, or feeling that something in your life no longer fits the way it used to.</p>
+  </div>
+</section>
 
 <section class="section section-dark" id="sessions">
   <div class="narrow">
@@ -319,7 +425,7 @@ Then I translate what we uncover into a form you can return to — such as a wri
       <li><span>what you already sense but have not yet been able to put into words</span><span>—</span></li>
     </ul>
 
-    <p class="p" style="margin-top:24px">
+    <p class="p" style="margin-top:28px">
       The purpose is not to give you a diagnosis or tell you what your answer should be.
     </p>
 
@@ -343,7 +449,7 @@ Then I translate what we uncover into a form you can return to — such as a wri
       Yes. That's it. That's what I couldn't name.
     </blockquote>
 
-    <div style="margin-top:32px" class="pill-row">
+    <div style="margin-top:36px" class="pill-row">
       <a class="btn" href="#">[ EXPLORE SESSIONS ]</a>
       <a class="btn btn-gold" href="#">[ BOOK A TRANSLATION ]</a>
     </div>
@@ -382,7 +488,7 @@ Then I translate what we uncover into a form you can return to — such as a wri
       <strong>The form follows the truth.</strong>
     </p>
 
-    <div class="card-dark" style="margin-top:24px">
+    <div class="card-dark" style="margin-top:28px">
 
       <p class="p-mono" style="color:var(--gold)">
         NOW PLAYING — HEL
@@ -391,12 +497,12 @@ Then I translate what we uncover into a form you can return to — such as a wri
       <audio
         controls
         loop
-        style="width:100%; margin-top:12px; filter: invert(1) sepia(0.2) saturate(0.5); opacity:0.85"
+        style="width:100%; margin-top:14px; filter: invert(1) sepia(0.2) saturate(0.5); opacity:0.85"
       >
         <source src="hel-song.mp3" type="audio/mpeg">
       </audio>
 
-      <p class="p-mono" style="margin-top:12px">
+      <p class="p-mono" style="margin-top:14px">
         Tap play to listen.
       </p>
 
@@ -404,7 +510,6 @@ Then I translate what we uncover into a form you can return to — such as a wri
 
   </div>
 </section>
-</div></section>
 
 <section class="section section-dark" id="writing">
   <div class="narrow">
@@ -452,7 +557,7 @@ Then I translate what we uncover into a form you can return to — such as a wri
       <li><span>long-form pieces when one page is not enough</span><span>—</span></li>
     </ul>
 
-    <div style="margin-top:28px">
+    <div style="margin-top:32px">
       <a class="btn" href="#">[ READ FIELD NOTES ]</a>
       <a class="btn btn-gold" href="#sessions" style="margin-left:8px">
         [ COMMISSION WRITING ]
@@ -462,36 +567,35 @@ Then I translate what we uncover into a form you can return to — such as a wri
   </div>
 </section>
 
-<!-- FIXED ABOUT — ROBUST LAYOUT -->
 <section class="section section-paper" id="about" style="padding:100px 24px;background:#141210">
-<div style="max-width:880px;margin:0 auto;display:grid;grid-template-columns:200px 1fr;gap:56px;align-items:start" class="about-grid">
-<div>
-<img src="me.png" alt="Kaylee-Jane Inglis" style="width:100%;max-width:200px;height:252px;object-fit:cover;object-position:center top;border:1px solid rgba(255,255,255,0.12);display:block;filter:grayscale(0.12) contrast(1.05)">
-<div class="mono" style="margin-top:12px;font-size:9px;opacity:0.55;line-height:1.5">Kaylee-Jane Inglis<br>Psychologist — Systems Thinker</div>
-</div>
-<div style="min-width:0">
-<span class="kicker">ABOUT KAYLEE-JANE</span>
-<h2 class="h-big" style="margin-bottom:32px">The human source.</h2>
+  <div style="max-width:880px;margin:0 auto;display:grid;grid-template-columns:200px 1fr;gap:56px;align-items:start" class="about-grid">
+    <div>
+      <img src="me.png" alt="Kaylee-Jane Inglis" style="width:100%;max-width:200px;height:252px;object-fit:cover;object-position:center top;border:1px solid rgba(255,255,255,0.12);display:block;filter:grayscale(0.12) contrast(1.05)">
+      <div class="mono" style="margin-top:14px;font-size:9px;opacity:0.55;line-height:1.5">Kaylee-Jane Inglis<br>Psychologist — Systems Thinker</div>
+    </div>
+    <div style="min-width:0">
+      <span class="kicker">ABOUT KAYLEE-JANE</span>
+      <h2 class="h-big" style="margin-bottom:32px">The human source.</h2>
 
-<p class="p">HEL comes from Kaylee-Jane Inglis — a psychologist, systems thinker and lifelong student of human behaviour, identity and consciousness.</p>
+      <p class="p">HEL comes from Kaylee-Jane Inglis — a psychologist, systems thinker and lifelong student of human behaviour, identity and consciousness.</p>
 
-<p class="p">My interest has always been in what sits beneath the obvious: how people make meaning, how identity shifts, how patterns form, and what happens when someone reaches a point where the way they have understood themselves no longer quite fits.</p>
+      <p class="p">My interest has always been in what sits beneath the obvious: how people make meaning, how identity shifts, how patterns form, and what happens when someone reaches a point where the way they have understood themselves no longer quite fits.</p>
 
-<p class="p">Psychology gave me one way of understanding people. Systems thinking taught me to look for patterns, relationships and structure.</p>
+      <p class="p">Psychology gave me one way of understanding people. Systems thinking taught me to look for patterns, relationships and structure.</p>
 
-<p class="p"><strong>This I use both without reducing a person to a diagnosis, framework or neat explanation.</strong></p>
+      <p class="p"><strong>This I use both without reducing a person to a diagnosis, framework or neat explanation.</strong></p>
 
-<p class="p">HEL brings psychological depth into a different kind of encounter — one that explores what is happening beneath the surface, makes sense of what is difficult to articulate, and gives that understanding a form you can return to.</p>
+      <p class="p">HEL brings psychological depth into a different kind of encounter — one that explores what is happening beneath the surface, makes sense of what is difficult to articulate, and gives that understanding a form you can return to.</p>
 
-<div class="card-dark" style="margin-top:28px;padding:28px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.12)">
-<p class="p-mono" style="color:var(--gold);margin-bottom:16px">THE DISTINCTION</p>
-<p class="p" style="margin:0 0 2px"><strong>Kaylee-Jane</strong> — the source.</p>
-<p class="p" style="margin:0 0 2px"><strong>KINGLIS</strong> — the structure.</p>
-<p class="p" style="margin:0"><strong>HEL</strong> — the expression.</p>
-</div>
+      <div class="card-dark" style="margin-top:32px;padding:32px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.12)">
+        <p class="p-mono" style="color:var(--gold);margin-bottom:18px">THE DISTINCTION</p>
+        <p class="p" style="margin:0 0 4px"><strong>Kaylee-Jane</strong> — the source.</p>
+        <p class="p" style="margin:0 0 4px"><strong>KINGLIS</strong> — the structure.</p>
+        <p class="p" style="margin:0"><strong>HEL</strong> — the expression.</p>
+      </div>
 
-</div>
-</div>
+    </div>
+  </div>
 </section>
 
 <section class="section section-dark">
@@ -532,14 +636,26 @@ Then I translate what we uncover into a form you can return to — such as a wri
   </div>
 </section>
 
-<section class="section section-paper"><div class="narrow">
-<span class="kicker">BOUNDARIES</span>
-<p class="p">HEL does not diagnose, coach or tell you who to become.</p>
-<p class="p-mono" style="margin-top:16px">Private disclosure remains private.</p>
-</div></section>
+<section class="section section-paper">
+  <div class="narrow">
+    <span class="kicker">BOUNDARIES</span>
+    <p class="p">HEL does not diagnose, coach or tell you who to become.</p>
+    <p class="p-mono" style="margin-top:18px">Private disclosure remains private.</p>
+  </div>
+</section>
 
-</div></section>
 </main>
-<footer><div class="mono" style="color:rgba(255,255,255,0.4)">THE HUMAN LAB — Home of HEL.</div><div class="mono" style="margin-top:8px; color:rgba(255,255,255,0.3)">@helliveshere</div><div class="p-mono" style="margin-top:18px; text-align:center">Nothing false is required.<br>Nothing true requires permission.<br>Nothing essential gets left behind.<br><br><span style="letter-spacing:.18em; color:var(--gold)">EARTH / BODY / INTUITION / EMERGENCE</span></div></footer>
+
+<footer>
+  <div class="mono" style="color:rgba(255,255,255,0.4)">THE HUMAN LAB — Home of HEL.</div>
+  <div class="mono" style="margin-top:10px; color:rgba(255,255,255,0.3)">@helliveshere</div>
+  <div class="p-mono" style="margin-top:20px; text-align:center">
+    Nothing false is required.<br>
+    Nothing true requires permission.<br>
+    Nothing essential gets left behind.<br><br>
+    <span style="letter-spacing:.18em; color:var(--gold)">EARTH / BODY / INTUITION / EMERGENCE</span>
+  </div>
+</footer>
+
 </body>
 </html>
