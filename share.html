@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HEL — Share with Sound</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0A0A0A;color:#EDE9E3;font-family:'IBM Plex Mono',monospace;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:24px}
+.mono{font-family:'IBM Plex Mono';text-transform:uppercase;letter-spacing:.18em;font-size:10px;color:#8B3A1F}
+h1{font-family:'Instrument Serif',serif;font-size:42px;font-weight:400;margin:20px 0 8px}
+#canvas{width:390px;height:692px;background:#000;border:1px solid rgba(255,255,255,0.12);display:block}
+.controls{margin-top:20px;display:flex;flex-direction:column;gap:12px;width:390px}
+.btn{background:#8B3A1F;color:#fff;border:1px solid #8B3A1F;padding:14px 20px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.14em;cursor:pointer;transition:.2s;text-align:center}
+.btn:hover{background:#fff;color:#0A0A0A;border-color:#fff}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3)}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,0.05)}
+.p{font-size:12px;line-height:1.6;color:rgba(237,233,227,0.6);margin:6px 0}
+.status{font-size:11px;color:#8B3A1F;min-height:16px}
+</style>
+</head>
+<body>
+<div class="mono">HEL — SHARE STUDIO — CLEVER MODE</div>
+<h1>HEL lives here.</h1>
+<p class="p">This page *renders* a share video from your site + your song — no screen record. One file, with audio baked in, ready for Reels/Stories.</p>
+
+<canvas id="canvas" width="1080" height="1920"></canvas>
+
+<div class="controls">
+  <button class="btn" id="renderBtn">[ 1. TAP TO RENDER VIDEO WITH SONG ]</button>
+  <button class="btn btn-ghost" id="downloadBtn" style="display:none">[ 2. DOWNLOAD VIDEO FILE ]</button>
+  <div class="status" id="status">Upload hel-song.mp3 + hel-hero-clean.png in same folder. Then tap render.</div>
+  <p class="p">How it works: Canvas draws your hero with slow zoom + text: HEL (HAY-uhl) /ˈheɪ.əl/ — One breath. Two beats. — Not “hell.” — HEL. Audio track is your hel-song.mp3. MediaRecorder saves it as webm/mp4. You share that file directly — Instagram keeps the audio.</p>
+  <p class="p" style="color:rgba(237,233,227,0.4)">If you don't have song file yet, it will render with silent track + visual only, so you can still share site. Upload mp3 to fix.</p>
+</div>
+
+<audio id="audio" crossorigin="anonymous" loop preload="auto" style="display:none"><source src="hel-song.mp3" type="audio/mpeg"></audio>
+<img id="heroImg" src="hel-hero-clean.png" crossorigin="anonymous" style="display:none">
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const audioEl = document.getElementById('audio');
+const heroImg = document.getElementById('heroImg');
+const renderBtn = document.getElementById('renderBtn');
+const downloadBtn = document.getElementById('downloadBtn');
+const statusEl = document.getElementById('status');
+
+let recordedBlobs = [];
+let mediaRecorder;
+let audioCtx;
+
+const frames = [
+  {t:0, text:'HEL lives here.', sub:'HOME OF HEL'},
+  {t:3, text:'HEL', pill:'(HAY-uhl)', ipa:'/ˈheɪ.əl/'},
+  {t:6, text:'One breath.\nTwo beats.'},
+  {t:9, text:'Not "hell." — HEL', sub:'Pronounced hee-el'},
+  {t:12, text:'A practice of\npermissionless emergence.', sub:'helliveshere — link in bio'}
+];
+
+function draw(timeSec, zoom) {
+  // bg
+  ctx.fillStyle = '#0A0A0A';
+  ctx.fillRect(0,0,1080,1920);
+  // hero image with zoom
+  if (heroImg.complete && heroImg.naturalWidth) {
+    const scale = 1 + zoom*0.12;
+    const w = 1080*scale;
+    const h = 1920*scale*0.75;
+    const x = (1080 - w)/2;
+    const y = -100 + (Math.sin(timeSec*0.2)*20);
+    ctx.save();
+    ctx.globalAlpha = 0.85;
+    ctx.drawImage(heroImg, x, y, w, h);
+    ctx.restore();
+  }
+  // gradient
+  const grad = ctx.createLinearGradient(0,0,0,1920);
+  grad.addColorStop(0,'rgba(0,0,0,0.15)');
+  grad.addColorStop(0.5,'rgba(0,0,0,0.45)');
+  grad.addColorStop(1,'rgba(0,0,0,0.92)');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0,0,1080,1920);
+
+  // find current frame
+  let f = frames[0];
+  for (let i=frames.length-1;i>=0;i--) if (timeSec >= frames[i].t) { f = frames[i]; break; }
+
+  // text
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#fff';
+  ctx.font = '400 88px "Instrument Serif", serif';
+  const lines = f.text.split('\n');
+  let ty = 900;
+  lines.forEach((line,i)=>{
+    ctx.fillText(line, 540, ty + i*100);
+  });
+  if (f.pill) {
+    ctx.font = '400 32px "IBM Plex Mono", monospace';
+    ctx.fillStyle = '#8B3A1F';
+    ctx.fillRect(540-90, 1050, 180, 46);
+    ctx.fillStyle = '#fff';
+    ctx.fillText(f.pill, 540, 1080);
+    ctx.fillStyle = 'rgba(237,233,227,0.6)';
+    ctx.font = '400 28px "IBM Plex Mono"';
+    ctx.fillText(f.ipa, 540, 1130);
+  }
+  if (f.sub) {
+    ctx.font = '400 22px "IBM Plex Mono"';
+    ctx.fillStyle = 'rgba(237,233,227,0.6)';
+    ctx.letterSpacing = '0.18em';
+    ctx.fillText(f.sub, 540, 1020);
+  }
+  // bottom tag
+  ctx.font = '400 20px "IBM Plex Mono"';
+  ctx.fillStyle = 'rgba(139,58,31,0.9)';
+  ctx.fillText('EARTH / BODY / INTUITION / EMERGENCE', 540, 1850);
+}
+
+let startTime = null;
+function loop(ts) {
+  if (!startTime) startTime = ts;
+  const elapsed = (ts - startTime)/1000;
+  const zoom = (elapsed % 15)/15;
+  draw(elapsed % 15, zoom);
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+
+renderBtn.addEventListener('click', async () => {
+  statusEl.textContent = 'Rendering 15s video with song... keep this tab open';
+  recordedBlobs = [];
+  // unlock audio
+  try { await audioEl.play(); audioEl.pause(); audioEl.currentTime = 0; } catch(e){}
+  const canvasStream = canvas.captureStream(30);
+  let combinedStream = canvasStream;
+  let audioStream = null;
+  try {
+    // try to get audio track from audio element
+    if (audioEl.captureStream) {
+      audioStream = audioEl.captureStream();
+    } else if (audioEl.mozCaptureStream) {
+      audioStream = audioEl.mozCaptureStream();
+    }
+    if (audioStream && audioStream.getAudioTracks().length>0) {
+      combinedStream = new MediaStream([...canvasStream.getVideoTracks(), ...audioStream.getAudioTracks()]);
+    } else {
+      // WebAudio fallback to include audio in recording
+      audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+      const src = audioCtx.createMediaElementSource(audioEl);
+      const dest = audioCtx.createMediaStreamDestination();
+      src.connect(dest);
+      src.connect(audioCtx.destination);
+      combinedStream = new MediaStream([...canvasStream.getVideoTracks(), ...dest.stream.getAudioTracks()]);
+    }
+  } catch(err) {
+    console.log('audio capture fallback', err);
+  }
+
+  mediaRecorder = new MediaRecorder(combinedStream, {mimeType: 'video/webm;codecs=vp9,opus'});
+  mediaRecorder.ondataavailable = e => { if (e.data.size>0) recordedBlobs.push(e.data); };
+  mediaRecorder.onstop = () => {
+    const blob = new Blob(recordedBlobs, {type:'video/webm'});
+    const url = URL.createObjectURL(blob);
+    downloadBtn.style.display = 'block';
+    downloadBtn.onclick = () => {
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'HEL-share-with-song.webm';
+      a.click();
+    };
+    statusEl.textContent = 'Done — 15s video ready. Download and share to Instagram / WhatsApp. Audio is baked in.';
+    audioEl.pause();
+  };
+  mediaRecorder.start(100);
+  audioEl.currentTime = 0;
+  try { await audioEl.play(); } catch(e){ statusEl.textContent = 'Audio autoplay blocked — tap again, and check hel-song.mp3 exists'; }
+  setTimeout(()=>{ mediaRecorder.stop(); }, 15000);
+});
+
+heroImg.onerror = () => statusEl.textContent = 'hero image not found — add hel-hero-clean.png to same folder';
+audioEl.onerror = () => statusEl.textContent = 'hel-song.mp3 not found — will render video silent until you upload it';
+</script>
+</body>
+</html>
