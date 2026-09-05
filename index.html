@@ -35,24 +35,28 @@
 <meta name="theme-color" content="#0A0A0A">
 
 <link rel="preload" as="image" href="hel-hero-clean.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#0A0A0A;
   --fg:#EDE9E3;
   --line:rgba(255,255,255,0.10);
-  --gold:#8B3A1F;
-  --muted:rgba(237,233,227,0.62);
+  --gold:#A3491F;
+  --muted:rgba(237,233,227,0.68);
   --paper:#141210;
   --cell:#0F0E0D;
+  --serif:'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --mono:'IBM Plex Mono', Menlo, Consolas, monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{background:var(--bg);color:var(--fg);font-family:'IBM Plex Mono',monospace;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--bg);color:var(--fg);font-family:var(--mono);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 
-.mono{font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.14em;font-size:10px;color:var(--gold)}
+.mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:10px;color:var(--gold)}
 
 /* ---------- NAV ---------- */
 .nav{
@@ -71,7 +75,7 @@ img{max-width:100%;display:block}
 .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
 .narrow{max-width:620px;margin:0 auto;padding:0 24px}
 
-/* ---------- HERO ---------- */
+/* ---------- HERO (untouched) ---------- */
 .hero{
   position:relative;width:100vw;margin-left:calc(50% - 50vw);
   height:92vh;min-height:680px;
@@ -93,17 +97,17 @@ img{max-width:100%;display:block}
 }
 .hero-content{position:relative;z-index:2;max-width:900px;padding:0 24px;margin-top:40px}
 .hero h1{
-  font-family:'Instrument Serif',Georgia,serif;color:#fff;
+  font-family:var(--serif);color:#fff;
   font-size:clamp(48px,9vw,96px);line-height:.9;letter-spacing:-.02em;font-weight:400;
   margin:0 0 20px;text-shadow:0 2px 24px rgba(0,0,0,0.6);
 }
 .hero .sub{
-  font-family:'IBM Plex Mono';color:#fff;font-size:11px;letter-spacing:.18em;opacity:0.75;
+  font-family:var(--mono);color:#fff;font-size:11px;letter-spacing:.18em;opacity:0.75;
   margin-bottom:40px;
 }
 .hero-watermark{
   position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);
-  font-family:'Instrument Serif';font-size:clamp(120px,22vw,240px);line-height:.8;
+  font-family:var(--serif);font-size:clamp(120px,22vw,240px);line-height:.8;
   color:rgba(255,255,255,0.04);letter-spacing:.08em;pointer-events:none;z-index:1;
 }
 
@@ -111,7 +115,7 @@ img{max-width:100%;display:block}
 .pill-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .btn{
   display:inline-block;background:transparent;color:#fff;
-  font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.14em;
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;
   padding:15px 24px;border:1px solid rgba(255,255,255,0.5);cursor:pointer;
   transition:background .25s, color .25s, border-color .25s;
 }
@@ -124,17 +128,17 @@ img{max-width:100%;display:block}
 .section-dark{background:var(--bg)}
 .section-paper{background:var(--paper);border-bottom:1px solid rgba(255,255,255,0.08)}
 
-.kicker{font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.22em;color:var(--gold);margin-bottom:20px;display:block}
-.h-big{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,3.8vw,42px);line-height:1.04;letter-spacing:-.02em;font-weight:400;color:#fff;margin-bottom:26px}
-.h-small{font-family:'Instrument Serif';font-size:22px;line-height:1.2;color:#fff;margin:30px 0 14px;font-weight:400}
+.kicker{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--gold);margin-bottom:20px;display:block}
+.h-big{font-family:var(--serif);font-size:clamp(28px,3.8vw,42px);line-height:1.04;letter-spacing:-.02em;font-weight:400;color:#fff;margin-bottom:26px}
+.h-small{font-family:var(--serif);font-size:22px;line-height:1.2;color:#fff;margin:30px 0 14px;font-weight:400}
 
-.p{font-family:'IBM Plex Mono';font-size:13.5px;line-height:1.8;color:var(--muted);margin:14px 0;letter-spacing:.01em}
+.p{font-family:var(--mono);font-size:13.5px;line-height:1.8;color:var(--muted);margin:14px 0;letter-spacing:.01em}
 .p strong{color:var(--fg);font-weight:400}
-.p-mono{font-family:'IBM Plex Mono';font-size:11.5px;line-height:1.9;color:rgba(237,233,227,0.52);letter-spacing:.02em}
+.p-mono{font-family:var(--mono);font-size:11.5px;line-height:1.9;color:rgba(237,233,227,0.58);letter-spacing:.02em}
 
 blockquote{
   border-left:1px solid var(--gold);padding-left:22px;margin:36px 0;
-  font-family:'Instrument Serif';font-size:22px;line-height:1.35;color:#fff;
+  font-family:var(--serif);font-size:22px;line-height:1.35;color:#fff;
   font-style:italic;letter-spacing:-.01em;
 }
 
@@ -143,7 +147,7 @@ blockquote{
 /* ---------- LISTS ---------- */
 .list-minimal{list-style:none;margin:0;padding:0}
 .list-minimal li{
-  font-family:'IBM Plex Mono';font-size:12px;line-height:1.6;color:var(--muted);
+  font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--muted);
   padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.06);
   display:flex;justify-content:space-between;gap:16px;
 }
@@ -154,8 +158,8 @@ blockquote{
 
 .cta-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.1);margin-top:36px}
 .cta-cell{background:var(--cell);padding:32px;display:flex;flex-direction:column;gap:18px}
-.cta-cell h4{font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.18em;color:var(--gold)}
-.cta-cell p{font-family:'IBM Plex Mono';font-size:12px;line-height:1.6;color:var(--muted)}
+.cta-cell h4{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--gold)}
+.cta-cell p{font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--muted)}
 
 .three-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.08);margin-top:36px}
 .three-cell{background:var(--cell);padding:36px 32px}
@@ -179,12 +183,21 @@ blockquote{
 .hel-principle:last-child{border-bottom:none}
 .hel-principle-num{
   flex:0 0 30px;
-  font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.14em;color:var(--gold);
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--gold);
   padding-top:5px;
 }
 .hel-principle p{
-  font-family:'Instrument Serif';font-size:21px;line-height:1.32;color:#fff;
+  font-family:var(--serif);font-size:21px;line-height:1.32;color:#fff;
   font-weight:400;letter-spacing:-.01em;
+}
+
+/* ---------- SOUND-SECTION AUDIO PLAYER ---------- */
+/* Scoped to .card-dark only, so the hero player is untouched */
+.card-dark audio{
+  accent-color:var(--gold);
+  filter:invert(1) sepia(0.2) saturate(0.5);
+  opacity:0.9;
+  border-radius:2px;
 }
 
 footer{padding:56px 24px;border-top:1px solid var(--line);text-align:center;background:#080807}
@@ -219,7 +232,7 @@ footer{padding:56px 24px;border-top:1px solid var(--line);text-align:center;back
     <span class="kicker">PRONUNCIATION — START HERE</span>
     <div style="display:flex; align-items:baseline; gap:18px; flex-wrap:wrap; margin:6px 0 20px">
       <h2 class="h-big" style="margin:0; font-size:clamp(40px,7vw,64px); letter-spacing:-.03em">HEL</h2>
-      <span style="font-family:'IBM Plex Mono'; font-size:14px; letter-spacing:.08em; color:var(--gold); background:rgba(139,58,31,0.14); border:1px solid rgba(139,58,31,0.35); padding:6px 10px">(HAY-uhl)</span>
+      <span style="font-family:'IBM Plex Mono'; font-size:14px; letter-spacing:.08em; color:var(--gold); background:rgba(163,73,31,0.14); border:1px solid rgba(163,73,31,0.35); padding:6px 10px">(HAY-uhl)</span>
       <span style="font-family:'IBM Plex Mono'; font-size:14px; letter-spacing:.04em; color:rgba(237,233,227,0.65)">/ˈheɪ.əl/</span>
     </div>
     <p class="p" style="color:#fff; font-family:'Instrument Serif'; font-size:22px; line-height:1.35; margin:0">One breath. Two beats.</p>
@@ -497,7 +510,7 @@ footer{padding:56px 24px;border-top:1px solid var(--line);text-align:center;back
       <audio
         controls
         loop
-        style="width:100%; margin-top:14px; filter: invert(1) sepia(0.2) saturate(0.5); opacity:0.85"
+        style="width:100%; margin-top:14px;"
       >
         <source src="hel-song.mp3" type="audio/mpeg">
       </audio>
