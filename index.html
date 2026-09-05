@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HUMAN LAB — Home of HEL</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFD;--fg:#0A0A0A;--line:#0A0A0A;--card:#F6F5F1;--gold:#C9A86A}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:'Instrument Serif',Georgia,serif;line-height:1.25;-webkit-font-smoothing:antialiased}
+.mono{font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.08em;font-size:11px}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,253,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:14px 24px}
+.nav-right{display:flex;gap:22px}.nav-right a{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.1em}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}.narrow{max-width:760px;margin:0 auto}
+.section{padding:88px 0;border-bottom:1px solid var(--line)}
+
+/* FULL BLEED HERO - exactly like screenshot */
+.hero{position:relative;width:100vw;margin-left:calc(50% - 50vw);height:92vh;min-height:680px;background:#0A0A0A;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
+.hero-bg{position:absolute;inset:0;background-image:url('hel-hero-wide.png');background-size:cover;background-position:center 32%;background-repeat:no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.75) 100%)}
+.hero-top{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;padding:18px 24px;z-index:2;opacity:0.85}
+.hero-content{position:relative;z-index:2;max-width:900px;padding:0 24px;margin-top:40px}
+.hero h1{font-family:'Instrument Serif',Georgia,serif;color:#fff;font-size:clamp(48px,9vw,96px);line-height:.9;letter-spacing:-.02em;font-weight:400;margin:0 0 18px;text-shadow:0 2px 24px rgba(0,0,0,0.6)}
+.hero .sub{font-family:'IBM Plex Mono';color:#fff;font-size:11px;letter-spacing:.18em;opacity:0.85;margin-bottom:34px}
+.hero-watermark{position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);font-family:'Instrument Serif';font-size:clamp(120px,22vw,240px);line-height:.8;color:rgba(255,255,255,0.06);letter-spacing:.08em;pointer-events:none;z-index:1}
+.pill-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;background:transparent;color:#fff;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.12em;padding:13px 22px;border:1px solid rgba(255,255,255,0.7);cursor:pointer;transition:.2s}
+.btn:hover{background:#fff;color:#0A0A0A;border-color:#fff}
+.btn-gold{background:var(--gold);color:#0A0A0A;border-color:var(--gold)}.btn-gold:hover{background:#fff;border-color:#fff}
+
+h2.kicker{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.18em;margin-bottom:16px}
+h2.big{font-size:clamp(28px,5vw,54px);line-height:.95;letter-spacing:-.02em;font-weight:400;margin-bottom:20px}
+h3{font-size:clamp(22px,3vw,32px);line-height:1.05;margin:22px 0 14px}
+p{font-size:20px;line-height:1.45;margin:14px 0}
+blockquote{border-left:1px solid var(--line);padding-left:22px;margin:28px 0;font-size:24px;line-height:1.3;font-style:italic}
+ul{list-style:none;margin:16px 0}ul li{font-size:19px;line-height:1.5;padding:6px 0;border-bottom:1px dotted #ccc}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:32px}@media(max-width:820px){.two-col{grid-template-columns:1fr}.nav-right{display:none}.hero{height:88vh;min-height:560px}}
+.card{border:1px solid var(--line);padding:28px;background:var(--card)}
+.principle{font-size:clamp(20px,3.2vw,32px);line-height:1.1;border-bottom:1px solid var(--line);padding:22px 0}
+.never{font-family:'IBM Plex Mono';font-size:13px;line-height:1.6}
+.cta-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:28px}
+.cta-cell{background:var(--bg);padding:28px}@media(max-width:900px){.cta-grid{grid-template-columns:1fr}}
+footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center}
+</style>
+</head>
+<body>
+<header class="nav"><div class="mono">HUMAN LAB</div><div class="nav-right"><a href="#hel">HEL</a><a href="#sessions">Sessions</a><a href="#labs">Labs</a><a href="#objects">Objects</a><a href="#atelier">Atelier</a><a href="#about">About</a></div></header>
+
+<!-- HERO STRETCHED FULL BLEED -->
+<section class="hero">
+  <div class="hero-bg"></div><div class="hero-overlay"></div>
+  <div class="hero-top"><div class="mono" style="color:#fff">HEL — DURBAN — UK / US</div><div class="mono" style="color:#fff">MULTIDISCIPLINARY EXPRESSION OF PERMISSIONLESS EMERGENCE</div></div>
+  <div class="hero-content">
+    <h1>HEL lives here.</h1>
+    <div class="sub">A PRACTICE OF PERMISSIONLESS EMERGENCE</div>
+    <div class="pill-row">
+      <a class="btn" href="#hel">ENTER THE ATELIER —</a>
+      <a class="btn btn-gold" href="#sessions">BOOK A TRANSLATION SESSION</a>
+    </div>
+  </div>
+  <div class="hero-watermark">HEL</div>
+</section>
+
+<main>
+<section class="section" id="hel"><div class="narrow">
+<p>Sometimes you know something is there before you have language for it.</p>
+<p>You can feel the shift.</p>
+<p>Something no longer fits.<br>Something else is trying to emerge.<br>You are more than one thing at once.<br>You understand it instinctively, but cannot yet make it visible.</p>
+<h3>HEL works there.</h3>
+<p>Not by fixing you.</p><p>Not by telling you who you are.</p>
+<p>By listening deeply enough to find the structure underneath what you are trying to say — and translating it into form.</p>
+<p>Writing.<br>Image.<br>Voice.<br>Map.<br>Object.<br>Concept.<br>Whatever the truth requires.</p>
+<blockquote>I make the unnamed visible so you can recognise what was already there.</blockquote>
+</div></section>
+
+<section class="section"><div class="narrow">
+<h2 class="kicker">WHAT HEL IS</h2><h2 class="big">An amplified field of expression.</h2>
+<p>HEL is not a character.<br>Not a doctrine.<br>Not a self-improvement system.<br>Not another place where a human being is reduced to one neat explanation.</p>
+<p>HEL exists for contradiction.<br>For transitions.<br>For the things that are true before they are articulate.</p>
+<p>Some of the work is autobiographical.<br>Some is archetype.<br>Some is metaphor.<br>Some is lived truth.<br>Some is mystery.</p>
+<h3>The form follows the truth.</h3>
+</div></section>
+
+<section class="section"><div class="narrow">
+<h2 class="kicker">WHO IT IS FOR</h2><h2 class="big">The threshold is the niche.</h2>
+<p>HEL is for people standing between what was and what is trying to emerge.</p>
+<blockquote>I am more than one thing at once and I don't have language for it.</blockquote>
+<blockquote>I know something is there, but I can't say it yet.</blockquote>
+<blockquote>What I was no longer fits. I don't fully know what comes next.</blockquote>
+<blockquote>I need to see this differently.</blockquote>
+<p>You do not need to be an artist.<br>You do not need to be in crisis.<br>You do not need to arrive with a perfectly formed question.</p>
+<p>You only need to know that <strong>something is there</strong>.</p>
+</div></section>
+
+<section class="section" id="sessions"><div class="wrap"><div class="narrow">
+<h2 class="kicker">HEL SESSIONS</h2><h2 class="big">1:1 Translation</h2>
+<p>You bring what is difficult to name.<br>HEL helps make it visible.</p>
+<p>A Session begins with conversation, but conversation is not the product.</p>
+<p>I listen for:<br>contradiction<br>patterns<br>repetition<br>what is missing<br>what keeps returning<br>what you know without yet having language for it</p>
+<p>Then I translate what emerges into an artifact.</p>
+<ul><li>a written piece</li><li>a personal map</li><li>a manifesto</li><li>a monologue</li><li>a visual translation</li><li>a conceptual framework</li><li>an audio piece</li><li>something else entirely</li></ul>
+<blockquote>Yes. That's it. That's what I couldn't name.</blockquote>
+<h3>HEL is not therapy.<br>HEL is not coaching.</h3>
+<p>I do not diagnose you.<br>I do not promise healing.<br>I do not tell you what to become.</p>
+<p><strong>The work is recognition.</strong></p>
+<div class="pill-row" style="justify-content:flex-start"><a class="btn" style="border-color:#0A0A0A;color:#0A0A0A" href="#">[ EXPLORE SESSIONS ]</a><a class="btn" style="background:#0A0A0A;color:#fff" href="#">[ BOOK A TRANSLATION ]</a></div>
+</div></div></section>
+
+<section class="section"><div class="narrow">
+<h2 class="kicker">DEEP TRANSLATION</h2><h2 class="big">When one conversation is not enough.</h2>
+<p>Some things do not want to become one page.</p><p>They carry history, contradiction, identity, memory, language and meaning that need more room.</p>
+<p>A Deep Translation is a more extensive private commission.</p><p>a personal constitution<br>an identity map<br>a body of writing<br>a visual narrative<br>a multi-part audio work<br>a complete conceptual artifact</p><p>No preset format.</p><h3>The form follows what is found.</h3>
+<div class="pill-row" style="justify-content:flex-start"><a class="btn" style="border-color:#0A0A0A;color:#0A0A0A" href="#">[ ENQUIRE ABOUT DEEP TRANSLATION ]</a></div>
+</div></section>
+
+<section class="section" id="labs"><div class="narrow">
+<h2 class="kicker">HEL LABS</h2><h2 class="big">Collective emergence.</h2>
+<p>HEL Labs are small-group spaces built around one question.</p><p>Not lectures.<br>Not group therapy.<br>Not courses where everyone is expected to reach the same conclusion.</p>
+<h3>What wants to emerge when you stop asking permission?</h3>
+<h3>What remains when an identity no longer fits?</h3>
+<h3>What parts of you have you been treating as contradictions that actually belong together?</h3>
+<p>Labs remain intentionally small.</p>
+<div class="pill-row" style="justify-content:flex-start"><a class="btn" style="background:#0A0A0A;color:#fff" href="#">[ JOIN THE LAB WAITLIST ]</a></div>
+</div></section>
+
+<section class="section"><div class="narrow">
+<h2 class="kicker">FIELD NOTES</h2><h2 class="big">A way of seeing.</h2>
+<p>HEL Field Notes begin with something ordinary.</p>
+<blockquote>Fuck. I've never thought about it like that.</blockquote><p>That is enough.</p>
+<div class="pill-row" style="justify-content:flex-start"><a class="btn" style="border-color:#0A0A0A;color:#0A0A0A" href="#">[ READ FIELD NOTES ]</a></div>
+</div></section>
+
+<section class="section" id="objects"><div class="narrow">
+<h2 class="kicker">OBJECTS</h2><h2 class="big">Meaning given physical form.</h2>
+<p>Not merchandise.</p><blockquote>Does this reveal something, or merely decorate?</blockquote>
+<div class="pill-row" style="justify-content:flex-start"><a class="btn" style="border-color:#0A0A0A;color:#0A0A0A" href="#">[ ENTER OBJECTS ]</a></div>
+</div></section>
+
+<section class="section" id="atelier"><div class="narrow">
+<h2 class="kicker">ATELIER</h2><h2 class="big">Where HEL is made.</h2>
+<p>The polished piece is only the end.</p><p><strong>Not behind the scenes.</strong><br>The scene before there is a scene.</p>
+<div class="pill-row" style="justify-content:flex-start"><a class="btn" style="border-color:#0A0A0A;color:#0A0A0A" href="#">[ ENTER THE ATELIER ]</a></div>
+</div></section>
+
+<section class="section"><div class="narrow">
+<h2 class="kicker">THE HUMAN LAB</h2><h2 class="big">Why Human Lab?</h2>
+<h3>what exists beneath the obvious.</h3>
+<p>The Human Lab is the container.<br><strong>HEL is what lives inside it.</strong></p>
+</div></section>
+
+<section class="section" id="about"><div class="wrap two-col"><div><h2 class="kicker">ABOUT KAYLEE-JANE</h2><h2 class="big">The human source.</h2><p>HEL comes from Kaylee-Jane Inglis.<br>But HEL is not a biography.</p><p>Not organisational.<br>Not professional.<br><strong>Human.</strong></p></div><div class="card"><h3 class="mono">The Distinction</h3><p><strong>Kaylee-Jane</strong><br>The human being.</p><p><strong>KINGLIS</strong><br>Systems. Operations. Organisations.</p><p><strong>HEL</strong><br>Meaning. Identity. Contradiction. Emergence.</p><blockquote>KINGLIS structures what needs to work.<br>HEL reveals what needs to be seen.</blockquote></div></div></section>
+
+<section class="section"><div class="narrow"><h2 class="kicker">THE HEL PRINCIPLES</h2>
+<div class="principle">Nothing true requires permission.</div><div class="principle">Nothing essential gets amputated.</div><div class="principle">Truth is non-negotiable. Form is flexible.</div><div class="principle">Aesthetic without meaning is rejected.</div><div class="principle">Mystery is allowed to remain mystery.</div><div class="principle">Light does not always arrive looking like light.</div>
+</div></section>
+
+<section class="section"><div class="narrow"><h2 class="kicker">WHAT HEL WILL NEVER BE</h2><p class="never">generic self-help<br>therapy disguised as art<br>a spiritual guru brand<br>“dark feminine” content<br>an empowerment machine<br>a mythology costume<br>a place where private disclosure becomes content<br>a commercial identity Kaylee has to perform against her own truth</p><p>HEL exists to reveal.<br>Not prescribe.</p></div></section>
+
+<section class="section"><div class="wrap"><h2 class="big" style="text-align:center">Something is there.</h2><p style="text-align:center">You do not need to know exactly what it is yet.</p><div class="cta-grid"><div class="cta-cell"><h3 class="mono">HEL Translation Sessions</h3><p>For what you can feel but cannot yet name.</p><a class="btn" style="background:#0A0A0A;color:#fff" href="#">[ BOOK A SESSION ]</a></div><div class="cta-cell"><h3 class="mono">HEL Labs</h3><p>For humans standing at thresholds together.</p><a class="btn" style="border-color:#0A0A0A;color:#0A0A0A" href="#">[ JOIN THE WAITLIST ]</a></div><div class="cta-cell"><h3 class="mono">HEL Field Notes</h3><p>For those who want to stay close to the way of seeing.</p><a class="btn" style="border-color:#0A0A0A;color:#0A0A0A" href="#">[ ENTER HEL ]</a></div></div></div></section>
+</main>
+<footer><div class="mono">THE HUMAN LAB — Home of HEL.</div><div class="mono" style="margin-top:12px">@helliveshere</div><div style="margin-top:22px;font-style:italic">Nothing false is required.<br>Nothing true requires permission.<br>Nothing essential gets left behind.</div><div class="mono" style="margin-top:18px">HEL lives here.</div></footer>
+</body>
+</html>
