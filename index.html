@@ -4,11 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HEL — Home of HEL</title>
+<link rel="preload" as="image" href="hel-hero-clean.png">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0A0A0A;--fg:#EDE9E3;--line:rgba(255,255,255,0.12);--gold:#8B3A1F;--muted:rgba(237,233,227,0.62)}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--fg);font-family:'IBM Plex Mono',monospace;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{overflow-x:hidden}
 .mono{font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.14em;font-size:10px;color:var(--gold)}
 a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:16px 24px}
@@ -50,20 +52,23 @@ blockquote{border-left:1px solid var(--gold);padding-left:20px;margin:32px 0;fon
 .cta-cell{background:#0F0E0D;padding:28px;display:flex;flex-direction:column;gap:16px}
 .cta-cell h4{font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.18em;color:var(--gold)}
 .cta-cell p{font-family:'IBM Plex Mono';font-size:12px;line-height:1.6;color:var(--muted)}
-@media(max-width:900px){.cta-grid{grid-template-columns:1fr}}
+.three-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.08);margin-top:32px}
+.three-cell{background:#0F0E0D;padding:28px}
+@media(max-width:900px){.cta-grid{grid-template-columns:1fr}.three-grid{grid-template-columns:1fr}}
 footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;background:#080807}
 </style>
 </head>
 <body>
-<header class="nav"><div class="mono logo">HUMAN LAB — HEL</div><div class="nav-right"><a href="#hel">HEL</a><a href="#sessions">SESSIONS</a><a href="#labs">LABS</a><a href="#about">ABOUT</a></div></header>
+<header class="nav"><div class="mono logo">HUMAN LAB — HEL</div><div class="nav-right"><a href="#hel">HEL</a><a href="#sessions">SESSIONS</a><a href="#music">SOUND</a><a href="#writing">WRITING</a></div></header>
+
 <section class="hero">
   <div class="hero-bg"></div><div class="hero-overlay"></div>
   <div class="hero-top"><div class="mono" style="color:#fff">HEL — DURBAN — UK / US</div><div class="mono" style="color:#fff">PERMISSIONLESS EMERGENCE</div></div>
   <div class="hero-content">
     <h1>HEL lives here.</h1>
-    <div class="sub">A PRACTICE OF PERMISSIONLESS EMERGENCE</div>
+    <div class="sub">SESSIONS — WRITING — SOUND — A PRACTICE OF PERMISSIONLESS EMERGENCE</div>
     <div class="pill-row">
-      <a class="btn" href="#hel">ENTER THE ATELIER —</a>
+      <a class="btn" href="#work">ENTER THE ATELIER —</a>
       <a class="btn btn-gold" href="#sessions">BOOK A TRANSLATION</a>
     </div>
     <div style="margin-top:28px; display:flex; justify-content:center;">
@@ -74,9 +79,11 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
   </div>
   <div class="hero-watermark">HEL</div>
 </section>
+
 <main>
-<section class="section section-paper"><div class="narrow">
-<span class="kicker">PRONUNCIATION</span>
+<!-- PRONUNCIATION + EARLY WHAT IS HEL -->
+<section class="section section-paper" id="work"><div class="narrow">
+<span class="kicker">PRONUNCIATION — START HERE</span>
 <div style="display:flex; align-items:baseline; gap:18px; flex-wrap:wrap; margin:6px 0 18px">
 <h2 class="h-big" style="margin:0; font-size:clamp(40px,7vw,64px); letter-spacing:-.03em">HEL</h2>
 <span style="font-family:'IBM Plex Mono'; font-size:14px; letter-spacing:.08em; color:var(--gold); background:rgba(139,58,31,0.14); border:1px solid rgba(139,58,31,0.35); padding:6px 10px">(HAY-uhl)</span>
@@ -84,18 +91,66 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
 </div>
 <p class="p" style="color:#fff; font-family:'Instrument Serif'; font-size:22px; line-height:1.35; margin:0">One breath. Two beats.</p>
 <p class="p-mono" style="margin-top:14px; font-size:12.5px">Not <span style="color:#fff; text-decoration:line-through; text-decoration-color:var(--gold); text-decoration-thickness:1px">“hell.”</span> — <span style="color:#fff">HEL</span></p>
+<div class="divider"></div>
+<p class="p">HEL is not a brand. Not a method. Not a modality.</p>
+<p class="p"><strong>It is a practice where what is trying to emerge gets translated into form — through sessions, music, and writing.</strong></p>
 </div></section>
-  
+
+<!-- THREE FORMS EARLY -->
+<section class="section section-dark" id="work-forms"><div class="wrap">
+<span class="kicker" style="text-align:center; display:block">DIFFERENT FORMS. SAME LISTENING.</span>
+<h2 class="h-big" style="text-align:center; max-width:640px; margin:0 auto 12px">Sessions. Writing. Sound.</h2>
+<p class="p" style="text-align:center; max-width:560px; margin:0 auto 6px"><strong>All are translation.</strong></p>
+<p class="p" style="text-align:center; max-width:560px; margin:0 auto 32px">Different forms for the same act: listening for what sits beneath the obvious and giving it form.</p>
+
+<div class="three-grid">
+<div class="three-cell">
+<h4 class="mono">01 — SESSIONS</h4>
+<h3 class="h-small">You bring what won't settle. I translate it.</h3>
+<p class="p">A private 1:1 translation.</p>
+<p class="p">You speak. I listen for the structure underneath:</p>
+<p class="p-mono" style="color:rgba(237,233,227,0.7)">contradiction / pattern / repetition / what is missing / what keeps returning / what you know without language</p>
+<div class="divider" style="margin:20px 0"></div>
+<p class="p">What emerges becomes an artifact:</p>
+<p class="p-mono">writing / personal map / manifesto / monologue / visual translation / audio</p>
+<blockquote style="margin-top:24px">Yes. That's it. That's what I couldn't name.</blockquote>
+<div style="margin-top:22px"><a class="btn btn-gold" href="#sessions">[ BOOK A TRANSLATION ]</a></div>
+</div>
+
+<div class="three-cell">
+<h4 class="mono">02 — WRITING</h4>
+<h3 class="h-small">A way of seeing.</h3>
+<p class="p">Field Notes, essays, fragments, personal constitutions, maps and language for things that did not have language before.</p>
+<p class="p">Writing here is not content for content's sake.</p>
+<p class="p">It is another form of translation:</p>
+<p class="p"><strong>making the unnamed visible so you can recognise what was already there.</strong></p>
+<div class="divider" style="margin:20px 0"></div>
+<p class="p">If it makes you think—</p>
+<blockquote>“Fuck. I've never thought about it like that.”</blockquote>
+<p class="p">—that is enough.</p>
+<div style="margin-top:22px"><a class="btn" href="#writing">[ READ FIELD NOTES ]</a></div>
+</div>
+
+<div class="three-cell">
+<h4 class="mono">03 — SOUND</h4>
+<h3 class="h-small">Some things need to be felt before they are understood.</h3>
+<p class="p">Voice. Music. Breath. Silence. Spoken pieces. Sonic experiments.</p>
+<p class="p-mono" style="color:var(--gold); letter-spacing:.18em">Earth / Body / Intuition / Emergence.</p>
+<div class="divider" style="margin:20px 0"></div>
+<p class="p">Sound is another language HEL can reach for when words alone cannot carry the thing.</p>
+<p class="p">The piece you hear here was made for HEL.</p>
+<p class="p">Not as background.</p>
+<p class="p"><strong>As another way of translating what wants to emerge.</strong></p>
+<div style="margin-top:22px"><a class="btn" href="#music">[ LISTEN ]</a></div>
+</div>
+</div>
+</div></section>
+
 <section class="section section-dark" id="hel"><div class="narrow">
 <span class="kicker">FIELD NOTE 01</span>
-<h3 class="h-small">FOR HUMANS AT THRESHOLDS</h3>  
+<h3 class="h-small">FOR HUMANS AT THRESHOLDS</h3>
 <p class="p">You may know something has changed before you know what comes next.</p>
-<p class="p">Sometimes you know something is there before you have language for it.</p>
-<p class="p">What I was no longer fits.
-I know something is there, but I can't say it yet.
-I am more than one thing at once.
-Something in me is trying to emerge.</p>
-<p class="p">You do not need to arrive with the right language.</p>
+<p class="p">Sometimes you know something is there before you have language for it. Something no longer fits. Something else is trying to emerge. You are more than one thing at once.</p>
 <div class="divider"></div>
 <h3 class="h-small">HEL works there.</h3>
 <p class="p">Not by fixing you. Not by telling you who you are.</p>
@@ -107,15 +162,15 @@ Something in me is trying to emerge.</p>
 <section class="section section-paper"><div class="narrow">
 <span class="kicker">WHAT HEL IS</span>
 <h2 class="h-big">An amplified field of expression.</h2>
-<p class="p">HEL is not a system for becoming someone else.</p>
-<p class="p">It is a space where what is already trying to emerge can be translated into form.</p>
+<p class="p">HEL exists for contradiction. For transitions. For the things that are true before they are articulate.</p>
+<p class="p">Some of the work is autobiographical. Some is archetype. Some is metaphor. Some is lived truth. Some is mystery.</p>
+<p class="p"><strong>The form follows the truth.</strong></p>
 </div></section>
 
 <section class="section section-dark" id="sessions"><div class="narrow">
-<span class="kicker">TRANSLATION SESSION — 1:1</span>
+<span class="kicker">TRANSLATION SESSION — 1:1 — 90 MIN</span>
 <h2 class="h-big">You bring what won't settle. I translate it.</h2>
-<p class="p">We start where you are. Not where you should be.</p>
-<p class="p">You speak. I track the structure underneath.</p>
+<p class="p">We start where you are. Not where you should be. You speak. I track the structure underneath.</p>
 <div class="divider"></div>
 <p class="p-mono">I LISTEN FOR —</p>
 <ul class="list-minimal">
@@ -132,13 +187,46 @@ Something in me is trying to emerge.</p>
 <div style="margin-top:32px" class="pill-row"><a class="btn" href="#">[ EXPLORE SESSIONS ]</a><a class="btn btn-gold" href="#">[ BOOK A TRANSLATION ]</a></div>
 </div></section>
 
+<section class="section section-paper" id="music"><div class="narrow">
+<span class="kicker">MUSIC — HEL SOUND</span>
+<h2 class="h-big">Earth / Body / Intuition / Emergence</h2>
+<p class="p">Music is not an add-on to HEL. It is HEL. Before language, there was sound.</p>
+<p class="p">The piece playing in the hero is the first HEL song — made to be felt in the body before it is understood in the mind. Not perfect. True.</p>
+<div class="card-dark" style="margin-top:24px">
+<p class="p-mono" style="color:var(--gold)">NOW PLAYING — HEL-SONG.MP3</p>
+<audio controls loop style="width:100%; margin-top:12px; filter: invert(1) sepia(0.2) saturate(0.5); opacity:0.85"><source src="hel-song.mp3" type="audio/mpeg"></audio>
+<p class="p-mono" style="margin-top:12px">If you can't hear it: tap play. Browsers block autoplay until interaction. Save file as hel-song.mp3 in root.</p>
+</div>
+<p class="p" style="margin-top:24px"><strong>Future releases:</strong> field recordings, voice notes, unpolished songs. Not for streaming performance. For transmission.</p>
+</div></section>
+
+<section class="section section-dark" id="writing"><div class="narrow">
+<span class="kicker">WRITING — FIELD NOTES</span>
+<h2 class="h-big">A way of seeing.</h2>
+<p class="p">HEL Field Notes begin with something ordinary and make it impossible to unsee.</p>
+<p class="p">Not essays to perform intelligence. Not content to build audience. Writing as translation.</p>
+<blockquote>Fuck. I've never thought about it like that.</blockquote>
+<p class="p">That is enough.</p>
+<div class="divider"></div>
+<p class="p-mono">WHAT WRITING BECOMES INSIDE HEL —</p>
+<ul class="list-minimal">
+<li><span>personal constitutions</span><span>—</span></li>
+<li><span>identity maps</span><span>—</span></li>
+<li><span>manifestos</span><span>—</span></li>
+<li><span>monologues</span><span>—</span></li>
+<li><span>field notes</span><span>—</span></li>
+<li><span>bodies of writing that don't want to be one page</span><span>—</span></li>
+</ul>
+<div style="margin-top:28px"><a class="btn" href="#">[ READ FIELD NOTES ]</a><a class="btn btn-gold" href="#sessions" style="margin-left:8px">[ COMMISSION WRITING ]</a></div>
+</div></section>
+
 <section class="section section-paper"><div class="narrow">
 <span class="kicker">DEEP TRANSLATION</span>
 <h2 class="h-big">When one conversation is not enough.</h2>
 <p class="p">Some things carry history, contradiction, identity, memory. They need more room.</p>
 <p class="p">A private commission: constitution, identity map, body of writing, visual narrative, multi-part audio.</p>
 <p class="p-mono" style="margin-top:24px">No preset format. The form follows what is found.</p>
-<div style="margin-top:32px"><a class="btn btn-gold" href="#">[ ENQUIRE ABOUT DEEP TRANSLATION ]</a></div>
+<div style="margin-top:32px"><a class="btn btn-gold" href="#contact">[ ENQUIRE ABOUT DEEP TRANSLATION ]</a></div>
 </div></section>
 
 <section class="section section-dark" id="labs"><div class="narrow">
@@ -172,17 +260,21 @@ Something in me is trying to emerge.</p>
 <div class="principle"><span>06</span> Light does not always arrive looking like light.</div>
 </div></section>
 
+<section class="section section-paper"><div class="narrow">
+<span class="kicker">BOUNDARIES</span>
+<p class="never"><b>HEL will never be</b><br>generic self-help<br>therapy disguised as art<br>spiritual guru brand<br>dark feminine content<br>empowerment machine<br>mythology costume<br>a place where private disclosure becomes content</p>
+</div></section>
 
 <section class="section section-dark"><div class="wrap">
 <h2 class="h-big" style="text-align:center">Something is there.</h2>
 <p class="p" style="text-align:center; margin:0 auto">You do not need to know exactly what it is yet.</p>
 <div class="cta-grid">
-<div class="cta-cell"><h4>TRANSLATION SESSIONS</h4><p>For what you can feel but cannot yet name.</p><div><a class="btn btn-gold" href="#">[ BOOK ]</a></div></div>
-<div class="cta-cell"><h4>HEL LABS</h4><p>For humans standing at thresholds together.</p><div><a class="btn" href="#">[ WAITLIST ]</a></div></div>
-<div class="cta-cell"><h4>FIELD NOTES</h4><p>For those who want to stay close to the way of seeing.</p><div><a class="btn" href="#">[ ENTER ]</a></div></div>
+<div class="cta-cell"><h4>TRANSLATION SESSIONS</h4><p>For what you can feel but cannot yet name.</p><div><a class="btn btn-gold" href="#sessions">[ BOOK ]</a></div></div>
+<div class="cta-cell"><h4>MUSIC</h4><p>Earth / Body / Intuition / Emergence — listen to HEL.</p><div><a class="btn" href="#music">[ LISTEN ]</a></div></div>
+<div class="cta-cell"><h4>WRITING</h4><p>Field Notes — a way of seeing.</p><div><a class="btn" href="#writing">[ READ ]</a></div></div>
 </div>
 </div></section>
 </main>
-<footer><div class="mono" style="color:rgba(255,255,255,0.4)">THE HUMAN LAB — Home of HEL.</div><div class="mono" style="margin-top:8px; color:rgba(255,255,255,0.3)">@helliveshere</div><div class="p-mono" style="margin-top:18px; text-align:center">Nothing false is required.<br>Nothing true requires permission.<br>Nothing essential gets left behind.</div><br>EARTH / BODY / INTUITION / EMERGENCE</div></footer>
+<footer><div class="mono" style="color:rgba(255,255,255,0.4)">THE HUMAN LAB — Home of HEL.</div><div class="mono" style="margin-top:8px; color:rgba(255,255,255,0.3)">@helliveshere</div><div class="p-mono" style="margin-top:18px; text-align:center">Nothing false is required.<br>Nothing true requires permission.<br>Nothing essential gets left behind.<br><br><span style="letter-spacing:.18em; color:var(--gold)">EARTH / BODY / INTUITION / EMERGENCE</span></div></footer>
 </body>
 </html>
