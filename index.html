@@ -1,3 +1,4 @@
+ex
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
 <title>HEL — Home of HEL</title>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0A0A0A;--fg:#EDE9E3;--line:rgba(255,255,255,0.12);--gold:#C9A86A;--muted:rgba(237,233,227,0.62)}
+:root{--bg:#0A0A0A;--fg:#EDE9E3;--line:rgba(255,255,255,0.12);--gold:#8B3A1F;--muted:rgba(237,233,227,0.62)}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--fg);font-family:'IBM Plex Mono',monospace;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .mono{font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.14em;font-size:10px;color:var(--gold)}
@@ -15,8 +16,6 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
 .nav .logo{letter-spacing:.18em;font-size:11px;color:#fff}
 .nav-right{display:flex;gap:22px}.nav-right a{font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,0.6);transition:.2s}.nav-right a:hover{color:#fff}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}.narrow{max-width:600px;margin:0 auto}
-
-/* HERO - KEEP EXACTLY AS YOU LOVED */
 .hero{position:relative;width:100vw;margin-left:calc(50% - 50vw);height:92vh;min-height:680px;background:#0A0A0A url('hel-hero-clean.png') center 32% / cover no-repeat;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
 .hero-bg{position:absolute;inset:0;background-image:url('hel-hero-clean.png'), url('hel-hero-wide.png');background-size:cover;background-position:center 32%;background-repeat:no-repeat}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.48) 48%, rgba(0,0,0,0.88) 100%)}
@@ -28,13 +27,10 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
 .pill-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .btn{display:inline-block;background:transparent;color:#fff;font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.14em;padding:14px 22px;border:1px solid rgba(255,255,255,0.5);cursor:pointer;transition:.25s}
 .btn:hover{background:#fff;color:#0A0A0A;border-color:#fff}
-.btn-gold{background:var(--gold);color:#0A0A0A;border-color:var(--gold)}.btn-gold:hover{background:#fff;border-color:#fff}
-
-/* REST - NOW ATELIER DARK, NOT TALL SERIF WHITE */
+.btn-gold{background:var(--gold);color:#fff;border-color:var(--gold)}.btn-gold:hover{background:#fff;color:#0A0A0A;border-color:#fff}
 .section{padding:80px 0;border-bottom:1px solid var(--line);position:relative}
 .section-dark{background:#0A0A0A}
 .section-paper{background:#141210;border-bottom:1px solid rgba(255,255,255,0.08)}
-
 .kicker{font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.22em;color:var(--gold);margin-bottom:18px;display:block}
 .h-big{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,3.8vw,42px);line-height:.98;letter-spacing:-.02em;font-weight:400;color:#fff;margin-bottom:22px}
 .h-small{font-family:'Instrument Serif';font-size:22px;line-height:1.1;color:#fff;margin:28px 0 12px;font-weight:400}
@@ -46,25 +42,21 @@ blockquote{border-left:1px solid var(--gold);padding-left:20px;margin:32px 0;fon
 .list-minimal{list-style:none;margin:0;padding:0}
 .list-minimal li{font-family:'IBM Plex Mono';font-size:12px;line-height:1.6;color:var(--muted);padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between}
 .list-minimal li span:first-child{color:rgba(255,255,255,0.9)}
-
 .card-dark{border:1px solid rgba(255,255,255,0.12);padding:28px;background:rgba(255,255,255,0.02)}
 .principle{font-family:'Instrument Serif';font-size:21px;line-height:1.15;color:#fff;border-bottom:1px solid rgba(255,255,255,0.08);padding:20px 0;display:flex;justify-content:space-between;gap:20px}
 .principle span{font-family:'IBM Plex Mono';font-size:10px;color:var(--gold);margin-top:6px}
 .never{font-family:'IBM Plex Mono';font-size:11.5px;line-height:2;color:rgba(237,233,227,0.45)}
 .never b{color:rgba(255,255,255,0.75);font-weight:400}
-
 .cta-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.1);margin-top:32px}
 .cta-cell{background:#0F0E0D;padding:28px;display:flex;flex-direction:column;gap:16px}
 .cta-cell h4{font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.18em;color:var(--gold)}
 .cta-cell p{font-family:'IBM Plex Mono';font-size:12px;line-height:1.6;color:var(--muted)}
 @media(max-width:900px){.cta-grid{grid-template-columns:1fr}}
-
 footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;background:#080807}
 </style>
 </head>
 <body>
 <header class="nav"><div class="mono logo">HUMAN LAB — HEL</div><div class="nav-right"><a href="#hel">HEL</a><a href="#sessions">SESSIONS</a><a href="#labs">LABS</a><a href="#about">ABOUT</a></div></header>
-
 <section class="hero">
   <div class="hero-bg"></div><div class="hero-overlay"></div>
   <div class="hero-top"><div class="mono" style="color:#fff">HEL — DURBAN — UK / US</div><div class="mono" style="color:#fff">PERMISSIONLESS EMERGENCE</div></div>
@@ -83,7 +75,6 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
   </div>
   <div class="hero-watermark">HEL</div>
 </section>
-
 <main>
 <section class="section section-dark" id="hel"><div class="narrow">
 <span class="kicker">FIELD NOTE 01</span>
