@@ -37,24 +37,38 @@
 <link rel="preload" as="image" href="hel-hero-clean.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#0A0A0A;
   --fg:#EDE9E3;
   --line:rgba(255,255,255,0.10);
   --gold:#A3491F;
-  --muted:rgba(237,233,227,0.68);
+  --gold-bright:#C56B3A;
+  --muted:rgba(237,233,227,0.72);
   --paper:#141210;
   --cell:#0F0E0D;
-  --serif:'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --display:'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --body:'EB Garamond', Georgia, 'Times New Roman', serif;
   --mono:'IBM Plex Mono', Menlo, Consolas, monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{background:var(--bg);color:var(--fg);font-family:var(--mono);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
+
+/* faint grain — reads as texture, not noise; keeps the black from feeling flat */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:999;
+  pointer-events:none;
+  opacity:0.045;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
 .mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:10px;color:var(--gold)}
 
@@ -66,10 +80,10 @@ img{max-width:100%;display:block}
   display:flex;justify-content:space-between;align-items:center;
   padding:18px 28px;
 }
-.nav .logo{letter-spacing:.18em;font-size:11px;color:#fff}
+.nav .logo{letter-spacing:.18em;font-size:11px;color:#fff;font-family:var(--mono)}
 .nav-right{display:flex;gap:26px}
-.nav-right a{font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,0.6);transition:color .2s}
-.nav-right a:hover{color:#fff}
+.nav-right a{font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,0.6);font-family:var(--mono);transition:color .2s;padding-bottom:3px;border-bottom:1px solid transparent}
+.nav-right a:hover{color:#fff;border-bottom-color:var(--gold)}
 
 /* ---------- LAYOUT ---------- */
 .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
@@ -95,9 +109,10 @@ img{max-width:100%;display:block}
   position:absolute;top:0;left:0;right:0;z-index:2;
   display:flex;justify-content:space-between;padding:22px 28px;opacity:0.7;
 }
+.hero-top div{font-family:var(--mono)}
 .hero-content{position:relative;z-index:2;max-width:900px;padding:0 24px;margin-top:40px}
 .hero h1{
-  font-family:var(--serif);color:#fff;
+  font-family:var(--display);color:#fff;
   font-size:clamp(48px,9vw,96px);line-height:.9;letter-spacing:-.02em;font-weight:400;
   margin:0 0 20px;text-shadow:0 2px 24px rgba(0,0,0,0.6);
 }
@@ -107,7 +122,7 @@ img{max-width:100%;display:block}
 }
 .hero-watermark{
   position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);
-  font-family:var(--serif);font-size:clamp(120px,22vw,240px);line-height:.8;
+  font-family:var(--display);font-size:clamp(120px,22vw,240px);line-height:.8;
   color:rgba(255,255,255,0.04);letter-spacing:.08em;pointer-events:none;z-index:1;
 }
 
@@ -116,56 +131,93 @@ img{max-width:100%;display:block}
 .btn{
   display:inline-block;background:transparent;color:#fff;
   font-family:var(--mono);font-size:10px;letter-spacing:.14em;
-  padding:15px 24px;border:1px solid rgba(255,255,255,0.5);cursor:pointer;
-  transition:background .25s, color .25s, border-color .25s;
+  padding:15px 26px;border:1px solid rgba(255,255,255,0.45);cursor:pointer;
+  transition:background .35s ease, color .35s ease, border-color .35s ease, box-shadow .35s ease;
 }
-.btn:hover{background:#fff;color:#0A0A0A;border-color:#fff}
+.btn:hover{
+  background:rgba(163,73,31,0.08);
+  color:#fff;
+  border-color:var(--gold-bright);
+  box-shadow:0 0 22px rgba(163,73,31,0.30);
+}
 .btn-gold{background:var(--gold);color:#fff;border-color:var(--gold)}
-.btn-gold:hover{background:#fff;color:#0A0A0A;border-color:#fff}
+.btn-gold:hover{
+  background:var(--gold-bright);
+  border-color:var(--gold-bright);
+  box-shadow:0 0 28px rgba(163,73,31,0.55);
+}
 
 /* ---------- SECTIONS ---------- */
-.section{padding:96px 0;border-bottom:1px solid var(--line);position:relative}
-.section-dark{background:var(--bg)}
-.section-paper{background:var(--paper);border-bottom:1px solid rgba(255,255,255,0.08)}
+.section{padding:112px 0;border-bottom:1px solid var(--line);position:relative}
+.section-dark{
+  background:
+    radial-gradient(ellipse 900px 500px at 50% -10%, rgba(163,73,31,0.06), transparent 60%),
+    var(--bg);
+}
+.section-paper{
+  background:
+    radial-gradient(ellipse 900px 500px at 50% -10%, rgba(110,70,140,0.05), transparent 60%),
+    var(--paper);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
 
-.kicker{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--gold);margin-bottom:20px;display:block}
-.h-big{font-family:var(--serif);font-size:clamp(28px,3.8vw,42px);line-height:1.04;letter-spacing:-.02em;font-weight:400;color:#fff;margin-bottom:26px}
-.h-small{font-family:var(--serif);font-size:22px;line-height:1.2;color:#fff;margin:30px 0 14px;font-weight:400}
+.kicker{
+  font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--gold);margin-bottom:22px;display:block;
+  text-shadow:0 0 14px rgba(163,73,31,0.35);
+}
+.h-big{
+  font-family:var(--display);font-size:clamp(30px,4.2vw,46px);line-height:1.06;letter-spacing:-.02em;font-weight:400;color:#fff;margin-bottom:28px;
+  text-shadow:0 0 30px rgba(163,73,31,0.12);
+}
+.h-small{font-family:var(--display);font-size:23px;line-height:1.25;color:#fff;margin:32px 0 16px;font-weight:400}
 
-.p{font-family:var(--mono);font-size:13.5px;line-height:1.8;color:var(--muted);margin:14px 0;letter-spacing:.01em}
-.p strong{color:var(--fg);font-weight:400}
+.p{font-family:var(--body);font-size:16.5px;line-height:1.85;color:var(--muted);margin:16px 0;letter-spacing:0}
+.p strong{color:var(--fg);font-weight:600}
 .p-mono{font-family:var(--mono);font-size:11.5px;line-height:1.9;color:rgba(237,233,227,0.58);letter-spacing:.02em}
 
 blockquote{
-  border-left:1px solid var(--gold);padding-left:22px;margin:36px 0;
-  font-family:var(--serif);font-size:22px;line-height:1.35;color:#fff;
+  border-left:1px solid var(--gold);padding-left:24px;margin:40px 0;
+  font-family:var(--display);font-size:24px;line-height:1.4;color:#fff;
   font-style:italic;letter-spacing:-.01em;
+  box-shadow:-1px 0 16px rgba(163,73,31,0.22);
 }
 
-.divider{height:1px;background:var(--line);margin:44px 0}
+.divider{position:relative;height:1px;background:var(--line);margin:52px 0}
+.divider::after{
+  content:"";
+  position:absolute;top:50%;left:50%;
+  width:6px;height:6px;
+  background:var(--gold-bright);
+  transform:translate(-50%,-50%) rotate(45deg);
+  box-shadow:0 0 10px rgba(163,73,31,0.65);
+}
 
 /* ---------- LISTS ---------- */
 .list-minimal{list-style:none;margin:0;padding:0}
 .list-minimal li{
-  font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--muted);
-  padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.06);
+  font-family:var(--mono);font-size:11.5px;line-height:1.6;color:var(--muted);
+  padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.06);
   display:flex;justify-content:space-between;gap:16px;
 }
 .list-minimal li span:first-child{color:rgba(255,255,255,0.9)}
 
-/* ---------- CARDS / GRIDS ---------- */
-.card-dark{border:1px solid rgba(255,255,255,0.12);padding:32px;background:rgba(255,255,255,0.02)}
+/* ---------- CARDS ---------- */
+.card-dark{
+  border:1px solid rgba(255,255,255,0.12);padding:34px;background:rgba(255,255,255,0.02);
+  box-shadow:inset 0 0 50px rgba(163,73,31,0.045);
+}
 
-.cta-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.1);margin-top:36px}
-.cta-cell{background:var(--cell);padding:32px;display:flex;flex-direction:column;gap:18px}
-.cta-cell h4{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--gold)}
-.cta-cell p{font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--muted)}
-
-.three-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.08);margin-top:36px}
-.three-cell{background:var(--cell);padding:36px 32px}
+/* ---------- THREE-UP EDITORIAL CARDS ---------- */
+.three-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;margin-top:40px}
+.three-cell{
+  background:var(--cell);
+  border:1px solid rgba(255,255,255,0.08);
+  border-top:2px solid rgba(163,73,31,0.55);
+  padding:42px 34px;
+  box-shadow:inset 0 1px 50px rgba(163,73,31,0.035);
+}
 
 @media(max-width:900px){
-  .cta-grid{grid-template-columns:1fr}
   .three-grid{grid-template-columns:1fr}
 }
 @media(max-width:860px){
@@ -178,21 +230,21 @@ blockquote{
 .hel-principles{margin-top:8px}
 .hel-principle{
   display:flex;align-items:baseline;gap:26px;
-  padding:28px 0;border-bottom:1px solid rgba(255,255,255,0.08);
+  padding:32px 0;border-bottom:1px solid rgba(255,255,255,0.08);
 }
 .hel-principle:last-child{border-bottom:none}
 .hel-principle-num{
   flex:0 0 30px;
   font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--gold);
-  padding-top:5px;
+  padding-top:6px;
+  text-shadow:0 0 10px rgba(163,73,31,0.4);
 }
 .hel-principle p{
-  font-family:var(--serif);font-size:21px;line-height:1.32;color:#fff;
+  font-family:var(--display);font-size:22px;line-height:1.35;color:#fff;
   font-weight:400;letter-spacing:-.01em;
 }
 
 /* ---------- SOUND-SECTION AUDIO PLAYER ---------- */
-/* Scoped to .card-dark only, so the hero player is untouched */
 .card-dark audio{
   accent-color:var(--gold);
   filter:invert(1) sepia(0.2) saturate(0.5);
@@ -200,7 +252,7 @@ blockquote{
   border-radius:2px;
 }
 
-footer{padding:56px 24px;border-top:1px solid var(--line);text-align:center;background:#080807}
+footer{padding:64px 24px;border-top:1px solid var(--line);text-align:center;background:#080807}
 </style>
 </head>
 <body>
@@ -230,13 +282,13 @@ footer{padding:56px 24px;border-top:1px solid var(--line);text-align:center;back
 <section class="section section-paper" id="work">
   <div class="narrow">
     <span class="kicker">PRONUNCIATION — START HERE</span>
-    <div style="display:flex; align-items:baseline; gap:18px; flex-wrap:wrap; margin:6px 0 20px">
+    <div style="display:flex; align-items:baseline; gap:18px; flex-wrap:wrap; margin:6px 0 22px">
       <h2 class="h-big" style="margin:0; font-size:clamp(40px,7vw,64px); letter-spacing:-.03em">HEL</h2>
       <span style="font-family:'IBM Plex Mono'; font-size:14px; letter-spacing:.08em; color:var(--gold); background:rgba(163,73,31,0.14); border:1px solid rgba(163,73,31,0.35); padding:6px 10px">(HAY-uhl)</span>
       <span style="font-family:'IBM Plex Mono'; font-size:14px; letter-spacing:.04em; color:rgba(237,233,227,0.65)">/ˈheɪ.əl/</span>
     </div>
-    <p class="p" style="color:#fff; font-family:'Instrument Serif'; font-size:22px; line-height:1.35; margin:0">One breath. Two beats.</p>
-    <p class="p-mono" style="margin-top:16px; font-size:12.5px">Not <span style="color:#fff; text-decoration:line-through; text-decoration-color:var(--gold); text-decoration-thickness:1px">“hell.”</span> — <span style="color:#fff">HEL</span></p>
+    <p class="p" style="color:#fff; font-family:'Instrument Serif'; font-size:24px; line-height:1.4; margin:0">One breath. Two beats.</p>
+    <p class="p-mono" style="margin-top:18px; font-size:12.5px">Not <span style="color:#fff; text-decoration:line-through; text-decoration-color:var(--gold); text-decoration-thickness:1px">“hell.”</span> — <span style="color:#fff">HEL</span></p>
     <div class="divider"></div>
     <p class="p"><strong>HEL is a psychology-informed practice of deep listening, pattern recognition and creative translation.</strong></p>
     <p class="p">At the centre of HEL are private 1:1 Translation Sessions. You bring something you are trying to understand, a recurring pattern, conflicting feelings, a transition, a decision, an identity that no longer fits, or simply something you can feel but cannot quite put into words.</p>
@@ -254,7 +306,7 @@ footer{padding:56px 24px;border-top:1px solid var(--line);text-align:center;back
       HOW HEL TAKES FORM.
     </span>
 
-    <h2 class="h-big" style="text-align:center; max-width:640px; margin:0 auto 14px">
+    <h2 class="h-big" style="text-align:center; max-width:640px; margin:0 auto 16px">
       Sessions. Writing. Sound.
     </h2>
 
@@ -264,51 +316,43 @@ footer{padding:56px 24px;border-top:1px solid var(--line);text-align:center;back
 
     <div class="three-grid">
 
-<div class="three-cell">
-  <h4 class="mono">01 — SESSIONS</h4>
+      <div class="three-cell">
+        <h4 class="mono">01 — SESSIONS</h4>
 
-  <h3 class="h-small">
-    You bring what won't settle. I translate it.
-  </h3>
+        <h3 class="h-small">
+          You bring what won't settle. I translate it.
+        </h3>
 
-  <p class="p">
-    A private 1:1 Translation Session grounded in psychological inquiry.
-  </p>
+        <p class="p">
+          A private 1:1 Translation Session for something you are trying to understand, articulate or make sense of.
+        </p>
 
-  <p class="p">
-    You might bring a decision you cannot resolve, conflicting feelings, a relationship or experience you cannot quite make sense of, a transition, an identity that no longer fits, or simply the sense that something is happening beneath the surface that you cannot yet articulate.
-  </p>
+        <p class="p">
+          You speak. I listen for what sits underneath:
+        </p>
 
-  <p class="p">
-    Through focused conversation, questioning and interpretation, I work with what you bring — the emotional tensions, contradictions, meanings, assumptions, omissions and recurring themes within it.
-  </p>
+        <p class="p-mono" style="color:rgba(237,233,227,0.7)">
+          patterns / contradictions / repetition / unresolved tension / what keeps returning / what is missing / what you already sense but cannot yet name
+        </p>
 
-  <p class="p">
-    <strong>The aim is to arrive at a clearer understanding of what is actually happening beneath the surface.</strong>
-  </p>
+        <div class="divider" style="margin:26px 0"></div>
 
-  <div class="divider" style="margin:24px 0"></div>
+        <p class="p">
+          From that, I create something you can return to:
+        </p>
 
-  <p class="p">
-    After the session, I take that understanding further and translate it into something you can return to:
-  </p>
+        <p class="p-mono">
+          writing / personal map / manifesto / monologue / visual translation / audio / another form that fits
+        </p>
 
-  <p class="p-mono">
-    written reflection / personal map / psychological narrative / manifesto / monologue / visual translation / audio / another form that fits
-  </p>
+        <blockquote style="margin-top:30px">
+          Yes. That's it. That's what I couldn't name.
+        </blockquote>
 
-  <p class="p">
-    The form is not decided in advance. It follows what we actually uncover.
-  </p>
-
-  <blockquote style="margin-top:28px">
-    Yes. That's it. That's what I couldn't name.
-  </blockquote>
-
-  <div style="margin-top:26px">
-    <a class="btn btn-gold" href="#sessions">[ BOOK A TRANSLATION ]</a>
-  </div>
-</div>
+        <div style="margin-top:28px">
+          <a class="btn btn-gold" href="#sessions">[ BOOK A TRANSLATION ]</a>
+        </div>
+      </div>
 
       <div class="three-cell">
         <h4 class="mono">02 — WRITING</h4>
@@ -335,7 +379,7 @@ footer{padding:56px 24px;border-top:1px solid var(--line);text-align:center;back
           </strong>
         </p>
 
-        <div class="divider" style="margin:24px 0"></div>
+        <div class="divider" style="margin:26px 0"></div>
 
         <p class="p">
           If it makes you think—
@@ -349,7 +393,7 @@ footer{padding:56px 24px;border-top:1px solid var(--line);text-align:center;back
           —that is enough.
         </p>
 
-        <div style="margin-top:26px">
+        <div style="margin-top:28px">
           <a class="btn" href="#writing">[ READ FIELD NOTES ]</a>
         </div>
       </div>
@@ -369,7 +413,7 @@ footer{padding:56px 24px;border-top:1px solid var(--line);text-align:center;back
           Earth / Body / Intuition / Emergence.
         </p>
 
-        <div class="divider" style="margin:24px 0"></div>
+        <div class="divider" style="margin:26px 0"></div>
 
         <p class="p">
           Sound is another language HEL can use when words alone cannot carry the whole thing.
@@ -389,7 +433,7 @@ footer{padding:56px 24px;border-top:1px solid var(--line);text-align:center;back
           </strong>
         </p>
 
-        <div style="margin-top:26px">
+        <div style="margin-top:28px">
           <a class="btn" href="#music">[ LISTEN ]</a>
         </div>
       </div>
@@ -446,7 +490,7 @@ footer{padding:56px 24px;border-top:1px solid var(--line);text-align:center;back
       <li><span>what you already sense but have not yet been able to put into words</span><span>—</span></li>
     </ul>
 
-    <p class="p" style="margin-top:28px">
+    <p class="p" style="margin-top:30px">
       The purpose is not to give you a diagnosis or tell you what your answer should be.
     </p>
 
@@ -470,7 +514,7 @@ footer{padding:56px 24px;border-top:1px solid var(--line);text-align:center;back
       Yes. That's it. That's what I couldn't name.
     </blockquote>
 
-    <div style="margin-top:36px" class="pill-row">
+    <div style="margin-top:38px" class="pill-row">
       <a class="btn" href="#">[ EXPLORE SESSIONS ]</a>
       <a class="btn btn-gold" href="#">[ BOOK A TRANSLATION ]</a>
     </div>
@@ -509,7 +553,7 @@ footer{padding:56px 24px;border-top:1px solid var(--line);text-align:center;back
       <strong>The form follows the truth.</strong>
     </p>
 
-    <div class="card-dark" style="margin-top:28px">
+    <div class="card-dark" style="margin-top:30px">
 
       <p class="p-mono" style="color:var(--gold)">
         NOW PLAYING — HEL
@@ -578,7 +622,7 @@ footer{padding:56px 24px;border-top:1px solid var(--line);text-align:center;back
       <li><span>long-form pieces when one page is not enough</span><span>—</span></li>
     </ul>
 
-    <div style="margin-top:32px">
+    <div style="margin-top:34px">
       <a class="btn" href="#">[ READ FIELD NOTES ]</a>
       <a class="btn btn-gold" href="#sessions" style="margin-left:8px">
         [ COMMISSION WRITING ]
@@ -588,15 +632,15 @@ footer{padding:56px 24px;border-top:1px solid var(--line);text-align:center;back
   </div>
 </section>
 
-<section class="section section-paper" id="about" style="padding:100px 24px;background:#141210">
-  <div style="max-width:880px;margin:0 auto;display:grid;grid-template-columns:200px 1fr;gap:56px;align-items:start" class="about-grid">
+<section class="section section-paper" id="about" style="padding:104px 24px;background:#141210">
+  <div style="max-width:880px;margin:0 auto;display:grid;grid-template-columns:200px 1fr;gap:60px;align-items:start" class="about-grid">
     <div>
       <img src="me.png" alt="Kaylee-Jane Inglis" style="width:100%;max-width:200px;height:252px;object-fit:cover;object-position:center top;border:1px solid rgba(255,255,255,0.12);display:block;filter:grayscale(0.12) contrast(1.05)">
       <div class="mono" style="margin-top:14px;font-size:9px;opacity:0.55;line-height:1.5">Kaylee-Jane Inglis<br>Psychologist — Systems Thinker</div>
     </div>
     <div style="min-width:0">
       <span class="kicker">ABOUT KAYLEE-JANE</span>
-      <h2 class="h-big" style="margin-bottom:32px">The human source.</h2>
+      <h2 class="h-big" style="margin-bottom:34px">The human source.</h2>
 
       <p class="p">HEL comes from Kaylee-Jane Inglis — a psychologist, systems thinker and lifelong student of human behaviour, identity and consciousness.</p>
 
@@ -608,10 +652,10 @@ footer{padding:56px 24px;border-top:1px solid var(--line);text-align:center;back
 
       <p class="p">HEL brings psychological depth into a different kind of encounter — one that explores what is happening beneath the surface, makes sense of what is difficult to articulate, and gives that understanding a form you can return to.</p>
 
-      <div class="card-dark" style="margin-top:32px;padding:32px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.12)">
-        <p class="p-mono" style="color:var(--gold);margin-bottom:18px">THE DISTINCTION</p>
-        <p class="p" style="margin:0 0 4px"><strong>Kaylee-Jane</strong> — the source.</p>
-        <p class="p" style="margin:0 0 4px"><strong>KINGLIS</strong> — the structure.</p>
+      <div class="card-dark" style="margin-top:34px;padding:34px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.12)">
+        <p class="p-mono" style="color:var(--gold);margin-bottom:20px">THE DISTINCTION</p>
+        <p class="p" style="margin:0 0 6px"><strong>Kaylee-Jane</strong> — the source.</p>
+        <p class="p" style="margin:0 0 6px"><strong>KINGLIS</strong> — the structure.</p>
         <p class="p" style="margin:0"><strong>HEL</strong> — the expression.</p>
       </div>
 
@@ -670,7 +714,7 @@ footer{padding:56px 24px;border-top:1px solid var(--line);text-align:center;back
 <footer>
   <div class="mono" style="color:rgba(255,255,255,0.4)">THE HUMAN LAB — Home of HEL.</div>
   <div class="mono" style="margin-top:10px; color:rgba(255,255,255,0.3)">@helliveshere</div>
-  <div class="p-mono" style="margin-top:20px; text-align:center">
+  <div class="p-mono" style="margin-top:22px; text-align:center">
     Nothing false is required.<br>
     Nothing true requires permission.<br>
     Nothing essential gets left behind.<br><br>
