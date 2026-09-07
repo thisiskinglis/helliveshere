@@ -28,7 +28,6 @@
 <link rel="icon" type="image/png" href="og.png">
 <meta name="theme-color" content="#0A0A0A">
 <link rel="preload" as="image" href="hel-hero-clean.png">
-<link rel="preload" as="image" href="me.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:ital,opsz,WONK,wght@0,9..144,0,300;0,9..144,1,400;0,9..144,1,500;1,9..144,0,400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -176,38 +175,6 @@ body::after{
 .room-tone span{font-family:var(--mono);font-size:9px;letter-spacing:.04em;color:var(--muted2);text-transform:uppercase}
 .room-tone audio{width:140px;height:24px;opacity:0.6}
 @media(max-width:700px){.room-tone{bottom:10px;left:10px;right:10px;justify-content:space-between}}
-
-/* ABOUT KAYLEE-JANE - human source, asymmetrical */
-.about-grid{
-  display:grid;
-  grid-template-columns: 0.92fr 1.08fr;
-  gap:48px;
-  align-items:start;
-}
-.about-image-wrap{
-  position:relative;
-  aspect-ratio:4/5;
-  overflow:hidden;
-  background:var(--cell);
-  border:1px solid var(--line2);
-}
-.about-image-wrap img{
-  width:100%;height:100%;object-fit:cover;object-position:center 18%;
-  filter:saturate(0.88) contrast(1.04);
-}
-.about-image-wrap::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(to top, rgba(10,10,10,0.35), transparent 55%);
-}
-@media(min-width:900px){
-  .about-grid .about-image-wrap{margin-top:8px; transform:translateY(12px)}
-  .about-grid .about-text{margin-left:-12px}
-}
-@media(max-width:860px){
-  .about-grid{grid-template-columns:1fr;gap:28px}
-  .about-grid .about-image-wrap{aspect-ratio:3/4;max-width:420px}
-}
-
 .hel-principles{margin-top:8px}
 .hel-principle{
   display:flex;align-items:baseline;gap:16px;
@@ -335,7 +302,7 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
   </div>
 </section>
 
-<section class="section section-dark" id="principles">
+<section class="section section-dark" id="about">
   <div class="narrow hel-principles">
     <span class="kicker">The HEL principles</span>
     <div class="hel-principle"><span class="hel-principle-num">01</span><p>What is true does not need permission to exist.</p></div>
@@ -347,27 +314,7 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
   </div>
 </section>
 
-<!-- ABOUT KAYLEE-JANE - NEW -->
-<section class="section section-paper" id="about">
-  <div class="wrap">
-    <div class="about-grid">
-      <div class="about-image-wrap">
-        <img src="me.png" alt="Kaylee-Jane Inglis — HEL" loading="lazy" width="800" height="1000">
-      </div>
-      <div class="about-text">
-        <span class="kicker">About Kaylee-Jane</span>
-        <h2 class="h-big" style="margin-top:0">The human source.</h2>
-        <p class="p">HEL comes from Kaylee-Jane Inglis — a psychologist, systems thinker and lifelong student of human behaviour, identity and consciousness.</p>
-        <p class="p">My interest has always been in what sits beneath the obvious: how people make meaning, how identity shifts, how patterns form, and what happens when someone reaches a point where the way they have understood themselves no longer quite fits.</p>
-        <p class="p">Psychology gave me one way of understanding people. Systems thinking taught me to look for patterns, relationships and structure.</p>
-        <p class="p">HEL brings those two ways of seeing together without reducing a person to a diagnosis, framework or neat explanation.</p>
-        <p class="p"><strong>HEL brings psychological depth into a different kind of encounter — one that explores what is happening beneath the surface, makes sense of what is difficult to articulate, and gives that understanding a form you can return to.</strong></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section-dark">
+<section class="section section-paper">
   <div class="narrow">
     <span class="kicker">Boundaries</span>
     <p class="p">HEL does not coach, prescribe an identity or reduce a person to a diagnosis. Psychological depth does not remove professional boundaries.</p>
