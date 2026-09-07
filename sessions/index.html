@@ -3,37 +3,26 @@
 <link rel="icon" type="image/png" href="../og.png">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0A0A0A;--fg:#EDE9E3;--line:rgba(255,255,255,0.10);--gold:#A3491F;--gold-bright:#C56B3A;--muted:rgba(237,233,227,0.72);--display:'Instrument Serif',Georgia,serif;--body:'EB Garamond',Georgia,serif;--mono:'IBM Plex Mono',monospace;--cell:#0F0E0D}
+:root{--bg:#0A0A0A;--fg:#EDE9E3;--line:rgba(255,255,255,0.10);--gold:#A3491F;--gold-bright:#C56B3A;--muted:rgba(237,233,227,0.72);--display:'Instrument Serif',Georgia,serif;--body:'EB Garamond',Georgia,serif;--mono:'IBM Plex Mono',monospace}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--fg);font-family:var(--body);-webkit-font-smoothing:antialiased}
 .mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:10px;color:var(--gold)}
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:18px 28px}
-.nav .logo{letter-spacing:.18em;font-size:11px;color:#fff;font-family:var(--mono)}.nav-right{display:flex;gap:22px}.nav-right a{font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,0.6);font-family:var(--mono)}.nav-right a.active{color:#fff;border-bottom:1px solid var(--gold);padding-bottom:2px}
-.narrow{max-width:660px;margin:0 auto;padding:0 24px}.section{padding:88px 0;border-bottom:1px solid var(--line)}.kicker{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--gold);margin-bottom:22px;display:block}
+.nav .logo{letter-spacing:.18em;font-size:11px;color:#fff;font-family:var(--mono)}.nav-right{display:flex;gap:22px}.nav-right a{font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,0.6);font-family:var(--mono);text-decoration:none}.nav-right a.active{color:#fff;border-bottom:1px solid var(--gold);padding-bottom:2px}
+.narrow{max-width:680px;margin:0 auto;padding:0 24px}.section{padding:88px 0;border-bottom:1px solid var(--line)}.kicker{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--gold);margin-bottom:22px;display:block}
 .h-big{font-family:var(--display);font-size:clamp(28px,4vw,42px);line-height:1.06;color:#fff;margin-bottom:18px}
 .p{font-family:var(--body);font-size:16.5px;line-height:1.85;color:var(--muted);margin:14px 0}.p strong{color:var(--fg)}
-.btn{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;padding:13px 24px;border:1px solid rgba(255,255,255,0.35);color:#fff;background:transparent;transition:all .3s}.btn:hover{border-color:var(--gold-bright);box-shadow:0 0 22px rgba(163,73,31,0.3)}.btn-gold{background:var(--gold);border-color:var(--gold)}
-
-.hero{
-  position:relative;
-  width:100%;
-  height:74vh;min-height:520px;
-  display:flex;align-items:center;justify-content:center;
-  text-align:center;
-  overflow:hidden;
-  border-bottom:1px solid var(--line);
-  background:#0A0A0A;
-}
-.hero-bg{
-  position:absolute;inset:0;
-  background-image:url('./hero.png');
-  background-size:cover;background-position:center 32%;background-repeat:no-repeat;
-}
+.quote{font-family:var(--display);font-style:italic;font-size:22px;line-height:1.4;color:#fff;text-align:center;margin:48px 0;padding:32px 24px;border-left:1px solid var(--gold);border-right:1px solid var(--gold)}
+.list{list-style:none;margin:18px 0}.list li{font-family:var(--body);font-size:16.5px;line-height:1.7;color:var(--muted);padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);padding-left:22px;position:relative}.list li:before{content:'—';position:absolute;left:0;color:var(--gold)}
+.btn{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;padding:13px 24px;border:1px solid rgba(255,255,255,0.35);color:#fff;background:transparent;transition:all .3s;text-decoration:none;cursor:pointer}.btn:hover{border-color:var(--gold-bright);box-shadow:0 0 22px rgba(163,73,31,0.3)}.btn-gold{background:var(--gold);border-color:var(--gold)}
+.hero{position:relative;width:100%;height:74vh;min-height:520px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;border-bottom:1px solid var(--line);background:#0A0A0A}
+.hero-bg{position:absolute;inset:0;background-image:url('./hero.png');background-size:cover;background-position:center 32%;background-repeat:no-repeat}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.55) 48%, rgba(0,0,0,0.92) 100%)}
 .hero-content{position:relative;z-index:2;max-width:820px;padding:0 24px;margin-top:30px}
 .hero h1{font-family:var(--display);color:#fff;font-size:clamp(42px,7vw,76px);line-height:.92;letter-spacing:-.02em;font-weight:400;margin:0 0 16px;text-shadow:0 2px 24px rgba(0,0,0,0.6)}
-.hero .sub{font-family:var(--mono);color:#fff;font-size:11px;letter-spacing:.18em;opacity:0.75;margin-bottom:28px}
+.hero .sub{font-family:var(--mono);color:#fff;font-size:11px;letter-spacing:.18em;opacity:0.75;margin-bottom:28px;line-height:1.6}
 .hel-watermark{position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);font-family:var(--display);font-size:clamp(100px,18vw,200px);line-height:.8;color:rgba(255,255,255,0.05);letter-spacing:.08em;pointer-events:none;z-index:1}
-
+.divider{margin:56px 0;height:1px;background:var(--line)}
+.small{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:rgba(255,255,255,0.45);line-height:1.6}
 </style></head><body>
 <header class="nav"><div class="mono logo">HUMAN LAB — HEL</div><div class="nav-right"><a href="../">HOME</a><a href="./" class="active">SESSIONS</a><a href="../writing/">WRITING</a><a href="../sound/">SOUND</a><a href="../table/">TABLE</a></div></header>
 <section class="hero">
@@ -42,20 +31,60 @@
     <span class="mono" style="color:var(--gold)">EXPLORE SESSIONS</span>
     <h1>Bring what<br>is alive.</h1>
     <div class="sub">ONE-TO-ONE WITH HEL — FOR THE THINGS THAT DO NOT ARRIVE NEATLY PACKAGED</div>
-    <div style="display:flex;gap:12px;justify-content:center"><a class="btn btn-gold" href="#book">[ BOOK A SESSION ]</a><a class="btn" href="#what-happens">WHAT HAPPENS</a></div>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><a class="btn btn-gold" href="#book">[ BOOK A SESSION ]</a><a class="btn" href="#what-happens">WHAT HAPPENS</a></div>
   </div>
 </section>
 <section class="section"><div class="narrow">
 <p class="p" style="font-style:italic;color:rgba(255,255,255,0.65);text-align:center">Something you are circling.<br>Something you cannot quite name.<br>A change you can feel but do not yet understand.</p>
 <h2 class="h-big" style="margin-top:48px;text-align:center">You do not need to know exactly what the problem is.</h2>
 <p class="p" style="text-align:center">You do not need to arrive with a goal.<br>You do not need to have the right words.<br><strong>We begin with what is here.</strong></p>
-<div style="margin:48px 0;height:1px;background:var(--line)"></div>
+<div class="divider"></div>
 <span class="kicker">YOU MIGHT BRING</span>
-<p class="p">a life transition — a decision you keep circling — a pattern you are beginning to notice — a relationship you want to understand differently — a creative idea that has not yet found form — a feeling that something is changing.</p>
-<div style="margin:48px 0;height:1px;background:var(--line)"></div>
-<span class="kicker" id="what-happens">WHAT HAPPENS</span>
-<p class="p">We pay attention. To what is said. To what keeps repeating. To what does not fit.</p>
-<p class="p" id="book"><strong>There is no fixed formula. Sometimes a decision. Sometimes language. Sometimes a map.</strong></p>
-<div style="margin-top:36px;text-align:center"><a class="btn btn-gold" href="mailto:hello@humanlabofficial.com">[ BOOK A SESSION ]</a></div>
+<ul class="list">
+<li>a life transition you cannot think your way through</li>
+<li>a decision you keep circling</li>
+<li>a pattern you are beginning to notice</li>
+<li>a relationship you want to understand differently</li>
+<li>a creative idea that has not yet found form</li>
+<li>a feeling that something is changing</li>
+<li>a question that won't resolve with more information</li>
+<li>the sense that you are living inside an old explanation</li>
+</ul>
+<p class="p">If it's alive, it's enough.</p>
+<div class="divider"></div>
+<span class="kicker" id="what-happens">HOW WE WORK</span>
+<p class="p">We pay attention. To what is said. To what keeps repeating. To what does not fit. To what is felt but not yet articulated.</p>
+<p class="p">There is no fixed formula. No intake form that reduces you to a checklist. No pre-decided outcome.</p>
+<p class="p">Sometimes we work through language — finding the precise words for what has been vague.<br>Sometimes we work through structure — seeing the pattern, the system, the loop you are inside.<br>Sometimes we work through what is being avoided, minimised, or protected.</p>
+<p class="p">Psychology is the ground. Systems thinking is the lens. Your lived experience is the material.</p>
+<p class="p"><strong>This is not therapy in the traditional sense. It is psychological translation.</strong></p>
+<div class="divider"></div>
+<span class="kicker">WHAT YOU RETURN TO</span>
+<p class="p">The aim is not to hand you an answer. It is to develop a more coherent understanding of what you are experiencing, what may be shaping it, and why it has been difficult to resolve.</p>
+<p class="p">After the session, I synthesise what we uncovered and translate that understanding into something you can return to.</p>
+<ul class="list">
+<li>written reflection</li>
+<li>personal map</li>
+<li>narrative synthesis</li>
+<li>manifesto / monologue</li>
+<li>visual translation</li>
+<li>audio</li>
+<li>another form that fits what emerged</li>
+</ul>
+<p class="p">The form is not chosen in advance. It follows the psychological work.</p>
+<div class="quote">Yes. That's it. That's what I couldn't name.</div>
+<div class="divider"></div>
+<span class="kicker">WHO THIS IS FOR / NOT FOR</span>
+<p class="p"><strong style="color:#fff">For humans at thresholds.</strong><br>For when clarity matters more than comfort.<br>For when you want to be understood without being reduced.</p>
+<p class="p" style="margin-top:24px"><span class="mono" style="font-size:9px">THIS IS NOT —</span><br>a diagnosis. A quick fix. Advice on what you should do. A performance of wellness.</p>
+<div class="divider"></div>
+<span class="kicker" id="book">PRACTICAL</span>
+<p class="p">90 minutes / Online / One-to-one with Kaylee-Jane<br>You leave with the recording + the written translation within 7 days.</p>
+<div style="margin:36px 0;padding:28px;border:1px solid var(--line);background:rgba(255,255,255,0.02)">
+<p class="p" style="margin:0 0 18px"><strong>Investment:</strong> [ add your price ]</p>
+<a class="btn btn-gold" href="mailto:hello@humanlabofficial.com?subject=BOOK A SESSION">[ BOOK A SESSION ]</a>
+<p class="small" style="margin-top:16px">If cost is a barrier, name it. We can talk about it.</p>
+</div>
 </div></section>
+<footer style="padding:40px 24px;border-top:1px solid var(--line);text-align:center"><span class="mono" style="font-size:9px;color:rgba(255,255,255,0.35)">HUMAN LAB — HEL — ONE BREATH. TWO BEATS. NOT "HELL" — HEL.</span></footer>
 </body></html>
