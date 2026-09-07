@@ -30,7 +30,7 @@
 <link rel="preload" as="image" href="hel-hero-clean.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:ital,opsz,WONK,wght@0,9..144,0,300;0,9..144,1,400;0,9..144,1,500;1,9..144,0,400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,WONK,wght@0,9..144,0,300;0,9..144,1,400;0,9..144,1,500;1,9..144,0,600&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#0A0A0A;
@@ -38,126 +38,135 @@
   --line:rgba(237,233,227,0.10);
   --line2:rgba(237,233,227,0.06);
   --gold:#A3491F;
-  --muted:rgba(237,233,227,0.84);
-  --muted2:rgba(237,233,227,0.56);
+  --muted:rgba(237,233,227,0.82);
+  --muted2:rgba(237,233,227,0.54);
   --paper:#141210;
   --cell:#0F0E0D;
   --display:'Fraunces', Georgia, serif;
-  --body:'EB Garamond', Georgia, serif;
+  --body:'IBM Plex Sans', system-ui, sans-serif;
   --mono:'IBM Plex Mono', monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{background:var(--bg);color:var(--fg);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 body::after{
-  content:"";position:fixed;inset:0;z-index:999;pointer-events:none;opacity:0.032;
+  content:"";position:fixed;inset:0;z-index:999;pointer-events:none;opacity:0.028;
   mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-.mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.03em;font-size:10px;color:var(--gold)}
+
+/* TYPE SYSTEM */
+.mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.04em;font-size:10px;color:var(--gold);line-height:1.4}
+
+/* NAV */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  background:rgba(10,10,10,0.88);backdrop-filter:blur(8px);
+  background:rgba(10,10,10,0.86);backdrop-filter:blur(8px);
   border-bottom:1px solid var(--line);
   display:flex;justify-content:space-between;align-items:center;
   padding:15px 28px;
 }
 .nav .logo{letter-spacing:.02em;font-size:11px;color:#fff;font-family:var(--mono)}
 .nav-right{display:flex;gap:22px}
-.nav-right a{font-size:10px;letter-spacing:.03em;color:rgba(255,255,255,0.58);font-family:var(--mono);transition:color .2s}
+.nav-right a{font-size:10px;letter-spacing:.03em;color:rgba(255,255,255,0.56);font-family:var(--mono);transition:color .2s}
 .nav-right a:hover{color:#fff}
+
 .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
-.narrow{max-width:680px;margin:0 auto;padding:0 24px}
+.narrow{max-width:660px;margin:0 auto;padding:0 24px;position:relative}
+
+/* HERO - ghosted oversized word [1 strange move] */
 .hero{
   position:relative;width:100vw;margin-left:calc(50% - 50vw);
   height:88vh;min-height:620px;
   background:#0A0A0A url('hel-hero-clean.png') center 30% / cover no-repeat;
-  overflow:hidden;display:flex;align-items:flex-end;justify-content:flex-start;
-  text-align:left;
+  overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;
 }
 .hero-bg{
   position:absolute;inset:0;
   background-image:url('hel-hero-clean.png'), url('hel-hero-wide.png');
   background-size:cover;background-position:center 30%;background-repeat:no-repeat;
+  filter:saturate(0.9) contrast(1.05);
 }
 .hero-overlay{
   position:absolute;inset:0;
-  background:linear-gradient(to bottom, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.28) 38%, rgba(0,0,0,0.86) 100%);
+  background:linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.42) 50%, rgba(0,0,0,0.88) 100%);
+}
+.hero-ghost{
+  position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);
+  font-family:var(--display);font-size:clamp(180px,32vw,420px);line-height:0.8;
+  color:rgba(237,233,227,0.035);letter-spacing:-.06em;font-weight:300;
+  font-variation-settings:'opsz' 32, 'WONK' 1;
+  pointer-events:none;z-index:1;user-select:none;
 }
 .hero-top{
   position:absolute;top:0;left:0;right:0;z-index:2;
   display:flex;justify-content:space-between;padding:16px 28px;
 }
-.hero-top div{font-family:var(--mono);font-size:9px;letter-spacing:.03em;color:rgba(255,255,255,0.55)}
-.hero-content{position:relative;z-index:2;max-width:760px;padding:0 28px 56px 28px;margin:0}
+.hero-top div{font-family:var(--mono);font-size:9px;letter-spacing:.03em;color:rgba(255,255,255,0.5)}
+.hero-content{position:relative;z-index:2;max-width:900px;padding:0 24px;margin-top:32px}
 .hero h1{
   font-family:var(--display);color:#fff;
-  font-size:clamp(48px,8vw,84px);line-height:.92;letter-spacing:-.04em;font-weight:400;
-  margin:0 0 16px;
-  font-variation-settings:'opsz' 32, 'WONK' 1;
+  font-size:clamp(48px,8.5vw,92px);line-height:.9;letter-spacing:-.04em;font-weight:400;
+  margin:0 0 18px;font-variation-settings:'opsz' 32, 'WONK' 1;
 }
 .hero .sub{
-  font-family:var(--body);color:rgba(255,255,255,0.82);font-size:17px;line-height:1.5;letter-spacing:-.01em;
-  margin-bottom:6px;font-style:italic;
+  font-family:var(--mono);color:#fff;font-size:10.5px;letter-spacing:.05em;opacity:0.68;line-height:1.6;
+  margin-bottom:10px;
 }
-.hero .sub-mono{
-  font-family:var(--mono);color:rgba(255,255,255,0.5);font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;margin-top:18px;
-}
-.pill-row{display:flex;gap:10px;justify-content:flex-start;flex-wrap:wrap;margin-top:26px}
+.pill-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .btn{
   display:inline-block;background:transparent;color:#fff;
-  font-family:var(--mono);font-size:10px;letter-spacing:.03em;
-  padding:13px 20px;border:1px solid rgba(255,255,255,0.28);cursor:pointer;
+  font-family:var(--mono);font-size:10px;letter-spacing:.04em;
+  padding:13px 20px;border:1px solid rgba(255,255,255,0.32);cursor:pointer;
   transition:all .2s ease;
 }
 .btn:hover{background:#fff;color:#000;border-color:#fff}
 .btn-gold{background:var(--gold);color:#fff;border-color:var(--gold)}
-.btn-gold:hover{background:#C05A2A;border-color:#C05A2A;color:#fff}
-.section{padding:72px 0;border-bottom:1px solid var(--line);position:relative}
-.section-dark{background:var(--bg)}
-.section-paper{background:var(--paper)}
-.kicker{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--gold);margin-bottom:16px;display:block}
-.h-big{font-family:var(--display);font-size:clamp(26px,3.6vw,38px);line-height:1.1;letter-spacing:-.02em;font-weight:400;color:#fff;margin-bottom:16px;font-variation-settings:'opsz' 28, 'WONK' 1}
-.h-small{font-family:var(--display);font-size:21px;line-height:1.3;color:#fff;margin:24px 0 10px;font-weight:400;letter-spacing:-.01em}
-.p{font-family:var(--body);font-size:19.5px;line-height:1.68;color:var(--muted);margin:13px 0;letter-spacing:0}
-.p strong{color:var(--fg);font-weight:600}
-.p-mono{font-family:var(--mono);font-size:11px;line-height:1.6;color:var(--muted2);letter-spacing:.01em}
-.divider{height:1px;background:var(--line);margin:32px 0}
-.pronounce-block{margin-left:0;padding:0}
-@media(min-width:900px){
-  .pronounce-block{
-    margin-left:-24px;
-    padding-left:24px;
-    border-left:1px solid var(--line);
-    background:linear-gradient(90deg, rgba(255,255,255,0.022), transparent 68%);
-  }
+.btn-gold:hover{background:#C05A2A;border-color:#C05A2A}
+
+.section{padding:76px 0;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.section-paper{background:var(--paper);border-bottom:1px solid var(--line2)}
+.kicker{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--gold);margin-bottom:18px;display:block}
+.h-big{
+  font-family:var(--display);font-size:clamp(28px,3.8vw,42px);line-height:1.08;letter-spacing:-.02em;font-weight:400;color:#fff;margin-bottom:18px;
+  font-variation-settings:'opsz' 28, 'WONK' 1;
 }
+.h-small{font-family:var(--display);font-size:22px;line-height:1.25;color:#fff;margin:26px 0 12px;font-weight:400;letter-spacing:-.01em}
+.p{font-family:var(--body);font-size:18.5px;line-height:1.75;color:var(--muted);margin:14px 0;letter-spacing:0;font-weight:400}
+.p strong{color:var(--fg);font-weight:600}
+.p-mono{font-family:var(--mono);font-size:11px;line-height:1.6;color:var(--muted2);letter-spacing:.02em}
+.divider{height:1px;background:var(--line);margin:32px 0;position:relative}
+.divider::after{content:"";position:absolute;left:0;top:0;width:48px;height:1px;background:var(--gold);opacity:0.6}
+
+/* PRONUNCIATION - marginal note [1 strange move] */
+.marginalia{
+  position:absolute;left:-148px;top:8px;width:110px;
+  font-family:var(--mono);font-size:9px;line-height:1.5;letter-spacing:.03em;color:var(--muted2);
+  text-transform:lowercase;
+}
+.marginalia::before{content:"";display:block;width:18px;height:1px;background:var(--line);margin-bottom:8px}
+@media(max-width:1100px){.marginalia{display:none}}
+
+/* FOUR GATEWAYS - asymmetrical card positioning [1 strange move] */
 .four-grid{
   display:grid;
   grid-template-columns:repeat(4, 1fr);
   gap:18px;
-  margin-top:28px;
+  margin-top:32px;
   align-items:start;
 }
 .three-cell{
-  position:relative;
   background:var(--cell);
   border:1px solid var(--line2);
   padding:28px 24px;
   display:flex;flex-direction:column;
-  overflow:hidden;
-}
-.three-cell::after{
-  content:"";
-  position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg, transparent, rgba(237,233,227,0.12), transparent);
-  opacity:0.6;
+  position:relative;
 }
 .three-cell .btn{margin-top:auto}
-.three-cell:nth-child(2){transform:translateY(16px)}
-.three-cell:nth-child(4){transform:translateY(32px)}
+.three-cell:nth-child(2){transform:translateY(20px)}
+.three-cell:nth-child(4){transform:translateY(36px)}
 @media(max-width:1100px){
   .four-grid{grid-template-columns:1fr 1fr}
   .three-cell:nth-child(2), .three-cell:nth-child(4){transform:none}
@@ -165,87 +174,42 @@ body::after{
 @media(max-width:640px){
   .four-grid{grid-template-columns:1fr}
 }
-.room-tone{
-  position:fixed;bottom:18px;left:18px;z-index:90;
-  display:flex;align-items:center;gap:10px;
-  background:rgba(10,10,10,0.82);backdrop-filter:blur(6px);
-  border:1px solid var(--line);
-  padding:8px 10px;
+
+/* FIELD NOTE - ghosted oversized word [1 strange move] */
+.ghost-word{
+  position:absolute;right:-20px;top:-10px;
+  font-family:var(--display);font-size:120px;line-height:0.9;
+  color:rgba(237,233,227,0.03);letter-spacing:-.04em;
+  pointer-events:none;user-select:none;z-index:0;
+  font-variation-settings:'opsz' 32, 'WONK' 1;
 }
-.room-tone span{font-family:var(--mono);font-size:9px;letter-spacing:.04em;color:var(--muted2);text-transform:uppercase}
-.room-tone audio{width:140px;height:24px;opacity:0.6}
-@media(max-width:700px){.room-tone{bottom:10px;left:10px;right:10px;justify-content:space-between}}
-.hel-principles{margin-top:8px}
+
+/* PRINCIPLES - fine diagrammatic marks [1 strange move] */
+.hel-principles{margin-top:8px;position:relative}
 .hel-principle{
-  display:flex;align-items:baseline;gap:16px;
-  padding:18px 0;border-bottom:1px solid var(--line2);
+  display:flex;align-items:baseline;gap:18px;
+  padding:20px 0;border-bottom:1px solid var(--line2);position:relative;
 }
 .hel-principle:last-child{border-bottom:none}
 .hel-principle-num{
-  flex:0 0 26px;
-  font-family:var(--mono);font-size:10px;letter-spacing:.03em;color:var(--gold);
-  padding-top:4px;
+  flex:0 0 28px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--gold);
+  padding-top:5px;position:relative;
+}
+.hel-principle-num::after{
+  content:"";position:absolute;left:0;top:50%;width:28px;height:1px;
+  background:linear-gradient(90deg, rgba(163,73,31,0.3), transparent);
+  transform:translateY(12px);
 }
 .hel-principle p{
-  font-family:var(--display);font-size:19px;line-height:1.35;color:#fff;
+  font-family:var(--display);font-size:20px;line-height:1.35;color:#fff;
   font-weight:400;letter-spacing:-.01em;
 }
-footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;background:#080807}
-  .about-kj-grid {
-  display: grid;
-  grid-template-columns: 128px minmax(0, 1fr);
-  gap: 24px;
-  align-items: start;
-  margin: 28px 0 24px;
-}
 
-.about-kj-image {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  background: #0f0e0d;
-  border: 1px solid rgba(255,255,255,0.08);
-}
+/* BOUNDARIES - occasional grid break [1 strange move] */
+.grid-break{margin-left:-16px;padding-left:16px;border-left:1px solid var(--line);}
 
-.about-kj-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 18%;
-  filter: saturate(0.9);
-}
-
-@media (max-width: 600px) {
-  .about-kj-grid {
-    grid-template-columns: 96px minmax(0, 1fr);
-    gap: 18px;
-  }
-  /* makes the perfect AI image feel like a scanned print */
-.hero-imperfect{
-  position:absolute; inset:0; z-index:2;
-  pointer-events:none;
-  /* 1. uneven vignette + light leak */
-  background:
-    radial-gradient(ellipse 85% 70% at 50% 45%, transparent 58%, rgba(0,0,0,0.55) 92%),
-    radial-gradient(ellipse 40% 30% at 12% 18%, rgba(163,73,31,0.18), transparent 60%),
-    radial-gradient(ellipse 30% 25% at 88% 85%, rgba(237,233,227,0.08), transparent 60%);
-  mix-blend-mode:multiply;
-}
-
-/* 2. film grain - breaks the digital perfection */
-.hero-bg::after{
-  content:"";
-  position:absolute; inset:0; z-index:3;
-  opacity:0.18;
-  mix-blend-mode:soft-light;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  pointer-events:none;
-}
-
-/* 3. slight softening on the image itself */
-.hero-bg{
-  filter:saturate(0.82) contrast(1.08) brightness(0.95);
-}
+footer{padding:52px 24px;border-top:1px solid var(--line);text-align:center;background:#080807}
 </style>
 </head>
 <body>
@@ -253,38 +217,37 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
 
 <section class="hero">
   <div class="hero-bg"></div><div class="hero-overlay"></div>
-  <div class="hero-imperfect"></div>
+  <div class="hero-ghost">HEL</div>
   <div class="hero-top"><div>The Human Lab — Home of HEL</div><div>Permissionless emergence</div></div>
   <div class="hero-content">
     <h1>HEL lives here.</h1>
-    <div class="sub">Psychological depth. Creative form — Sessions — Writing — Sound — Table</div>
-    <div class="sub-mono">A practice of permissionless emergence — last field note: 06.09 — On thresholds</div>
+    <div class="sub">Psychological depth. Creative form – Sessions – Writing – Sound – Table</div>
+    <div class="sub">A practice of permissionless emergence</div>
     <div class="pill-row">
       <a class="btn" href="#work-forms">Enter HEL</a>
       <a class="btn btn-gold" href="/sessions/">[ Book a 1:1 session ]</a>
     </div>
+    <div style="margin-top:28px; display:flex; justify-content:center;">
+      <audio id="hel-audio" controls loop style="width:240px; height:30px; opacity:0.6;">
+        <source src="hel-song.mp3" type="audio/mpeg">
+      </audio>
+    </div>
   </div>
 </section>
-
-<div class="room-tone">
-  <span>00:00 — hel song (room)</span>
-  <audio id="hel-audio" controls loop><source src="hel-song.mp3" type="audio/mpeg"></audio>
-</div>
 
 <main>
 
 <section class="section section-paper" id="work">
   <div class="narrow">
-    <div class="pronounce-block">
-      <span class="kicker">Pronunciation — start here</span>
-      <div style="display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin:6px 0 14px">
-        <h2 class="h-big" style="margin:0; font-size:clamp(40px,6vw,54px);">HEL</h2>
-        <span style="font-family:var(--mono); font-size:11px; letter-spacing:.03em; color:var(--fg); background:rgba(163,73,31,0.12); border:1px solid rgba(163,73,31,0.28); padding:4px 8px">(HAY-uhl)</span>
-        <span style="font-family:var(--mono); font-size:11px; color:var(--muted2)">/ˈheɪ.əl/</span>
-      </div>
-      <p class="p" style="color:#fff; font-family:var(--display); font-size:21px; line-height:1.4; margin:0">One breath. Two beats.</p>
-      <p class="p-mono" style="margin-top:10px;">Not <span style="color:#fff; text-decoration:line-through; text-decoration-color:var(--gold);">“hell.”</span> — <span style="color:#fff">HEL</span></p>
+    <div class="marginalia">say it out loud<br>two beats</div>
+    <span class="kicker">Pronunciation — start here</span>
+    <div style="display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin:6px 0 18px">
+      <h2 class="h-big" style="margin:0; font-size:clamp(40px,6vw,56px);">HEL</h2>
+      <span style="font-family:var(--mono); font-size:11px; letter-spacing:.03em; color:var(--fg); background:rgba(163,73,31,0.12); border:1px solid rgba(163,73,31,0.28); padding:4px 8px">(HAY-uhl)</span>
+      <span style="font-family:var(--mono); font-size:11px; color:var(--muted2)">/ˈheɪ.əl/</span>
     </div>
+    <p class="p" style="color:#fff; font-family:var(--display); font-size:22px; line-height:1.4; margin:0">One breath. Two beats.</p>
+    <p class="p-mono" style="margin-top:10px;">Not <span style="color:#fff; text-decoration:line-through; text-decoration-color:var(--gold);">“hell.”</span> — <span style="color:#fff">HEL</span></p>
     <div class="divider"></div>
     <p class="p"><strong>HEL is a psychology-led practice that brings psychological inquiry and creative expression into the same space.</strong></p>
     <p class="p">At the centre of HEL are private 1:1 psychological sessions. You may bring a decision you cannot resolve, conflicting feelings, a relationship or experience you cannot quite understand, a transition, an identity that no longer fits, or simply the sense that something beneath the surface needs closer attention.</p>
@@ -303,9 +266,9 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
       <div class="three-cell">
         <h4 class="mono">01 — Sessions</h4>
         <h3 class="h-small">Psychological depth, one-to-one.</h3>
-        <p class="p" style="font-size:16px;line-height:1.6">A private psychological session for something that feels unresolved, conflicted or difficult to understand.</p>
-        <p class="p" style="font-size:16px;line-height:1.6">Through conversation, questioning and interpretation, we explore what sits beneath the surface and work toward a more coherent understanding of what you are experiencing.</p>
-        <p class="p" style="font-size:16px;line-height:1.6"><strong>What becomes clear can then be given a form you can return to.</strong></p>
+        <p class="p" style="font-size:16px;line-height:1.65">A private psychological session for something that feels unresolved, conflicted or difficult to understand.</p>
+        <p class="p" style="font-size:16px;line-height:1.65">Through conversation, questioning and interpretation, we explore what sits beneath the surface and work toward a more coherent understanding of what you are experiencing.</p>
+        <p class="p" style="font-size:16px;line-height:1.65"><strong>What becomes clear can then be given a form you can return to.</strong></p>
         <div style="margin-top:20px">
           <a class="btn btn-gold" href="/sessions/">[ Explore sessions ]</a>
         </div>
@@ -313,8 +276,8 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
       <div class="three-cell">
         <h4 class="mono">02 — Writing</h4>
         <h3 class="h-small">A way of seeing.</h3>
-        <p class="p" style="font-size:16px;line-height:1.6">Field Notes and commissioned writing take an experience, observation, contradiction or question and look at it closely enough for something new to become visible.</p>
-        <p class="p" style="font-size:16px;line-height:1.6"><strong>Sometimes language changes what you are able to see.</strong></p>
+        <p class="p" style="font-size:16px;line-height:1.65">Field Notes and commissioned writing take an experience, observation, contradiction or question and look at it closely enough for something new to become visible.</p>
+        <p class="p" style="font-size:16px;line-height:1.65"><strong>Sometimes language changes what you are able to see.</strong></p>
         <div style="margin-top:20px">
           <a class="btn" href="/writing/">[ Explore field notes ]</a>
         </div>
@@ -322,8 +285,8 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
       <div class="three-cell">
         <h4 class="mono">03 — Sound</h4>
         <h3 class="h-small">When words are not enough.</h3>
-        <p class="p" style="font-size:16px;line-height:1.6">Original music, voice and sonic work carry atmosphere, tension, memory and feeling without forcing them into explanation.</p>
-        <p class="p" style="font-size:16px;line-height:1.6"><strong>Some things need to be experienced before they can be understood.</strong></p>
+        <p class="p" style="font-size:16px;line-height:1.65">Original music, voice and sonic work carry atmosphere, tension, memory and feeling without forcing them into explanation.</p>
+        <p class="p" style="font-size:16px;line-height:1.65"><strong>Some things need to be experienced before they can be understood.</strong></p>
         <div style="margin-top:20px">
           <a class="btn" href="/sound/">[ Listen ]</a>
         </div>
@@ -331,8 +294,8 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
       <div class="three-cell">
         <h4 class="mono">04 — The Emergent Table</h4>
         <h3 class="h-small">How HEL takes form.</h3>
-        <p class="p" style="font-size:16px;line-height:1.6">Field notes from how I actually cook: start with what is here, notice what needs using, and let the meal take shape from there. Ingredients move across dishes, scraps get another life, and very little is treated as disposable.</p>
-        <p class="p" style="font-size:16px;line-height:1.6"><strong>Not a recipe first. Attention first. Then form.</strong></p>
+        <p class="p" style="font-size:16px;line-height:1.65">Field notes from how I actually cook: start with what is here, notice what needs using, and let the meal take shape from there. Ingredients move across dishes, scraps get another life, and very little is treated as disposable.</p>
+        <p class="p" style="font-size:16px;line-height:1.65"><strong>Not a recipe first. Attention first. Then form.</strong></p>
         <div style="margin-top:20px">
           <a class="btn" href="/emergent-table/">[ Pull up a chair ]</a>
         </div>
@@ -343,6 +306,7 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
 
 <section class="section section-dark" id="hel">
   <div class="narrow">
+    <div class="ghost-word">threshold</div>
     <span class="kicker">Field note 01</span>
     <h3 class="h-small" style="margin-top:0">For humans at thresholds</h3>
     <p class="p">Sometimes change begins before there is evidence for it.</p>
@@ -352,13 +316,10 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
     <p class="p">You may not know what comes next.</p>
     <p class="p"><strong>You may only know that this is no longer quite true.</strong></p>
     <p class="p">That is a threshold.</p>
-    <div style="margin-top:32px; padding-top:16px; border-top:1px solid var(--line2)">
-      <span class="mono" style="font-size:9px; color:var(--muted2)">Currently: reading — Bion / cooking — sourdough discard / listening to — room tone from Durban studio</span>
-    </div>
   </div>
 </section>
 
-<section class="section section-dark" id="about">
+<section class="section section-dark" id="principles">
   <div class="narrow hel-principles">
     <span class="kicker">The HEL principles</span>
     <div class="hel-principle"><span class="hel-principle-num">01</span><p>What is true does not need permission to exist.</p></div>
@@ -369,58 +330,14 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
     <div class="hel-principle"><span class="hel-principle-num">06</span><p>What reveals, heals or changes us does not always arrive gently.</p></div>
   </div>
 </section>
-  
-  <!-- ABOUT KAYLEE-JANE -->
-<section class="section section-paper" id="about" style="border-bottom:1px solid rgba(255,255,255,0.08);">
+
+<section class="section section-paper" id="about">
   <div class="narrow">
-
-    <span class="kicker">ABOUT KAYLEE-JANE</span>
-    <h2 class="h-small" style="margin-top:0;">The human source.</h2>
-
-    <div class="about-kj-grid">
-      <div class="about-kj-image">
-        <img
-          src="me.png"
-          alt="Kaylee-Jane Inglis"
-          loading="lazy"
-        >
-      </div>
-
-      <div>
-        <p class="p" style="margin-top:0;">
-          <strong>
-            HEL comes from Kaylee-Jane Inglis — a psychologist, systems thinker and lifelong student of human behaviour, identity and consciousness.
-          </strong>
-        </p>
-      </div>
+    <div class="grid-break">
+      <span class="kicker">Boundaries</span>
+      <p class="p">HEL does not coach, prescribe an identity or reduce a person to a diagnosis. Psychological depth does not remove professional boundaries.</p>
+      <p class="p-mono" style="margin-top:12px">Private disclosure remains private.</p>
     </div>
-
-    <p class="p">
-      My interest has always been in what sits beneath the obvious: how people make meaning, how identity shifts, how patterns form, and what happens when someone reaches a point where the way they have understood themselves no longer quite fits.
-    </p>
-
-    <p class="p">
-      Psychology gave me one way of understanding people. Systems thinking taught me to look for patterns, relationships and structure.
-    </p>
-
-    <p class="p">
-      HEL brings those two ways of seeing together without reducing a person to a diagnosis, framework or neat explanation.
-    </p>
-
-    <p class="p">
-      <strong>
-        HEL brings psychological depth into a different kind of encounter — one that explores what is happening beneath the surface, makes sense of what is difficult to articulate, and gives that understanding a form you can return to.
-      </strong>
-    </p>
-
-  </div>
-</section>
-
-<section class="section section-paper">
-  <div class="narrow">
-    <span class="kicker">Boundaries</span>
-    <p class="p">HEL does not coach, prescribe an identity or reduce a person to a diagnosis. Psychological depth does not remove professional boundaries.</p>
-    <p class="p-mono" style="margin-top:12px">Private disclosure remains private.</p>
   </div>
 </section>
 
@@ -432,7 +349,7 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
     Nothing false is required.<br>
     Nothing true requires permission.<br>
     Nothing essential gets left behind.<br><br>
-    <span style="letter-spacing:.03em; color:var(--gold)">Earth / Body / Intuition / Emergence</span>
+    <span style="letter-spacing:.04em; color:var(--gold)">Earth / Body / Intuition / Emergence</span>
   </div>
 </footer>
 </body>
