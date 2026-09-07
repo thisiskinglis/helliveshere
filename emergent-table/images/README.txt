@@ -1,1 +1,0 @@
-Upload your photos here on github.com > Add file > Upload files
