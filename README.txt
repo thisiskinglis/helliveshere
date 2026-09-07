@@ -1,0 +1,1 @@
+Drag & drop your recipe photos here on github.com - Add file > Upload files
