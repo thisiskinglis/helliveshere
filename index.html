@@ -86,13 +86,6 @@ body::after{
   position:absolute;inset:0;
   background:linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.42) 50%, rgba(0,0,0,0.88) 100%);
 }
-.hero-ghost{
-  position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);
-  font-family:var(--display);font-size:clamp(180px,32vw,420px);line-height:0.8;
-  color:rgba(237,233,227,0.035);letter-spacing:-.06em;font-weight:300;
-  font-variation-settings:'opsz' 32, 'WONK' 1;
-  pointer-events:none;z-index:1;user-select:none;
-}
 .hero-top{
   position:absolute;top:0;left:0;right:0;z-index:2;
   display:flex;justify-content:space-between;padding:16px 28px;
@@ -189,7 +182,6 @@ body::after{
   font-family:var(--display);font-size:20px;line-height:1.35;color:#fff;
   font-weight:400;letter-spacing:-.01em;
 }
-/* ABOUT KAYLEE-JANE - your structure, now with new type */
 .about-kj-grid{
   display:grid;
   grid-template-columns:128px 1fr;
@@ -225,7 +217,6 @@ footer{padding:52px 24px;border-top:1px solid var(--line);text-align:center;back
 
 <section class="hero">
   <div class="hero-bg"></div><div class="hero-overlay"></div>
-  <div class="hero-ghost">HEL</div>
   <div class="hero-top"><div>The Human Lab — Home of HEL</div><div>Permissionless emergence</div></div>
   <div class="hero-content">
     <h1>HEL lives here.</h1>
@@ -305,7 +296,7 @@ footer{padding:52px 24px;border-top:1px solid var(--line);text-align:center;back
         <p class="p" style="font-size:16px;line-height:1.65">Field notes from how I actually cook: start with what is here, notice what needs using, and let the meal take shape from there. Ingredients move across dishes, scraps get another life, and very little is treated as disposable.</p>
         <p class="p" style="font-size:16px;line-height:1.65"><strong>Not a recipe first. Attention first. Then form.</strong></p>
         <div style="margin-top:20px">
-          <a class="btn" href="/table/">[ Pull up a chair ]</a>
+          <a class="btn" href="/emergent-table/">[ Pull up a chair ]</a>
         </div>
       </div>
     </div>
@@ -339,7 +330,7 @@ footer{padding:52px 24px;border-top:1px solid var(--line);text-align:center;back
   </div>
 </section>
 
-<!-- ABOUT KAYLEE-JANE - your exact content -->
+<!-- ABOUT KAYLEE-JANE -->
 <section class="section section-paper" id="about" style="border-bottom:1px solid rgba(255,255,255,0.08);">
   <div class="narrow">
     <span class="kicker">ABOUT KAYLEE-JANE</span>
