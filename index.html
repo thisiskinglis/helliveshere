@@ -57,7 +57,6 @@ body::after{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 .mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.03em;font-size:10px;color:var(--gold)}
-
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   background:rgba(10,10,10,0.88);backdrop-filter:blur(8px);
@@ -65,15 +64,12 @@ body::after{
   display:flex;justify-content:space-between;align-items:center;
   padding:15px 28px;
 }
-.nav .logo{letter-spacing:.02em;font-size:11px;color:#fff;font-family:var(--mono);font-weight:400}
+.nav .logo{letter-spacing:.02em;font-size:11px;color:#fff;font-family:var(--mono)}
 .nav-right{display:flex;gap:22px}
 .nav-right a{font-size:10px;letter-spacing:.03em;color:rgba(255,255,255,0.58);font-family:var(--mono);transition:color .2s}
 .nav-right a:hover{color:#fff}
-
 .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
 .narrow{max-width:680px;margin:0 auto;padding:0 24px}
-
-/* HERO - immersive, left-aligned, inhabited */
 .hero{
   position:relative;width:100vw;margin-left:calc(50% - 50vw);
   height:88vh;min-height:620px;
@@ -101,7 +97,6 @@ body::after{
   font-size:clamp(48px,8vw,84px);line-height:.92;letter-spacing:-.04em;font-weight:400;
   margin:0 0 16px;
   font-variation-settings:'opsz' 32, 'WONK' 1;
-  font-optical-sizing:auto;
 }
 .hero .sub{
   font-family:var(--body);color:rgba(255,255,255,0.82);font-size:17px;line-height:1.5;letter-spacing:-.01em;
@@ -121,7 +116,6 @@ body::after{
 .btn-gold{background:var(--gold);color:#fff;border-color:var(--gold)}
 .btn-gold:hover{background:#C05A2A;border-color:#C05A2A;color:#fff}
 
-/* SECTIONS */
 .section{padding:72px 0;border-bottom:1px solid var(--line);position:relative}
 .section-dark{background:var(--bg)}
 .section-paper{background:var(--paper)}
@@ -133,21 +127,17 @@ body::after{
 .p-mono{font-family:var(--mono);font-size:11px;line-height:1.6;color:var(--muted2);letter-spacing:.01em}
 .divider{height:1px;background:var(--line);margin:32px 0}
 
-/* Pronunciation - grid break */
-.pronounce-block{
-  margin-left:0;
-  padding:0;
-}
+.pronounce-block{margin-left:0;padding:0}
 @media(min-width:900px){
   .pronounce-block{
     margin-left:-24px;
     padding-left:24px;
     border-left:1px solid var(--line);
-    background:linear-gradient(90deg, rgba(255,255,255,0.015), transparent 70%);
+    background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent 70%);
   }
 }
 
-/* FOUR GATEWAYS - tactile, asymmetrical */
+/* FOUR GATEWAYS - Level 2 tactile */
 .four-grid{
   display:grid;
   grid-template-columns:repeat(4, 1fr);
@@ -156,11 +146,26 @@ body::after{
   align-items:start;
 }
 .three-cell{
+  position:relative;
   background:var(--cell);
   border:1px solid var(--line2);
   padding:28px 24px;
   display:flex;flex-direction:column;
+  overflow:hidden;
+  isolation:isolate;
 }
+.three-cell::before{
+  content:"";
+  position:absolute;inset:0;z-index:-1;
+  background-size:cover;background-position:center;
+  opacity:0.12;mix-blend-mode:multiply;
+  pointer-events:none;
+  filter:saturate(0.6) contrast(1.1);
+}
+.three-cell.cell-sessions::before{background-image:url('texture-sessions.webp')}
+.three-cell.cell-writing::before{background-image:url('texture-writing.webp')}
+.three-cell.cell-sound::before{background-image:url('texture-sound.webp')}
+.three-cell.cell-table::before{background-image:url('texture-table.webp')}
 .three-cell .btn{margin-top:auto}
 .three-cell:nth-child(2){transform:translateY(16px)}
 .three-cell:nth-child(4){transform:translateY(32px)}
@@ -171,6 +176,17 @@ body::after{
 @media(max-width:640px){
   .four-grid{grid-template-columns:1fr}
 }
+
+/* Sticky room tone - Level 2 */
+.room-tone{
+  position:fixed;bottom:18px;left:18px;z-index:90;
+  display:flex;align-items:center;gap:10px;
+  background:rgba(10,10,10,0.82);backdrop-filter:blur(6px);
+  border:1px solid var(--line);
+  padding:8px 10px;
+}
+.room-tone span{font-family:var(--mono);font-size:9px;letter-spacing:.04em;color:var(--muted2);text-transform:uppercase}
+.room-tone audio{width:140px;height:24px;opacity:0.6}
 
 .hel-principles{margin-top:8px}
 .hel-principle{
@@ -199,19 +215,18 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
   <div class="hero-content">
     <h1>HEL lives here.</h1>
     <div class="sub">Psychological depth. Creative form — Sessions — Writing — Sound — Table</div>
-    <div class="sub-mono">A practice of permissionless emergence</div>
+    <div class="sub-mono">A practice of permissionless emergence — last field note: 06.09 — On thresholds</div>
     <div class="pill-row">
       <a class="btn" href="#work-forms">Enter HEL</a>
       <a class="btn btn-gold" href="/sessions/">[ Book a 1:1 session ]</a>
     </div>
-    <div style="margin-top:24px; display:flex; justify-content:flex-start; align-items:center; gap:12px;">
-      <span class="mono" style="font-size:9px; color:rgba(255,255,255,0.4)">00:00 — hel song (room)</span>
-      <audio id="hel-audio" controls loop style="width:200px; height:28px; opacity:0.55;">
-        <source src="hel-song.mp3" type="audio/mpeg">
-      </audio>
-    </div>
   </div>
 </section>
+
+<div class="room-tone">
+  <span>00:00 — hel song (room)</span>
+  <audio id="hel-audio" controls loop><source src="hel-song.mp3" type="audio/mpeg"></audio>
+</div>
 
 <main>
 
@@ -242,7 +257,7 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
     <h2 class="h-big" style="max-width:620px;">Sessions. Writing. Sound. Table.</h2>
     <p class="p" style="max-width:600px; font-size:18px;">Four ways HEL works with what is difficult to understand, articulate or carry. And how it takes form.</p>
     <div class="four-grid">
-      <div class="three-cell">
+      <div class="three-cell cell-sessions">
         <h4 class="mono">01 — Sessions</h4>
         <h3 class="h-small">Psychological depth, one-to-one.</h3>
         <p class="p" style="font-size:16px;line-height:1.6">A private psychological session for something that feels unresolved, conflicted or difficult to understand.</p>
@@ -252,7 +267,7 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
           <a class="btn btn-gold" href="/sessions/">[ Explore sessions ]</a>
         </div>
       </div>
-      <div class="three-cell">
+      <div class="three-cell cell-writing">
         <h4 class="mono">02 — Writing</h4>
         <h3 class="h-small">A way of seeing.</h3>
         <p class="p" style="font-size:16px;line-height:1.6">Field Notes and commissioned writing take an experience, observation, contradiction or question and look at it closely enough for something new to become visible.</p>
@@ -261,7 +276,7 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
           <a class="btn" href="/writing/">[ Explore field notes ]</a>
         </div>
       </div>
-      <div class="three-cell">
+      <div class="three-cell cell-sound">
         <h4 class="mono">03 — Sound</h4>
         <h3 class="h-small">When words are not enough.</h3>
         <p class="p" style="font-size:16px;line-height:1.6">Original music, voice and sonic work carry atmosphere, tension, memory and feeling without forcing them into explanation.</p>
@@ -270,7 +285,7 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
           <a class="btn" href="/sound/">[ Listen ]</a>
         </div>
       </div>
-      <div class="three-cell">
+      <div class="three-cell cell-table">
         <h4 class="mono">04 — The Emergent Table</h4>
         <h3 class="h-small">How HEL takes form.</h3>
         <p class="p" style="font-size:16px;line-height:1.6">Field notes from how I actually cook: start with what is here, notice what needs using, and let the meal take shape from there. Ingredients move across dishes, scraps get another life, and very little is treated as disposable.</p>
@@ -294,6 +309,9 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
     <p class="p">You may not know what comes next.</p>
     <p class="p"><strong>You may only know that this is no longer quite true.</strong></p>
     <p class="p">That is a threshold.</p>
+    <div style="margin-top:32px; padding-top:16px; border-top:1px solid var(--line2)">
+      <span class="mono" style="font-size:9px; color:var(--muted2)">Currently: reading — Bion / cooking — sourdough discard / listening to — room tone from Durban studio</span>
+    </div>
   </div>
 </section>
 
