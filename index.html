@@ -207,23 +207,11 @@ blockquote{
   box-shadow:inset 0 0 50px rgba(163,73,31,0.045);
 }
 
-/* ---------- THREE-UP EDITORIAL CARDS ---------- */
-.three-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;margin-top:40px}
-.three-cell{
-  background:var(--cell);
-  border:1px solid rgba(255,255,255,0.08);
-  border-top:2px solid rgba(163,73,31,0.55);
-  padding:42px 34px;
-  box-shadow:inset 0 1px 50px rgba(163,73,31,0.035);
-}
-
-@media(max-width:900px){
-  .three-grid{grid-template-columns:1fr}
-}
-@media(max-width:860px){
-  .about-grid{grid-template-columns:1fr !important;gap:40px !important}
-  #about{padding:88px 22px !important}
-  .about-grid div{position:relative !important;top:auto !important}
+.three-grid, .four-grid {
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:28px;
+  margin-top:40px
 }
 
 /* ---------- PRINCIPLES ---------- */
