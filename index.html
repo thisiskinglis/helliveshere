@@ -28,6 +28,7 @@
 <link rel="icon" type="image/png" href="og.png">
 <meta name="theme-color" content="#0A0A0A">
 <link rel="preload" as="image" href="hel-hero-clean.png">
+<link rel="preload" as="image" href="me.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:ital,opsz,WONK,wght@0,9..144,0,300;0,9..144,1,400;0,9..144,1,500;1,9..144,0,400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -52,7 +53,7 @@ body{background:var(--bg);color:var(--fg);font-family:var(--body);-webkit-font-s
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 body::after{
-  content:"";position:fixed;inset:0;z-index:999;pointer-events:none;opacity:0.028;
+  content:"";position:fixed;inset:0;z-index:999;pointer-events:none;opacity:0.032;
   mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
@@ -115,7 +116,6 @@ body::after{
 .btn:hover{background:#fff;color:#000;border-color:#fff}
 .btn-gold{background:var(--gold);color:#fff;border-color:var(--gold)}
 .btn-gold:hover{background:#C05A2A;border-color:#C05A2A;color:#fff}
-
 .section{padding:72px 0;border-bottom:1px solid var(--line);position:relative}
 .section-dark{background:var(--bg)}
 .section-paper{background:var(--paper)}
@@ -126,18 +126,15 @@ body::after{
 .p strong{color:var(--fg);font-weight:600}
 .p-mono{font-family:var(--mono);font-size:11px;line-height:1.6;color:var(--muted2);letter-spacing:.01em}
 .divider{height:1px;background:var(--line);margin:32px 0}
-
 .pronounce-block{margin-left:0;padding:0}
 @media(min-width:900px){
   .pronounce-block{
     margin-left:-24px;
     padding-left:24px;
     border-left:1px solid var(--line);
-    background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent 70%);
+    background:linear-gradient(90deg, rgba(255,255,255,0.022), transparent 68%);
   }
 }
-
-/* FOUR GATEWAYS - Level 2 tactile */
 .four-grid{
   display:grid;
   grid-template-columns:repeat(4, 1fr);
@@ -152,20 +149,13 @@ body::after{
   padding:28px 24px;
   display:flex;flex-direction:column;
   overflow:hidden;
-  isolation:isolate;
 }
-.three-cell::before{
+.three-cell::after{
   content:"";
-  position:absolute;inset:0;z-index:-1;
-  background-size:cover;background-position:center;
-  opacity:0.12;mix-blend-mode:multiply;
-  pointer-events:none;
-  filter:saturate(0.6) contrast(1.1);
+  position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg, transparent, rgba(237,233,227,0.12), transparent);
+  opacity:0.6;
 }
-.three-cell.cell-sessions::before{background-image:url('texture-sessions.webp')}
-.three-cell.cell-writing::before{background-image:url('texture-writing.webp')}
-.three-cell.cell-sound::before{background-image:url('texture-sound.webp')}
-.three-cell.cell-table::before{background-image:url('texture-table.webp')}
 .three-cell .btn{margin-top:auto}
 .three-cell:nth-child(2){transform:translateY(16px)}
 .three-cell:nth-child(4){transform:translateY(32px)}
@@ -176,8 +166,6 @@ body::after{
 @media(max-width:640px){
   .four-grid{grid-template-columns:1fr}
 }
-
-/* Sticky room tone - Level 2 */
 .room-tone{
   position:fixed;bottom:18px;left:18px;z-index:90;
   display:flex;align-items:center;gap:10px;
@@ -187,6 +175,38 @@ body::after{
 }
 .room-tone span{font-family:var(--mono);font-size:9px;letter-spacing:.04em;color:var(--muted2);text-transform:uppercase}
 .room-tone audio{width:140px;height:24px;opacity:0.6}
+@media(max-width:700px){.room-tone{bottom:10px;left:10px;right:10px;justify-content:space-between}}
+
+/* ABOUT KAYLEE-JANE - human source, asymmetrical */
+.about-grid{
+  display:grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap:48px;
+  align-items:start;
+}
+.about-image-wrap{
+  position:relative;
+  aspect-ratio:4/5;
+  overflow:hidden;
+  background:var(--cell);
+  border:1px solid var(--line2);
+}
+.about-image-wrap img{
+  width:100%;height:100%;object-fit:cover;object-position:center 18%;
+  filter:saturate(0.88) contrast(1.04);
+}
+.about-image-wrap::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(10,10,10,0.35), transparent 55%);
+}
+@media(min-width:900px){
+  .about-grid .about-image-wrap{margin-top:8px; transform:translateY(12px)}
+  .about-grid .about-text{margin-left:-12px}
+}
+@media(max-width:860px){
+  .about-grid{grid-template-columns:1fr;gap:28px}
+  .about-grid .about-image-wrap{aspect-ratio:3/4;max-width:420px}
+}
 
 .hel-principles{margin-top:8px}
 .hel-principle{
@@ -257,7 +277,7 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
     <h2 class="h-big" style="max-width:620px;">Sessions. Writing. Sound. Table.</h2>
     <p class="p" style="max-width:600px; font-size:18px;">Four ways HEL works with what is difficult to understand, articulate or carry. And how it takes form.</p>
     <div class="four-grid">
-      <div class="three-cell cell-sessions">
+      <div class="three-cell">
         <h4 class="mono">01 — Sessions</h4>
         <h3 class="h-small">Psychological depth, one-to-one.</h3>
         <p class="p" style="font-size:16px;line-height:1.6">A private psychological session for something that feels unresolved, conflicted or difficult to understand.</p>
@@ -267,7 +287,7 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
           <a class="btn btn-gold" href="/sessions/">[ Explore sessions ]</a>
         </div>
       </div>
-      <div class="three-cell cell-writing">
+      <div class="three-cell">
         <h4 class="mono">02 — Writing</h4>
         <h3 class="h-small">A way of seeing.</h3>
         <p class="p" style="font-size:16px;line-height:1.6">Field Notes and commissioned writing take an experience, observation, contradiction or question and look at it closely enough for something new to become visible.</p>
@@ -276,7 +296,7 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
           <a class="btn" href="/writing/">[ Explore field notes ]</a>
         </div>
       </div>
-      <div class="three-cell cell-sound">
+      <div class="three-cell">
         <h4 class="mono">03 — Sound</h4>
         <h3 class="h-small">When words are not enough.</h3>
         <p class="p" style="font-size:16px;line-height:1.6">Original music, voice and sonic work carry atmosphere, tension, memory and feeling without forcing them into explanation.</p>
@@ -285,7 +305,7 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
           <a class="btn" href="/sound/">[ Listen ]</a>
         </div>
       </div>
-      <div class="three-cell cell-table">
+      <div class="three-cell">
         <h4 class="mono">04 — The Emergent Table</h4>
         <h3 class="h-small">How HEL takes form.</h3>
         <p class="p" style="font-size:16px;line-height:1.6">Field notes from how I actually cook: start with what is here, notice what needs using, and let the meal take shape from there. Ingredients move across dishes, scraps get another life, and very little is treated as disposable.</p>
@@ -315,7 +335,7 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
   </div>
 </section>
 
-<section class="section section-dark" id="about">
+<section class="section section-dark" id="principles">
   <div class="narrow hel-principles">
     <span class="kicker">The HEL principles</span>
     <div class="hel-principle"><span class="hel-principle-num">01</span><p>What is true does not need permission to exist.</p></div>
@@ -327,7 +347,27 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
   </div>
 </section>
 
-<section class="section section-paper">
+<!-- ABOUT KAYLEE-JANE - NEW -->
+<section class="section section-paper" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-image-wrap">
+        <img src="me.png" alt="Kaylee-Jane Inglis — HEL" loading="lazy" width="800" height="1000">
+      </div>
+      <div class="about-text">
+        <span class="kicker">About Kaylee-Jane</span>
+        <h2 class="h-big" style="margin-top:0">The human source.</h2>
+        <p class="p">HEL comes from Kaylee-Jane Inglis — a psychologist, systems thinker and lifelong student of human behaviour, identity and consciousness.</p>
+        <p class="p">My interest has always been in what sits beneath the obvious: how people make meaning, how identity shifts, how patterns form, and what happens when someone reaches a point where the way they have understood themselves no longer quite fits.</p>
+        <p class="p">Psychology gave me one way of understanding people. Systems thinking taught me to look for patterns, relationships and structure.</p>
+        <p class="p">HEL brings those two ways of seeing together without reducing a person to a diagnosis, framework or neat explanation.</p>
+        <p class="p"><strong>HEL brings psychological depth into a different kind of encounter — one that explores what is happening beneath the surface, makes sense of what is difficult to articulate, and gives that understanding a form you can return to.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
   <div class="narrow">
     <span class="kicker">Boundaries</span>
     <p class="p">HEL does not coach, prescribe an identity or reduce a person to a diagnosis. Psychological depth does not remove professional boundaries.</p>
