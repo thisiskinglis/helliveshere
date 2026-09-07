@@ -7,8 +7,6 @@
 <meta name="description" content="HEL is a practice of translation centred on the human psyche — giving form to what is hidden, contradictory or difficult to name through Psychological depth. Creative form">
 <meta name="author" content="Kaylee-Jane Inglis">
 <link rel="canonical" href="https://humanlabofficial.com/">
-
-<!-- Open Graph / Facebook / WhatsApp / LinkedIn — WhatsApp needs absolute URL + width/height -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://humanlabofficial.com/">
 <meta property="og:title" content="HEL lives here | The Human Lab">
@@ -21,19 +19,14 @@
 <meta property="og:image:alt" content="HEL — Home of HEL — HEL lives here.">
 <meta property="og:site_name" content="HEL">
 <link rel="image_src" href="https://humanlabofficial.com/og.png">
-
-<!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://humanlabofficial.com/">
 <meta name="twitter:title" content="HEL lives here | The Human Lab">
 <meta name="twitter:description" content="Giving form to what is hidden, contradictory or difficult to name, so it can be seen, held or felt.">
 <meta name="twitter:image" content="https://humanlabofficial.com/og.png">
 <meta name="twitter:creator" content="@helliveshere">
-
-<!-- Favicon + Theme -->
 <link rel="icon" type="image/png" href="og.png">
 <meta name="theme-color" content="#0A0A0A">
-
 <link rel="preload" as="image" href="hel-hero-clean.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,8 +50,6 @@ html{scroll-behavior:smooth;overflow-x:hidden}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
-
-/* faint grain — reads as texture, not noise; keeps the black from feeling flat */
 body::after{
   content:"";
   position:fixed;
@@ -69,10 +60,7 @@ body::after{
   mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-
 .mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:10px;color:var(--gold)}
-
-/* ---------- NAV ---------- */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   background:rgba(10,10,10,0.82);backdrop-filter:blur(10px);
@@ -84,12 +72,8 @@ body::after{
 .nav-right{display:flex;gap:26px}
 .nav-right a{font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,0.6);font-family:var(--mono);transition:color .2s;padding-bottom:3px;border-bottom:1px solid transparent}
 .nav-right a:hover{color:#fff;border-bottom-color:var(--gold)}
-
-/* ---------- LAYOUT ---------- */
 .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
 .narrow{max-width:620px;margin:0 auto;padding:0 24px}
-
-/* ---------- HERO (untouched) ---------- */
 .hero{
   position:relative;width:100vw;margin-left:calc(50% - 50vw);
   height:92vh;min-height:680px;
@@ -125,8 +109,6 @@ body::after{
   font-family:var(--display);font-size:clamp(120px,22vw,240px);line-height:.8;
   color:rgba(255,255,255,0.04);letter-spacing:.08em;pointer-events:none;z-index:1;
 }
-
-/* ---------- BUTTONS ---------- */
 .pill-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .btn{
   display:inline-block;background:transparent;color:#fff;
@@ -146,8 +128,6 @@ body::after{
   border-color:var(--gold-bright);
   box-shadow:0 0 28px rgba(163,73,31,0.55);
 }
-
-/* ---------- SECTIONS ---------- */
 .section{padding:112px 0;border-bottom:1px solid var(--line);position:relative}
 .section-dark{
   background:
@@ -160,7 +140,6 @@ body::after{
     var(--paper);
   border-bottom:1px solid rgba(255,255,255,0.08);
 }
-
 .kicker{
   font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--gold);margin-bottom:22px;display:block;
   text-shadow:0 0 14px rgba(163,73,31,0.35);
@@ -170,18 +149,15 @@ body::after{
   text-shadow:0 0 30px rgba(163,73,31,0.12);
 }
 .h-small{font-family:var(--display);font-size:23px;line-height:1.25;color:#fff;margin:32px 0 16px;font-weight:400}
-
 .p{font-family:var(--body);font-size:16.5px;line-height:1.85;color:var(--muted);margin:16px 0;letter-spacing:0}
 .p strong{color:var(--fg);font-weight:600}
 .p-mono{font-family:var(--mono);font-size:11.5px;line-height:1.9;color:rgba(237,233,227,0.58);letter-spacing:.02em}
-
 blockquote{
   border-left:1px solid var(--gold);padding-left:24px;margin:40px 0;
   font-family:var(--display);font-size:24px;line-height:1.4;color:#fff;
   font-style:italic;letter-spacing:-.01em;
   box-shadow:-1px 0 16px rgba(163,73,31,0.22);
 }
-
 .divider{position:relative;height:1px;background:var(--line);margin:52px 0}
 .divider::after{
   content:"";
@@ -191,8 +167,6 @@ blockquote{
   transform:translate(-50%,-50%) rotate(45deg);
   box-shadow:0 0 10px rgba(163,73,31,0.65);
 }
-
-/* ---------- LISTS ---------- */
 .list-minimal{list-style:none;margin:0;padding:0}
 .list-minimal li{
   font-family:var(--mono);font-size:11.5px;line-height:1.6;color:var(--muted);
@@ -200,21 +174,33 @@ blockquote{
   display:flex;justify-content:space-between;gap:16px;
 }
 .list-minimal li span:first-child{color:rgba(255,255,255,0.9)}
-
-/* ---------- CARDS ---------- */
 .card-dark{
   border:1px solid rgba(255,255,255,0.12);padding:34px;background:rgba(255,255,255,0.02);
   box-shadow:inset 0 0 50px rgba(163,73,31,0.045);
 }
-
+/* ---------- FOUR-UP EDITORIAL CARDS ---------- */
 .three-grid, .four-grid {
   display:grid;
   grid-template-columns:repeat(4, 1fr);
   gap:28px;
   margin-top:40px
 }
-
-/* ---------- PRINCIPLES ---------- */
+.three-cell{
+  background:var(--cell);
+  border:1px solid rgba(255,255,255,0.08);
+  border-top:2px solid rgba(163,73,31,0.55);
+  padding:42px 34px;
+  box-shadow:inset 0 1px 50px rgba(163,73,31,0.035);
+  display:flex;
+  flex-direction:column;
+}
+.three-cell .btn{margin-top:auto}
+@media(max-width:1200px){
+  .three-grid, .four-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:700px){
+  .three-grid, .four-grid{grid-template-columns:1fr}
+}
 .hel-principles{margin-top:8px}
 .hel-principle{
   display:flex;align-items:baseline;gap:26px;
@@ -231,30 +217,32 @@ blockquote{
   font-family:var(--display);font-size:22px;line-height:1.35;color:#fff;
   font-weight:400;letter-spacing:-.01em;
 }
-
-/* ---------- SOUND-SECTION AUDIO PLAYER ---------- */
 .card-dark audio{
   accent-color:var(--gold);
   filter:invert(1) sepia(0.2) saturate(0.5);
   opacity:0.9;
   border-radius:2px;
 }
-
 footer{padding:64px 24px;border-top:1px solid var(--line);text-align:center;background:#080807}
+@media(max-width:860px){
+  .about-grid{grid-template-columns:1fr !important;gap:40px !important}
+  #about{padding:88px 22px !important}
+  .about-grid div{position:relative !important;top:auto !important}
+}
 </style>
 </head>
 <body>
-<header class="nav"><div class="mono logo">HUMAN LAB — HEL</div><div class="nav-right"><a href="#hel">HEL</a><a href="explore.html">SESSIONS</a><a href="#music">SOUND</a><a href="#writing">WRITING</a><a href="#about">ABOUT</a></div></header>
+<header class="nav"><div class="mono logo">HUMAN LAB — HEL</div><div class="nav-right"><a href="#hel">HEL</a><a href="explore.html">SESSIONS</a><a href="#writing">WRITING</a><a href="#music">SOUND</a><a href="/emergent-table/">TABLE</a><a href="#about">ABOUT</a></div></header>
 
 <section class="hero">
   <div class="hero-bg"></div><div class="hero-overlay"></div>
   <div class="hero-top"><div class="mono" style="color:#fff">THE HUMAN LAB — HOME OF HEL</div><div class="mono" style="color:#fff">PERMISSIONLESS EMERGENCE</div></div>
   <div class="hero-content">
     <h1>HEL lives here.</h1>
-    <div class="sub">PSYCHOLOGICAL DEPTH. CREATIVE FORM – SESSIONS – WRITING – SOUND</div>
-        <div class="sub">A PRACTICE OF PERMISSIONLESS EMERGENCE</div>
+    <div class="sub">PSYCHOLOGICAL DEPTH. CREATIVE FORM – SESSIONS – WRITING – SOUND – TABLE</div>
+    <div class="sub">A PRACTICE OF PERMISSIONLESS EMERGENCE</div>
     <div class="pill-row">
-      <a class="btn" href="#work">ENTER HEL</a>
+      <a class="btn" href="#work-forms">ENTER HEL</a>
       <a class="btn btn-gold" href="explore.html">[ BOOK A 1:1 SESSION ]</a>
     </div>
     <div style="margin-top:32px; display:flex; justify-content:center;">
@@ -289,356 +277,134 @@ footer{padding:64px 24px;border-top:1px solid var(--line);text-align:center;back
 
 <section class="section section-dark" id="work-forms">
   <div class="wrap">
-
-  <section class="section section-dark" id="work-forms">
-  <div class="wrap">
-
-   <span class="kicker" style="text-align:center; display:block">
-  HOW HEL TAKES FORM.
-</span>
-
-<h2 class="h-big" style="text-align:center; max-width:640px; margin:0 auto 16px">
-  Sessions. Writing. Sound. Table.
-</h2>
-
-<p class="p" style="text-align:center; max-width:600px; margin:0 auto 40px">
-  Four ways HEL works with what is difficult to understand, articulate or carry. And how it takes form.
-</p>
-
-<div class="three-grid">
-
-  <div class="three-cell">
-    <h4 class="mono">01 — SESSIONS</h4>
-    <h3 class="h-small">
-      Psychological depth, one-to-one.
-    </h3>
-    <p class="p">
-     A private psychological session for something that feels unresolved, conflicted or difficult to understand.
+    <span class="kicker" style="text-align:center; display:block">
+      HOW HEL TAKES FORM.
+    </span>
+    <h2 class="h-big" style="text-align:center; max-width:640px; margin:0 auto 16px">
+      Sessions. Writing. Sound. Table.
+    </h2>
+    <p class="p" style="text-align:center; max-width:600px; margin:0 auto 40px">
+      Four ways HEL works with what is difficult to understand, articulate or carry. And how it takes form.
     </p>
-    <p class="p">
-      Through conversation, questioning and interpretation, we explore what sits beneath the surface and work toward a more coherent understanding of what you are experiencing.
-    </p>
-    <p class="p">
-      <strong>
-        What becomes clear can then be given a form you can return to.
-      </strong>
-    </p>
-    <div style="margin-top:28px">
-      <a class="btn btn-gold" href="explore.html">[ EXPLORE SESSIONS ]</a>
+    <div class="four-grid">
+      <div class="three-cell">
+        <h4 class="mono">01 — SESSIONS</h4>
+        <h3 class="h-small">Psychological depth, one-to-one.</h3>
+        <p class="p">A private psychological session for something that feels unresolved, conflicted or difficult to understand.</p>
+        <p class="p">Through conversation, questioning and interpretation, we explore what sits beneath the surface and work toward a more coherent understanding of what you are experiencing.</p>
+        <p class="p"><strong>What becomes clear can then be given a form you can return to.</strong></p>
+        <div style="margin-top:28px">
+          <a class="btn btn-gold" href="explore.html">[ EXPLORE SESSIONS ]</a>
+        </div>
+      </div>
+      <div class="three-cell">
+        <h4 class="mono">02 — WRITING</h4>
+        <h3 class="h-small">A way of seeing.</h3>
+        <p class="p">Field Notes and commissioned writing take an experience, observation, contradiction or question and look at it closely enough for something new to become visible.</p>
+        <p class="p"><strong>Sometimes language changes what you are able to see.</strong></p>
+        <div style="margin-top:28px">
+          <a class="btn" href="#writing">[ READ FIELD NOTES ]</a>
+        </div>
+      </div>
+      <div class="three-cell">
+        <h4 class="mono">03 — SOUND</h4>
+        <h3 class="h-small">When words are not enough.</h3>
+        <p class="p">Original music, voice and sonic work carry atmosphere, tension, memory and feeling without forcing them into explanation.</p>
+        <p class="p"><strong>Some things need to be experienced before they can be understood.</strong></p>
+        <div style="margin-top:28px">
+          <a class="btn" href="#music">[ LISTEN ]</a>
+        </div>
+      </div>
+      <div class="three-cell">
+        <h4 class="mono">04 — THE EMERGENT TABLE</h4>
+        <h3 class="h-small">How HEL takes form.</h3>
+        <p class="p">Field notes from the kitchen. Sunday cook with me. Start with what is actually there, not what is ideal. One ingredient, three dishes, almost nothing wasted.</p>
+        <p class="p"><strong>The same practice as HEL, in the hands.</strong></p>
+        <div style="margin-top:28px">
+          <a class="btn" href="/emergent-table/">[ PULL UP A CHAIR ]</a>
+        </div>
+      </div>
     </div>
   </div>
-
-  <div class="three-cell">
-    <h4 class="mono">02 — WRITING</h4>
-    <h3 class="h-small">
-      A way of seeing.
-    </h3>
-    <p class="p">
-      Field Notes and commissioned writing take an experience, observation, contradiction or question and look at it closely enough for something new to become visible.
-    </p>
-    <p class="p">
-      <strong>
-        Sometimes language changes what you are able to see.
-      </strong>
-    </p>
-    <div style="margin-top:28px">
-      <a class="btn" href="#writing">[ READ FIELD NOTES ]</a>
-    </div>
-  </div>
-
-  <div class="three-cell">
-    <h4 class="mono">03 — SOUND</h4>
-    <h3 class="h-small">
-      When words are not enough.
-    </h3>
-    <p class="p">
-      Original music, voice and sonic work carry atmosphere, tension, memory and feeling without forcing them into explanation.
-    </p>
-    <p class="p">
-      <strong>
-        Some things need to be experienced before they can be understood.
-      </strong>
-    </p>
-    <div style="margin-top:28px">
-      <a class="btn" href="#music">[ LISTEN ]</a>
-    </div>
-  </div>
-
-  <div class="three-cell">
-    <h4 class="mono">04 — THE EMERGENT TABLE</h4>
-    <h3 class="h-small">
-      How HEL takes form.
-    </h3>
-    <p class="p">
-      Field notes from the kitchen. Sunday cook with me. Start with what is actually there, not what is ideal. One ingredient, three dishes, almost nothing wasted.
-    </p>
-    <p class="p">
-      <strong>
-        The same practice as HEL, in the hands.
-      </strong>
-    </p>
-    <div style="margin-top:28px">
-      <a class="btn" href="/emergent-table/">[ PULL UP A CHAIR ]</a>
-    </div>
-  </div>
-
-</div>
-</div>
 </section>
 
 <section class="section section-dark" id="hel">
   <div class="narrow">
-
     <span class="kicker">FIELD NOTE 01</span>
-
-    <h3 class="h-small">
-      FOR HUMANS AT THRESHOLDS
-    </h3>
-
-    <p class="p">
-      Sometimes change begins before there is evidence for it.
-    </p>
-
-    <p class="p">
-      Nothing dramatic may have happened. Your life may still look almost exactly the same.
-    </p>
-
-    <p class="p">
-      But something that once made sense no longer does.
-    </p>
-
-    <p class="p">
-      An identity feels too small. A decision refuses to settle. A relationship changes shape. An old explanation stops working.
-    </p>
-
-    <p class="p">
-      You may not know what comes next.
-    </p>
-
-    <p class="p">
-      <strong>
-        You may only know that this is no longer quite true.
-      </strong>
-    </p>
-
-    <p class="p">
-      That is a threshold.
-    </p>
-
+    <h3 class="h-small">FOR HUMANS AT THRESHOLDS</h3>
+    <p class="p">Sometimes change begins before there is evidence for it.</p>
+    <p class="p">Nothing dramatic may have happened. Your life may still look almost exactly the same.</p>
+    <p class="p">But something that once made sense no longer does.</p>
+    <p class="p">An identity feels too small. A decision refuses to settle. A relationship changes shape. An old explanation stops working.</p>
+    <p class="p">You may not know what comes next.</p>
+    <p class="p"><strong>You may only know that this is no longer quite true.</strong></p>
+    <p class="p">That is a threshold.</p>
   </div>
 </section>
 
-
 <section class="section section-dark" id="sessions">
   <div class="narrow">
-
     <span class="kicker">PSYCHOLOGICAL TRANSLATION — 1:1</span>
-
-    <h2 class="h-big">
-      Bring what you can't quite make sense of.
-    </h2>
-
-    <p class="p">
-      You do not need to arrive with a diagnosis, a perfectly formed question or the right words.
-    </p>
-
-    <p class="p">
-      You might bring a decision you cannot resolve. Conflicting feelings that both seem true. A relationship or experience you cannot quite understand. A transition. An identity that no longer fits. Or simply the sense that something beneath the surface needs closer attention.
-    </p>
-
-    <p class="p">
-      <strong>
-        We start with whatever is actually there.
-      </strong>
-    </p>
-
-    <p class="p">
-      Through focused psychological conversation, questioning and interpretation, we explore how emotion, meaning, conflict, relationships, experience and identity are interacting within what you bring.
-    </p>
-
+    <h2 class="h-big">Bring what you can't quite make sense of.</h2>
+    <p class="p">You do not need to arrive with a diagnosis, a perfectly formed question or the right words.</p>
+    <p class="p">You might bring a decision you cannot resolve. Conflicting feelings that both seem true. A relationship or experience you cannot quite understand. A transition. An identity that no longer fits. Or simply the sense that something beneath the surface needs closer attention.</p>
+    <p class="p"><strong>We start with whatever is actually there.</strong></p>
+    <p class="p">Through focused psychological conversation, questioning and interpretation, we explore how emotion, meaning, conflict, relationships, experience and identity are interacting within what you bring.</p>
     <div class="divider"></div>
-
-    <p class="p-mono">
-     WE MAY EXPLORE —
-    </p>
-
+    <p class="p-mono">WE MAY EXPLORE —</p>
     <ul class="list-minimal">
-      <li>
-        <span>where different needs, feelings or parts of the experience are in conflict</span>
-        <span>—</span>
-      </li>
-
-      <li>
-        <span>what carries unexpected emotional weight</span>
-        <span>—</span>
-      </li>
-
-      <li>
-        <span>what is easily explained and what becomes harder to articulate</span>
-        <span>—</span>
-      </li>
-
-      <li>
-        <span>the meanings you have attached to what happened</span>
-        <span>—</span>
-      </li>
-
-      <li>
-        <span>how earlier experiences may be shaping the present</span>
-        <span>—</span>
-      </li>
-
-      <li>
-        <span>relationship dynamics and what happens between you and other people</span>
-        <span>—</span>
-      </li>
-
-      <li>
-        <span>what you protect, avoid, minimise or repeatedly return to</span>
-        <span>—</span>
-      </li>
-
-      <li>
-        <span>where your intellectual understanding and emotional experience do not quite meet</span>
-        <span>—</span>
-      </li>
+      <li><span>where different needs, feelings or parts of the experience are in conflict</span><span>—</span></li>
+      <li><span>what carries unexpected emotional weight</span><span>—</span></li>
+      <li><span>what is easily explained and what becomes harder to articulate</span><span>—</span></li>
+      <li><span>the meanings you have attached to what happened</span><span>—</span></li>
+      <li><span>how earlier experiences may be shaping the present</span><span>—</span></li>
+      <li><span>relationship dynamics and what happens between you and other people</span><span>—</span></li>
+      <li><span>what you protect, avoid, minimise or repeatedly return to</span><span>—</span></li>
+      <li><span>where your intellectual understanding and emotional experience do not quite meet</span><span>—</span></li>
     </ul>
-
-    <p class="p" style="margin-top:30px">
-      This is not about giving you a diagnosis or telling you what your answer should be.
-    </p>
-
-    <p class="p">
-      <strong>
-        The aim is not to hand you an answer. It is to develop a more coherent understanding of what you are experiencing, what may be shaping it, and why it has been difficult to resolve.
-      </strong>
-    </p>
-
-    <p class="p">
-      After the session, I synthesise what we uncovered and translate that understanding into something you can return to.
-    </p>
-
-    <p class="p-mono">
-      written reflection / personal map / narrative synthesis / manifesto / monologue / visual translation / audio / another form that fits
-    </p>
-
-    <p class="p">
-      The form is not chosen in advance. It follows the psychological work.
-    </p>
-
-    <blockquote>
-      Yes. That's it. That's what I couldn't name.
-    </blockquote>
-
+    <p class="p" style="margin-top:30px">This is not about giving you a diagnosis or telling you what your answer should be.</p>
+    <p class="p"><strong>The aim is not to hand you an answer. It is to develop a more coherent understanding of what you are experiencing, what may be shaping it, and why it has been difficult to resolve.</strong></p>
+    <p class="p">After the session, I synthesise what we uncovered and translate that understanding into something you can return to.</p>
+    <p class="p-mono">written reflection / personal map / narrative synthesis / manifesto / monologue / visual translation / audio / another form that fits</p>
+    <p class="p">The form is not chosen in advance. It follows the psychological work.</p>
+    <blockquote>Yes. That's it. That's what I couldn't name.</blockquote>
     <div style="margin-top:38px" class="pill-row">
       <a class="btn btn-gold" href="explore.html">[ EXPLORE SESSIONS ]</a>
       <a class="btn btn-gold" href="#">[ BOOK A 1:1 SESSION ]</a>
     </div>
-
   </div>
 </section>
-
 
 <section class="section section-paper" id="music">
   <div class="narrow">
-
     <span class="kicker">SOUND — HEL SOUND</span>
-
-    <h2 class="h-big">
-      Earth / Body / Intuition / Emergence
-    </h2>
-
-    <p class="p">
-      Sound is one of HEL's languages.
-      <br>
-      Some things can be felt before they can be clearly articulated.
-    </p>
-
-    <p class="p">
-      Where words reach their limit, sound can carry atmosphere, tension, memory, instinct and feeling without forcing them into an explanation.
-    </p>
-
-    <p class="p">
-      The piece playing in the hero is an original HEL composition — created as another way of carrying something that words alone could not.
-    </p>
-
-    <p class="p">
-      Voice. Music. Breath. Silence. Spoken pieces. Sonic experiments.
-    </p>
-
-    <p class="p">
-      <strong>The form follows the truth.</strong>
-    </p>
-
+    <h2 class="h-big">Earth / Body / Intuition / Emergence</h2>
+    <p class="p">Sound is one of HEL's languages.<br>Some things can be felt before they can be clearly articulated.</p>
+    <p class="p">Where words reach their limit, sound can carry atmosphere, tension, memory, instinct and feeling without forcing them into an explanation.</p>
+    <p class="p">The piece playing in the hero is an original HEL composition — created as another way of carrying something that words alone could not.</p>
+    <p class="p">Voice. Music. Breath. Silence. Spoken pieces. Sonic experiments.</p>
+    <p class="p"><strong>The form follows the truth.</strong></p>
     <div class="card-dark" style="margin-top:30px">
-
-      <p class="p-mono" style="color:var(--gold)">
-        NOW PLAYING — HEL
-      </p>
-
-      <audio
-        controls
-        loop
-        style="width:100%; margin-top:14px;"
-      >
-        <source src="hel-song.mp3" type="audio/mpeg">
-      </audio>
-
-      <p class="p-mono" style="margin-top:14px">
-        Tap play to listen.
-      </p>
-
+      <p class="p-mono" style="color:var(--gold)">NOW PLAYING — HEL</p>
+      <audio controls loop style="width:100%; margin-top:14px;"><source src="hel-song.mp3" type="audio/mpeg"></audio>
+      <p class="p-mono" style="margin-top:14px">Tap play to listen.</p>
     </div>
-
   </div>
 </section>
 
-
 <section class="section section-dark" id="writing">
   <div class="narrow">
-
     <span class="kicker">WRITING — FIELD NOTES</span>
-
-    <h2 class="h-big">
-      A way of seeing.
-    </h2>
-
-    <p class="p">
-      HEL Field Notes begin with something ordinary — an experience, behaviour, contradiction, feeling, moment or question — and stay with it long enough for a different angle to become visible.
-    </p>
-
-    <p class="p">
-      The aim is not to explain everything.
-    </p>
-
-    <p class="p">
-      It is to make something clearer, sharper or newly recognisable.
-    </p>
-
-    <p class="p">
-      Not essays written to perform intelligence. Not content produced simply to fill a feed.
-    </p>
-
-    <p class="p">
-      <strong>
-        Writing here is a way of noticing what was already there — and finding the language that makes it possible to see differently.
-      </strong>
-    </p>
-
-    <blockquote>
-      Wait. I've never thought about it like that.
-    </blockquote>
-
-    <p class="p">
-      That is enough.
-    </p>
-
+    <h2 class="h-big">A way of seeing.</h2>
+    <p class="p">HEL Field Notes begin with something ordinary — an experience, behaviour, contradiction, feeling, moment or question — and stay with it long enough for a different angle to become visible.</p>
+    <p class="p">The aim is not to explain everything.</p>
+    <p class="p">It is to make something clearer, sharper or newly recognisable.</p>
+    <p class="p">Not essays written to perform intelligence. Not content produced simply to fill a feed.</p>
+    <p class="p"><strong>Writing here is a way of noticing what was already there — and finding the language that makes it possible to see differently.</strong></p>
+    <blockquote>Wait. I've never thought about it like that.</blockquote>
+    <p class="p">That is enough.</p>
     <div class="divider"></div>
-
-    <p class="p-mono">
-      WHAT WRITING CAN BECOME INSIDE HEL —
-    </p>
-
+    <p class="p-mono">WHAT WRITING CAN BECOME INSIDE HEL —</p>
     <ul class="list-minimal">
       <li><span>field notes</span><span>—</span></li>
       <li><span>personal constitutions</span><span>—</span></li>
@@ -647,21 +413,13 @@ footer{padding:64px 24px;border-top:1px solid var(--line);text-align:center;back
       <li><span>monologues</span><span>—</span></li>
       <li><span>long-form pieces when one page is not enough</span><span>—</span></li>
     </ul>
-
     <div style="margin-top:34px">
       <a class="btn" href="#">[ READ FIELD NOTES ]</a>
-
-      <a
-        class="btn btn-gold"
-        href="#sessions"
-        style="margin-left:8px"
-      >
-        [ COMMISSION WRITING ]
-      </a>
+      <a class="btn btn-gold" href="#sessions" style="margin-left:8px">[ COMMISSION WRITING ]</a>
     </div>
-
   </div>
 </section>
+
 <section class="section section-paper" id="about" style="padding:104px 24px;background:#141210">
   <div style="max-width:880px;margin:0 auto;display:grid;grid-template-columns:200px 1fr;gap:60px;align-items:start" class="about-grid">
     <div>
@@ -671,78 +429,42 @@ footer{padding:64px 24px;border-top:1px solid var(--line);text-align:center;back
     <div style="min-width:0">
       <span class="kicker">ABOUT KAYLEE-JANE</span>
       <h2 class="h-big" style="margin-bottom:34px">The human source.</h2>
-
       <p class="p">HEL comes from Kaylee-Jane Inglis — a psychologist, systems thinker and lifelong student of human behaviour, identity and consciousness.</p>
-
       <p class="p">My interest has always been in what sits beneath the obvious: how people make meaning, how identity shifts, how patterns form, and what happens when someone reaches a point where the way they have understood themselves no longer quite fits.</p>
-
       <p class="p">Psychology gave me one way of understanding people. Systems thinking taught me to look for patterns, relationships and structure.</p>
-
       <p class="p"><strong>HEL brings those two ways of seeing together without reducing a person to a diagnosis, framework or neat explanation.</strong></p>
-
       <p class="p">HEL brings psychological depth into a different kind of encounter — one that explores what is happening beneath the surface, makes sense of what is difficult to articulate, and gives that understanding a form you can return to.</p>
-
       <div class="card-dark" style="margin-top:34px;padding:34px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.12)">
         <p class="p-mono" style="color:var(--gold);margin-bottom:20px">THE DISTINCTION</p>
         <p class="p" style="margin:0 0 6px"><strong>Kaylee-Jane</strong> — the source.</p>
         <p class="p" style="margin:0 0 6px"><strong>KINGLIS</strong> — the structure.</p>
         <p class="p" style="margin:0"><strong>HEL</strong> — the expression.</p>
       </div>
-
     </div>
   </div>
 </section>
 
 <section class="section section-dark">
   <div class="narrow hel-principles">
-
     <span class="kicker">THE HEL PRINCIPLES</span>
-
-    <div class="hel-principle">
-      <span class="hel-principle-num">01</span>
-      <p>What is true does not need permission to exist.</p>
-    </div>
-
-    <div class="hel-principle">
-      <span class="hel-principle-num">02</span>
-      <p>You do not have to cut away parts of yourself just to become easier to understand.</p>
-    </div>
-
-    <div class="hel-principle">
-      <span class="hel-principle-num">03</span>
-      <p>Truth stays intact. The form it takes can change.</p>
-    </div>
-
-    <div class="hel-principle">
-      <span class="hel-principle-num">04</span>
-      <p>Beauty alone is not enough. Form must carry meaning.</p>
-    </div>
-
-    <div class="hel-principle">
-      <span class="hel-principle-num">05</span>
-      <p>Not everything needs to be explained or resolved.</p>
-    </div>
-
-    <div class="hel-principle">
-      <span class="hel-principle-num">06</span>
-      <p>What reveals, heals or changes us does not always arrive gently.</p>
-    </div>
-
+    <div class="hel-principle"><span class="hel-principle-num">01</span><p>What is true does not need permission to exist.</p></div>
+    <div class="hel-principle"><span class="hel-principle-num">02</span><p>You do not have to cut away parts of yourself just to become easier to understand.</p></div>
+    <div class="hel-principle"><span class="hel-principle-num">03</span><p>Truth stays intact. The form it takes can change.</p></div>
+    <div class="hel-principle"><span class="hel-principle-num">04</span><p>Beauty alone is not enough. Form must carry meaning.</p></div>
+    <div class="hel-principle"><span class="hel-principle-num">05</span><p>Not everything needs to be explained or resolved.</p></div>
+    <div class="hel-principle"><span class="hel-principle-num">06</span><p>What reveals, heals or changes us does not always arrive gently.</p></div>
   </div>
 </section>
 
 <section class="section section-paper">
   <div class="narrow">
     <span class="kicker">BOUNDARIES</span>
-    <p class="p">HEL does not coach, prescribe an identity or reduce a person to a diagnosis.
-
-Psychological depth does not remove professional boundaries.</p>
+    <p class="p">HEL does not coach, prescribe an identity or reduce a person to a diagnosis. Psychological depth does not remove professional boundaries.</p>
     <p class="p-mono" style="margin-top:18px">Private disclosure remains private.</p>
   </div>
 </section>
 
 </main>
-
 <footer>
   <div class="mono" style="color:rgba(255,255,255,0.4)">THE HUMAN LAB — Home of HEL.</div>
   <div class="mono" style="margin-top:10px; color:rgba(255,255,255,0.3)">@helliveshere</div>
@@ -753,6 +475,5 @@ Psychological depth does not remove professional boundaries.</p>
     <span style="letter-spacing:.18em; color:var(--gold)">EARTH / BODY / INTUITION / EMERGENCE</span>
   </div>
 </footer>
-
 </body>
 </html>
