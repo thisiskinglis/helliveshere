@@ -1,36 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sessions | HEL lives here</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore Sessions | HEL lives here</title>
 <link rel="canonical" href="https://humanlabofficial.com/sessions/">
-<meta property="og:title" content="Sessions | HEL">
 <meta property="og:image" content="https://humanlabofficial.com/og.png">
 <link rel="icon" type="image/png" href="../og.png">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0A0A0A;--fg:#EDE9E3;--line:rgba(255,255,255,0.10);--gold:#A3491F;--muted:rgba(237,233,227,0.72);--cell:#0F0E0D;--display:'Instrument Serif',Georgia,serif;--body:'EB Garamond',Georgia,serif;--mono:'IBM Plex Mono',monospace}
-*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--fg);font-family:var(--body);-webkit-font-smoothing:antialiased}
-.mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:10px;color:var(--gold)}
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:18px 28px}
-.nav .logo{letter-spacing:.18em;font-size:11px;color:#fff;font-family:var(--mono)}.nav-right{display:flex;gap:26px}.nav-right a{font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,0.6);font-family:var(--mono)}
-.wrap{max-width:1120px;margin:0 auto;padding:0 28px}.narrow{max-width:620px;margin:0 auto;padding:0 24px}
-.section{padding:112px 0;border-bottom:1px solid var(--line)}.kicker{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--gold);margin-bottom:22px;display:block}
-.h-big{font-family:var(--display);font-size:clamp(30px,4.2vw,46px);line-height:1.06;color:#fff;margin-bottom:28px}.p{font-family:var(--body);font-size:16.5px;line-height:1.85;color:var(--muted);margin:16px 0}.p strong{color:var(--fg)}.btn{display:inline-block;background:transparent;color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.14em;padding:13px 22px;border:1px solid rgba(255,255,255,0.35)}
+:root{
+  --bg:#0E0E0E;
+  --bg2:#151412;
+  --fg:#EDE9E3;
+  --line:rgba(255,255,255,0.10);
+  --gold:#A3491F;
+  --gold-bright:#C56B3A;
+  --muted:rgba(237,233,227,0.68);
+  --display:'Instrument Serif',Georgia,serif;
+  --body:'EB Garamond',Georgia,serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.18em;font-size:9px}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(14,14,14,0.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:18px 28px}
+.nav .logo{letter-spacing:.18em;font-size:11px;color:#fff;font-family:var(--mono)}
+.nav-right{display:flex;gap:24px}.nav-right a{font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,0.6);font-family:var(--mono)}
+.nav-right a:hover{color:#fff}.nav-right a.active{color:#fff;border-bottom:1px solid var(--gold);padding-bottom:2px}
+.hero{
+  position:relative;
+  min-height:88vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:140px 24px 160px;
+  background:var(--bg);
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
+}
+.hero-kicker{font-family:var(--mono);font-size:8px;letter-spacing:.28em;color:rgba(255,255,255,0.55);margin-bottom:28px}
+.hero h1{
+  font-family:var(--display);
+  font-size:clamp(36px,5.8vw,64px);
+  line-height:.95;
+  font-weight:400;
+  color:#fff;
+  letter-spacing:-.02em;
+  margin-bottom:28px;
+}
+.hero-lines{
+  font-family:var(--body);
+  font-style:italic;
+  font-size:14.5px;
+  line-height:1.85;
+  color:rgba(237,233,227,0.62);
+  max-width:420px;
+  margin:0 auto 36px;
+}
+.btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{font-family:var(--mono);font-size:9px;letter-spacing:.16em;padding:12px 22px;border:1px solid rgba(255,255,255,0.35);color:#fff;background:transparent;transition:all .3s ease;display:inline-block}
+.btn:hover{border-color:var(--gold-bright);box-shadow:0 0 20px rgba(163,73,31,0.28)}
+.btn-gold{background:var(--gold);border-color:var(--gold);color:#fff}
+.btn-gold:hover{background:var(--gold-bright);border-color:var(--gold-bright)}
+.hel-watermark{
+  position:absolute;
+  bottom:-18px;
+  left:50%;
+  transform:translateX(-50%);
+  font-family:var(--display);
+  font-size:clamp(110px,22vw,210px);
+  line-height:.8;
+  color:rgba(255,255,255,0.06);
+  letter-spacing:.06em;
+  pointer-events:none;
+  z-index:0;
+  font-weight:400;
+}
+.section-dark{background:var(--bg2);padding:88px 24px;border-bottom:1px solid var(--line)}
+.narrow{max-width:620px;margin:0 auto}
+.kicker{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--gold);margin-bottom:18px;display:block}
+.h2{font-family:var(--display);font-size:clamp(26px,3.6vw,34px);line-height:1.12;color:#fff;font-weight:400;margin-bottom:18px;max-width:480px}
+.p{font-family:var(--body);font-size:15.5px;line-height:1.8;color:var(--muted);margin:12px 0}
+.p strong{color:var(--fg)}
+.card-outline{border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.02);padding:22px 22px;margin-top:28px}
+.card-outline p{font-family:var(--body);font-size:13.5px;line-height:1.75;color:rgba(237,233,227,0.72);margin:8px 0}
+.card-outline p strong{color:#fff;font-weight:500}
+.divider{height:1px;background:var(--line);margin:64px 0}
+.list-minimal{list-style:none;padding:0;margin:24px 0}
+.list-minimal li{font-family:var(--body);font-size:15px;line-height:1.7;color:var(--muted);padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);padding-left:18px;position:relative}
+.list-minimal li::before{content:"—";position:absolute;left:0;color:var(--gold);font-family:var(--mono);font-size:9px;top:15px}
+footer{padding:64px 24px;text-align:center;background:#0A0A0A;border-top:1px solid var(--line)}
 </style>
 </head>
 <body>
-<header class="nav"><div class="mono logo">HUMAN LAB — HEL</div><div class="nav-right"><a href="../#hel">HEL</a><a href="../sessions/">SESSIONS</a><a href="../writing/">WRITING</a><a href="../sound/">SOUND</a><a href="../emergent-table/">TABLE</a></div></header>
-<main style="padding-top:88px">
-<section class="section"><div class="narrow">
-<span class="kicker">PSYCHOLOGICAL TRANSLATION — 1:1</span>
-<h1 class="h-big">Bring what you can't quite make sense of.</h1>
-<p class="p">Private 1:1 psychological sessions. The core of HEL.</p>
-<p class="p">This is your new home for sessions. Move your current <strong>explore.html</strong> content in here.</p>
-<p class="p">Keep explore.html at root for now as a redirect so old links don't break.</p>
-<div style="margin-top:28px"><a class="btn" href="../explore.html">[ OLD EXPLORE.HTML — COPY FROM HERE ]</a></div>
-</div></section>
-</main>
-<footer style="padding:64px 24px;border-top:1px solid var(--line);text-align:center;background:#080807"><div class="mono" style="color:rgba(255,255,255,0.4)">THE HUMAN LAB — Home of HEL.</div></footer>
+<header class="nav"><div class="mono logo">HUMAN LAB — HEL</div><div class="nav-right"><a href="../">HOME</a><a href="./" class="active">SESSIONS</a><a href="../writing/">WRITING</a><a href="../sound/">SOUND</a><a href="../table/">TABLE</a></div></header>
+
+<section class="hero">
+  <span class="hero-kicker">EXPLORE SESSIONS</span>
+  <h1>Bring what is alive.</h1>
+  <div class="hero-lines">
+    Something you are circling.<br>
+    Something you cannot quite name.<br>
+    A change you can feel but do not yet understand.<br>
+    A decision. A pattern. A relationship. A piece of work.<br>
+    A version of yourself that no longer fits.<br>
+    An idea that keeps returning.
+  </div>
+  <div class="btn-row">
+    <a class="btn btn-gold" href="#book">[ BOOK A SESSION ]</a>
+    <a class="btn" href="#what-happens">WHAT HAPPENS</a>
+  </div>
+  <div class="hel-watermark">HEL</div>
+</section>
+
+<section class="section-dark">
+  <div class="narrow">
+    <span class="kicker">ONE-TO-ONE WITH HEL</span>
+    <h2 class="h2">For the things that do not arrive neatly packaged.</h2>
+    <p class="p"><strong>Explore Sessions are one-to-one conversations with HEL for the things that do not arrive neatly packaged.</strong></p>
+
+    <div class="card-outline">
+      <p>You do not need to know exactly what the problem is.</p>
+      <p>You do not need to arrive with a goal.</p>
+      <p>You do not need to have the right words.</p>
+      <p style="margin-top:14px"><strong>We begin with what is here.</strong></p>
+    </div>
+
+    <div class="divider"></div>
+
+    <span class="kicker" id="what-happens">YOU MIGHT BRING</span>
+    <ul class="list-minimal">
+      <li>a life transition</li>
+      <li>a decision you keep circling</li>
+      <li>a pattern you are beginning to notice</li>
+      <li>a relationship or dynamic you want to understand differently</li>
+      <li>a creative idea that has not yet found form</li>
+      <li>a feeling that something in your life is changing</li>
+      <li>a project, possibility or direction you cannot yet see clearly</li>
+      <li>a part of yourself that seems to be asking for more room</li>
+      <li>a situation where your usual way of thinking is no longer enough</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <span class="kicker">WHAT HAPPENS</span>
+    <p class="p">We pay attention.</p>
+    <p class="p">To what is said.<br>To what keeps repeating.<br>To what does not fit.<br>To what is emerging underneath the obvious story.</p>
+    <p class="p">We follow the threads, test assumptions, notice patterns, make connections and give shape to what may have been felt but not yet seen clearly.</p>
+    <p class="p"><strong>There is no fixed formula.</strong></p>
+    <div class="card-outline" style="border-left:2px solid var(--gold)">
+      <p>Sometimes the session brings a decision.</p>
+      <p>Sometimes language.</p>
+      <p>Sometimes a new question.</p>
+      <p>Sometimes a map.</p>
+      <p>Sometimes the recognition that something is already changing.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <span class="kicker">THE SESSION</span>
+    <p class="p" style="font-size:18px;color:#fff;font-family:var(--display)">60 minutes · online · one-to-one</p>
+    <p class="p">This is not about forcing an outcome.</p>
+    <p class="p">It is about seeing more clearly what is actually here.</p>
+    <p class="p"><strong>And from there, what wants to move.</strong></p>
+
+    <div style="margin-top:56px;padding-top:48px;border-top:1px solid var(--line)" id="book">
+      <span class="kicker">EXPLORE IT WITH HEL</span>
+      <h2 class="h2">You do not need to know where it is going before you begin.</h2>
+      <div style="margin-top:28px">
+        <a class="btn btn-gold" href="mailto:hello@humanlabofficial.com?subject=Book a Session — HEL">[ BOOK A SESSION ]</a>
+      </div>
+      <p class="p" style="margin-top:18px;font-size:12px">Or email hello@humanlabofficial.com — tell me what is alive.</p>
+    </div>
+  </div>
+</section>
+
+<footer><div class="mono" style="color:rgba(255,255,255,0.4)">THE HUMAN LAB — Home of HEL.</div><div class="mono" style="margin-top:8px;color:rgba(255,255,255,0.25);font-size:8px">EARTH / BODY / INTUITION / EMERGENCE</div></footer>
 </body>
 </html>
