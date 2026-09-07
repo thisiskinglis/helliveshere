@@ -220,6 +220,32 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
     grid-template-columns: 96px minmax(0, 1fr);
     gap: 18px;
   }
+  /* makes the perfect AI image feel like a scanned print */
+.hero-imperfect{
+  position:absolute; inset:0; z-index:2;
+  pointer-events:none;
+  /* 1. uneven vignette + light leak */
+  background:
+    radial-gradient(ellipse 85% 70% at 50% 45%, transparent 58%, rgba(0,0,0,0.55) 92%),
+    radial-gradient(ellipse 40% 30% at 12% 18%, rgba(163,73,31,0.18), transparent 60%),
+    radial-gradient(ellipse 30% 25% at 88% 85%, rgba(237,233,227,0.08), transparent 60%);
+  mix-blend-mode:multiply;
+}
+
+/* 2. film grain - breaks the digital perfection */
+.hero-bg::after{
+  content:"";
+  position:absolute; inset:0; z-index:3;
+  opacity:0.18;
+  mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events:none;
+}
+
+/* 3. slight softening on the image itself */
+.hero-bg{
+  filter:saturate(0.82) contrast(1.08) brightness(0.95);
+}
 </style>
 </head>
 <body>
@@ -227,6 +253,7 @@ footer{padding:48px 24px;border-top:1px solid var(--line);text-align:center;back
 
 <section class="hero">
   <div class="hero-bg"></div><div class="hero-overlay"></div>
+  <div class="hero-imperfect"></div>
   <div class="hero-top"><div>The Human Lab — Home of HEL</div><div>Permissionless emergence</div></div>
   <div class="hero-content">
     <h1>HEL lives here.</h1>
