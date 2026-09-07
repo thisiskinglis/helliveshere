@@ -1,80 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Emergent Table | HEL lives here</title>
-<meta name="description" content="Field notes from the kitchen. One ingredient, three dishes, almost nothing wasted. The same practice as HEL, in the hands.">
-<link rel="canonical" href="https://humanlabofficial.com/table/">
-<meta property="og:title" content="The Emergent Table | HEL">
-<meta property="og:description" content="Start with what is actually there, not what is ideal. One ingredient, three dishes.">
+<!DOCTYPE html><html><head><title>The Emergent Table | HEL</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta property="og:image" content="https://humanlabofficial.com/og.png">
 <link rel="icon" type="image/png" href="../og.png">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0A0A0A;--fg:#EDE9E3;--line:rgba(255,255,255,0.10);--gold:#A3491F;--gold-bright:#C56B3A;--muted:rgba(237,233,227,0.72);--paper:#141210;--cell:#0F0E0D;--display:'Instrument Serif',Georgia,serif;--body:'EB Garamond',Georgia,serif;--mono:'IBM Plex Mono',monospace}
+:root{--bg:#0A0A0A;--fg:#EDE9E3;--line:rgba(255,255,255,0.10);--gold:#A3491F;--gold-bright:#C56B3A;--muted:rgba(237,233,227,0.72);--display:'Instrument Serif',Georgia,serif;--body:'EB Garamond',Georgia,serif;--mono:'IBM Plex Mono',monospace;--cell:#0F0E0D}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--fg);font-family:var(--body);-webkit-font-smoothing:antialiased}
 .mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:10px;color:var(--gold)}
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:18px 28px}
-.nav .logo{letter-spacing:.18em;font-size:11px;color:#fff;font-family:var(--mono)}.nav-right{display:flex;gap:26px}.nav-right a{font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,0.6);font-family:var(--mono);transition:color .2s}
-.nav-right a:hover{color:#fff}
-.wrap{max-width:1120px;margin:0 auto;padding:0 28px}.narrow{max-width:680px;margin:0 auto;padding:0 24px}
-.hero{position:relative;padding:160px 0 96px;text-align:center;border-bottom:1px solid var(--line);background:radial-gradient(ellipse 900px 500px at 50% -10%, rgba(163,73,31,0.10), transparent 60%), var(--bg)}
-.hero h1{font-family:var(--display);color:#fff;font-size:clamp(42px,8vw,84px);line-height:.9;letter-spacing:-.02em;font-weight:400;margin:0 0 18px}
-.hero .sub{font-family:var(--mono);color:#fff;font-size:11px;letter-spacing:.18em;opacity:0.7;margin-bottom:28px}
-.kicker{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--gold);margin-bottom:22px;display:block}
-.h-big{font-family:var(--display);font-size:clamp(30px,4.2vw,44px);line-height:1.06;color:#fff;margin-bottom:28px}
-.p{font-family:var(--body);font-size:16.5px;line-height:1.85;color:var(--muted);margin:16px 0}.p strong{color:var(--fg)}
-.btn{display:inline-block;background:transparent;color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.14em;padding:14px 24px;border:1px solid rgba(255,255,255,0.35);transition:all .3s ease}
-.btn:hover{border-color:var(--gold-bright);box-shadow:0 0 22px rgba(163,73,31,0.30)}.btn-gold{background:var(--gold);border-color:var(--gold)}.btn-gold:hover{background:var(--gold-bright);border-color:var(--gold-bright)}
-.section{padding:88px 0;border-bottom:1px solid var(--line)}
-.recipe-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
-.recipe-card{background:var(--cell);border:1px solid rgba(255,255,255,0.08);border-top:2px solid rgba(163,73,31,0.55);padding:28px}
-.recipe-card h3{font-family:var(--display);font-size:20px;color:#fff;margin:12px 0}
-.recipe-card .mono{margin-bottom:8px;display:block}
-@media(max-width:900px){.recipe-grid{grid-template-columns:1fr}}
-footer{padding:64px 24px;border-top:1px solid var(--line);text-align:center;background:#080807}
-</style>
-</head>
-<body>
-<header class="nav"><div class="mono logo">HUMAN LAB — HEL</div><div class="nav-right"><a href="../">HOME</a><a href="../sessions/">SESSIONS</a><a href="../writing/">WRITING</a><a href="../sound/">SOUND</a><a href="./">TABLE</a></div></header>
+.nav .logo{letter-spacing:.18em;font-size:11px;color:#fff;font-family:var(--mono)}.nav-right{display:flex;gap:22px}.nav-right a{font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,0.6);font-family:var(--mono)}.nav-right a.active{color:#fff;border-bottom:1px solid var(--gold);padding-bottom:2px}
+.narrow{max-width:660px;margin:0 auto;padding:0 24px}.section{padding:88px 0;border-bottom:1px solid var(--line)}.kicker{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--gold);margin-bottom:22px;display:block}
+.h-big{font-family:var(--display);font-size:clamp(28px,4vw,42px);line-height:1.06;color:#fff;margin-bottom:18px}
+.p{font-family:var(--body);font-size:16.5px;line-height:1.85;color:var(--muted);margin:14px 0}.p strong{color:var(--fg)}
+.btn{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;padding:13px 24px;border:1px solid rgba(255,255,255,0.35);color:#fff;background:transparent;transition:all .3s}.btn:hover{border-color:var(--gold-bright);box-shadow:0 0 22px rgba(163,73,31,0.3)}.btn-gold{background:var(--gold);border-color:var(--gold)}
 
+.hero{
+  position:relative;
+  width:100%;
+  height:74vh;min-height:520px;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
+  background:#0A0A0A;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('../hel-hero-clean.png'), url('../hel-hero-wide.png');
+  background-size:cover;background-position:center 32%;background-repeat:no-repeat;
+}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.55) 48%, rgba(0,0,0,0.92) 100%)}
+.hero-content{position:relative;z-index:2;max-width:820px;padding:0 24px;margin-top:30px}
+.hero h1{font-family:var(--display);color:#fff;font-size:clamp(42px,7vw,76px);line-height:.92;letter-spacing:-.02em;font-weight:400;margin:0 0 16px;text-shadow:0 2px 24px rgba(0,0,0,0.6)}
+.hero .sub{font-family:var(--mono);color:#fff;font-size:11px;letter-spacing:.18em;opacity:0.75;margin-bottom:28px}
+.hel-watermark{position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);font-family:var(--display);font-size:clamp(100px,18vw,200px);line-height:.8;color:rgba(255,255,255,0.05);letter-spacing:.08em;pointer-events:none;z-index:1}
+
+</style></head><body>
+<header class="nav"><div class="mono logo">HUMAN LAB — HEL</div><div class="nav-right"><a href="../">HOME</a><a href="../sessions/">SESSIONS</a><a href="../writing/">WRITING</a><a href="../sound/">SOUND</a><a href="./" class="active">TABLE</a></div></header>
 <section class="hero">
-  <div class="wrap">
-    <span class="mono" style="color:var(--gold)">04 — THE EMERGENT TABLE</span>
+  <div class="hero-bg" style="background-position:center 38%"></div><div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="mono" style="color:var(--gold)">THE EMERGENT TABLE</span>
     <h1>How HEL<br>takes form.</h1>
-    <div class="sub">FIELD NOTES FROM THE KITCHEN — SUNDAY COOK WITH ME</div>
-    <p class="p" style="max-width:540px;margin:24px auto 0;color:rgba(255,255,255,0.7)">Start with what is actually there, not what is ideal. One ingredient, three dishes, almost nothing wasted. The same practice as HEL, in the hands.</p>
-    <div style="margin-top:32px"><a class="btn btn-gold" href="#latest">[ PULL UP A CHAIR ]</a></div>
+    <div class="sub">FIELD NOTES FROM THE KITCHEN — ONE INGREDIENT, THREE DISHES</div>
+    <div style="margin-top:22px"><a class="btn btn-gold" href="#latest">[ PULL UP A CHAIR ]</a></div>
   </div>
 </section>
-
-<section class="section" id="latest">
-  <div class="narrow">
-    <span class="kicker">SUNDAY 01</span>
-    <h2 class="h-big">One cabbage, three dishes, almost nothing wasted.</h2>
-    <p class="p"><strong>The practice:</strong> You don't need a perfect shop. You need to look at what's actually in the fridge and translate it into form.</p>
-    <p class="p">This week: a single white cabbage became —</p>
-    <div class="recipe-grid">
-      <div class="recipe-card"><span class="mono">01 / SOUP</span><h3>Charred Cabbage & Potato Broth</h3><p class="p" style="font-size:14px">Leaves, core, dark outer leaves — all in. Smoked paprika, broth, leftover bread.</p><a class="btn" href="./recipes/sunday-01-one-cabbage-three-dishes.html" style="margin-top:16px;padding:10px 16px;font-size:9px">READ</a></div>
-      <div class="recipe-card"><span class="mono">02 / PAN</span><h3>Seared Cabbage with Cumin & Yoghurt</h3><p class="p" style="font-size:14px">Wedges, high heat, brown butter. The crisp heart as garnish.</p><a class="btn" href="./recipes/sunday-01-one-cabbage-three-dishes.html" style="margin-top:16px;padding:10px 16px;font-size:9px">READ</a></div>
-      <div class="recipe-card"><span class="mono">03 / JAR</span><h3>Quick Kraut with Caraway</h3><p class="p" style="font-size:14px">Shred, salt, squeeze. Nothing wasted. Keeps for weeks.</p><a class="btn" href="./recipes/sunday-01-one-cabbage-three-dishes.html" style="margin-top:16px;padding:10px 16px;font-size:9px">READ</a></div>
-    </div>
-    <p class="p" style="margin-top:48px">Same as a HEL session — <strong>what is true does not need permission to exist. Truth stays intact. The form it takes can change.</strong></p>
-    <div style="margin-top:28px"><a class="btn" href="./recipes/sunday-01-one-cabbage-three-dishes.html">[ FULL FIELD NOTE ]</a></div>
-  </div>
-</section>
-
-<section class="section" style="background:#141210">
-  <div class="narrow">
-    <span class="kicker">HOW IT WORKS</span>
-    <p class="p"><strong>1. Start with what is actually there</strong> — open the fridge, not an ideal recipe.</p>
-    <p class="p"><strong>2. One ingredient, three translations</strong> — soup, pan, jar / raw, cooked, fermented.</p>
-    <p class="p"><strong>3. Almost nothing wasted</strong> — core, leaves, stalks all have a place.</p>
-    <p class="p" style="margin-top:28px;color:var(--gold)">This is not a cooking blog. It's HEL in the hands.</p>
-  </div>
-</section>
-
-<footer><div class="mono" style="color:rgba(255,255,255,0.4)">THE HUMAN LAB — Home of HEL.</div><div class="mono" style="margin-top:10px;color:rgba(255,255,255,0.3)">@helliveshere — EARTH / BODY / INTUITION / EMERGENCE</div></footer>
-</body>
-</html>
+<section class="section" id="latest"><div class="narrow"><h2 class="h-big">Start with what is actually there.</h2><p class="p">Not what is ideal. One ingredient, three translations. Almost nothing wasted. The same practice as HEL, in the hands.</p></div></section>
+</body></html>
