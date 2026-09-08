@@ -125,6 +125,10 @@ body::after{
   font-family:var(--display);font-size:clamp(100px,16vw,180px);line-height:.8;
   color:rgba(255,255,255,0.04);letter-spacing:.04em;pointer-events:none;z-index:1;
 }
+@media(max-width:700px){
+  #session-synthesis div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important}
+  #session-synthesis div[style*="transform:translateY(18px)"]{transform:none !important}
+}
 @media(max-width:900px){
   .hero-bg,.hero-overlay{width:100%;left:0;right:0}
   .hero-overlay-right{display:none}
@@ -219,6 +223,48 @@ body::after{
 <p class="p reveal-on-scroll">Sometimes language changes what you are able to see.</p>
 <p class="p reveal-on-scroll"><strong>That is the work.</strong></p>
 </div></section>
+
+
+<section class="section section-paper" id="session-synthesis" style="background:#0F0E0D;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="narrow">
+    <div class="ghost-word ghost-word--tr" aria-hidden="true">RETURN</div>
+    <div class="marginal-reveal">
+      <button class="marginal-trigger" aria-expanded="false">not a summary — a translation</button>
+      <span class="marginal-secondary">every session returns with form.</span>
+    </div>
+    <span class="kicker reveal-on-scroll">AFTER A SESSION — WHAT RETURNS</span>
+    <h2 class="h-big reveal-on-scroll" style="max-width:520px">You leave with something you can return to.</h2>
+    <p class="p reveal-on-scroll">Every private 1:1 HEL session includes a personal synthesis — because understanding shouldn't disappear when the conversation ends.</p>
+    <p class="p reveal-on-scroll">Afterwards, I translate what emerged into two forms you keep:</p>
+
+    <div class="reveal-on-scroll" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0 8px">
+      <div style="background:var(--cell);border:1px solid var(--line2);padding:24px 22px;position:relative">
+        <span class="num">01 — WRITTEN SYNTHESIS</span>
+        <h3 class="h-med" style="margin:12px 0 10px;font-size:20px">In precise language.</h3>
+        <p class="p" style="font-size:15.5px;line-height:1.7;margin:0">A concise reflection of what we uncovered — the pattern, tension, or meaning underneath. Not notes. Not a transcript. Language you can revisit and think with.</p>
+        <div style="margin-top:16px;height:1px;background:var(--line)"></div>
+        <p class="p-mono" style="margin-top:12px;font-size:9px">delivered within 7 days · private · yours</p>
+      </div>
+      <div style="background:var(--cell);border:1px solid var(--line2);padding:24px 22px;position:relative;transform:translateY(18px)">
+        <span class="num">02 — VISUAL TRANSLATION</span>
+        <h3 class="h-med" style="margin:12px 0 10px;font-size:20px">In form that holds it.</h3>
+        <p class="p" style="font-size:15.5px;line-height:1.7;margin:0">A personal map, visual, audio, or other form that makes the work visible. The form is not chosen in advance — it follows the psychological work.</p>
+        <div style="margin-top:16px;height:1px;background:var(--line)"></div>
+        <p class="p-mono" style="margin-top:12px;font-size:9px">form follows truth · never templated</p>
+      </div>
+    </div>
+
+    <p class="p reveal-on-scroll" style="margin-top:36px"><strong>The recording stays too.</strong> Your full session recording is yours, alongside the synthesis and translation.</p>
+
+    <div class="divider"></div>
+
+    <div class="reveal-on-scroll" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+      <a class="btn btn-gold" href="../sessions/#book">[ BOOK A SESSION — INCLUDES BOTH ]</a>
+      <span class="p-mono" style="margin-left:6px">This is why writing lives at the centre of HEL.</span>
+    </div>
+  </div>
+</section>
+
 
 <section class="section" style="background:rgba(255,255,255,0.02)"><div class="narrow">
 <div class="ghost-word ghost-word--tl" aria-hidden="true">FORM</div>
