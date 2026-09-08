@@ -31,7 +31,7 @@
 <link rel="preload" as="image" href="me.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,WONK,wght@0,9..144,0,300;0,9..144,1,400;0,9..144,1,500;1,9..144,0,600&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,WONK,wght@0,9..144,0,300;0,9..144,1,400;0,9..144,1,500;1,9..144,0,600&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#0A0A0A;
@@ -39,7 +39,7 @@
   --line:rgba(237,233,227,0.10);
   --line2:rgba(237,233,227,0.06);
   --gold:#A3491F;
-  --muted:rgba(237,233,227,0.82);
+  --muted:rgba(237,233,227,0.78);
   --muted2:rgba(237,233,227,0.54);
   --paper:#141210;
   --cell:#0F0E0D;
@@ -51,6 +51,7 @@
 html{scroll-behavior:smooth;overflow-x:hidden}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
+a:focus-visible, button:focus-visible{outline:1px solid var(--gold);outline-offset:3px}
 img{max-width:100%;display:block}
 body::after{
   content:"";position:fixed;inset:0;z-index:999;pointer-events:none;opacity:0.028;
@@ -58,6 +59,8 @@ body::after{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 .mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.04em;font-size:10px;color:var(--gold);line-height:1.4}
+
+/* NAV + Four-door behavior */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   background:rgba(10,10,10,0.86);backdrop-filter:blur(8px);
@@ -66,11 +69,23 @@ body::after{
   padding:15px 28px;
 }
 .nav .logo{letter-spacing:.02em;font-size:11px;color:#fff;font-family:var(--mono)}
-.nav-right{display:flex;gap:22px}
-.nav-right a{font-size:10px;letter-spacing:.03em;color:rgba(255,255,255,0.56);font-family:var(--mono);transition:color .2s}
-.nav-right a:hover{color:#fff}
+.nav-right{display:flex;gap:22px;align-items:center}
+.four-door-link{position:relative;display:inline-block;padding-bottom:14px;margin-bottom:-14px}
+.four-door-link .label{font-size:10px;letter-spacing:.03em;color:rgba(255,255,255,0.56);font-family:var(--mono);transition:color .2s;display:block}
+.four-door-link:hover .label, .four-door-link:focus-visible .label{color:#fff}
+.four-door-link .subtitle{
+  position:absolute;left:0;top:100%;margin-top:4px;
+  font-family:var(--mono);font-size:9px;letter-spacing:.03em;color:var(--muted2);
+  white-space:nowrap;opacity:0;transform:translateY(4px);transition:opacity .22s ease, transform .22s ease;
+  pointer-events:none;
+}
+.four-door-link:hover .subtitle, .four-door-link:focus-visible .subtitle{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){
+  .four-door-link .subtitle{transition:none}
+}
+
 .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
-.narrow{max-width:660px;margin:0 auto;padding:0 24px;position:relative}
+.narrow{max-width:640px;margin:0 auto;padding:0 24px;position:relative}
 .hero{
   position:relative;width:100vw;margin-left:calc(50% - 50vw);
   height:88vh;min-height:620px;
@@ -119,18 +134,11 @@ body::after{
   font-variation-settings:'opsz' 28, 'WONK' 1;
 }
 .h-small{font-family:var(--display);font-size:22px;line-height:1.25;color:#fff;margin:26px 0 12px;font-weight:400;letter-spacing:-.01em}
-.p{font-family:var(--body);font-size:18.5px;line-height:1.75;color:var(--muted);margin:14px 0;letter-spacing:0;font-weight:400}
-.p strong{color:var(--fg);font-weight:600}
+.p{font-family:var(--body);font-size:17px;line-height:1.85;color:var(--muted);margin:14px 0;letter-spacing:-0.011em;font-weight:300}
+.p strong{color:var(--fg);font-weight:500}
 .p-mono{font-family:var(--mono);font-size:11px;line-height:1.6;color:var(--muted2);letter-spacing:.02em}
 .divider{height:1px;background:var(--line);margin:32px 0;position:relative}
 .divider::after{content:"";position:absolute;left:0;top:0;width:48px;height:1px;background:var(--gold);opacity:0.6}
-.marginalia{
-  position:absolute;left:-148px;top:8px;width:110px;
-  font-family:var(--mono);font-size:9px;line-height:1.5;letter-spacing:.03em;color:var(--muted2);
-  text-transform:lowercase;
-}
-.marginalia::before{content:"";display:block;width:18px;height:1px;background:var(--line);margin-bottom:8px}
-@media(max-width:1100px){.marginalia{display:none}}
 .four-grid{
   display:grid;
   grid-template-columns:repeat(4, 1fr);
@@ -154,13 +162,6 @@ body::after{
 }
 @media(max-width:640px){
   .four-grid{grid-template-columns:1fr}
-}
-.ghost-word{
-  position:absolute;right:-20px;top:-10px;
-  font-family:var(--display);font-size:120px;line-height:0.9;
-  color:rgba(237,233,227,0.03);letter-spacing:-.04em;
-  pointer-events:none;user-select:none;z-index:0;
-  font-variation-settings:'opsz' 32, 'WONK' 1;
 }
 .hel-principles{margin-top:8px;position:relative}
 .hel-principle{
@@ -210,45 +211,202 @@ body::after{
 }
 .grid-break{margin-left:-16px;padding-left:16px;border-left:1px solid var(--line);}
 footer{padding:52px 24px;border-top:1px solid var(--line);text-align:center;background:#080807}
+
+/* ========== INTRIGUE LAYER - reusable ========== */
+/* Ghost words - 2-5% opacity, max one per section */
+.ghost-word{
+  position:absolute;
+  font-family:var(--display);
+  font-size:clamp(90px,14vw,160px);
+  line-height:0.9;
+  color:rgba(237,233,227,0.03);
+  letter-spacing:-.05em;
+  pointer-events:none;user-select:none;z-index:0;
+  font-variation-settings:'opsz' 32, 'WONK' 1;
+  text-transform:uppercase;
+}
+.ghost-word--tr{right:-18px;top:-12px}
+.ghost-word--tl{left:-18px;top:-12px}
+.ghost-word--br{right:-18px;bottom:-10px;top:auto}
+.ghost-word--bl{left:-24px;bottom:-10px;top:auto}
+.ghost-word--center{left:50%;top:50%;transform:translate(-50%,-50%)}
+
+/* Marginal reveals */
+.marginal-reveal{
+  position:absolute;
+  left:-168px;top:12px;width:128px;
+}
+.marginal-trigger{
+  font-family:var(--mono);font-size:9px;letter-spacing:.04em;
+  color:var(--muted2);background:none;border:none;padding:0;
+  text-transform:lowercase;text-align:left;cursor:pointer;
+  border-bottom:1px dashed rgba(237,233,227,0.18);
+  line-height:1.4;
+}
+.marginal-trigger:hover, .marginal-trigger:focus-visible{color:var(--fg);border-bottom-color:var(--gold)}
+.marginal-secondary{
+  display:block;margin-top:8px;
+  font-family:var(--mono);font-size:9px;line-height:1.5;color:var(--muted);
+  opacity:0;transform:translateY(4px);transition:opacity .2s ease, transform .2s ease;
+  pointer-events:none;
+}
+.marginal-reveal.is-open .marginal-secondary,
+.marginal-reveal:hover .marginal-secondary,
+.marginal-reveal:focus-within .marginal-secondary{
+  opacity:1;transform:translateY(0);pointer-events:auto;
+}
+@media(max-width:1120px){
+  .marginal-reveal{position:static;width:auto;margin:0 0 16px;display:block}
+  .marginal-secondary{opacity:0.9;transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .marginal-secondary{transition:none}
+}
+
+/* Responsive attention */
+.reveal-on-scroll{
+  opacity:0;transform:translateY(8px);
+  transition:opacity .6s ease, transform .6s ease;
+}
+.reveal-on-scroll.is-visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){
+  .reveal-on-scroll{opacity:1;transform:none;transition:none}
+}
+
+/* One broken rule per section - reusable modifiers */
+.broken-rule--quote-out{margin-left:-16px}
+.broken-rule--image-break{margin-left:-18px;width:calc(100% + 18px)}
+.broken-rule--card-offset{transform:translateY(20px)}
+.broken-rule--extend{width:calc(100% + 32px);margin-left:-16px}
+.broken-rule--principle-shift{transform:translateX(14px);border-left:1px solid var(--line2);padding-left:16px}
+@media(max-width:640px){
+  .broken-rule--quote-out,.broken-rule--image-break,.broken-rule--extend,.broken-rule--principle-shift{margin-left:0;width:100%;transform:none;padding-left:0;border-left:none}
+}
+
+/* Currently strip */
+.currently-strip{
+  padding:28px 0;
+  border-top:1px solid var(--line2);
+  border-bottom:1px solid var(--line);
+  background:rgba(20,18,16,0.6);
+}
+.currently-traces{
+  display:flex;flex-wrap:wrap;gap:18px 28px;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.03em;color:var(--muted2);line-height:1.6;
+}
+.currently-traces span{white-space:nowrap}
+
+/* Concept links */
+.concept-links{
+  margin-top:32px;padding-top:16px;border-top:1px solid var(--line2);
+  display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;
+}
+.concept-kicker{font-family:var(--mono);font-size:9px;color:var(--muted2);letter-spacing:.04em;text-transform:lowercase}
+.concept-links a{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.03em;color:var(--muted);
+  border-bottom:1px solid rgba(237,233,227,0.14);padding-bottom:1px;transition:color .2s, border-color .2s
+}
+.concept-links a:hover{color:#fff;border-color:var(--gold)}
+.concept-related{
+  margin-top:12px;font-family:var(--mono);font-size:9px;color:var(--muted2);letter-spacing:.03em
+}
+.concept-related a{color:var(--muted);border-bottom:1px solid rgba(237,233,227,0.12)}
+.concept-related a:hover{color:#fff}
+
+/* Take this with you */
+.take-with-you{
+  margin-top:36px;padding:18px 18px 16px;
+  border:1px solid var(--line2);background:var(--cell);
+  position:relative;
+}
+.take-with-you::before{
+  content:"";position:absolute;left:0;top:0;width:100%;height:1px;
+  background:linear-gradient(90deg, var(--gold), transparent 60%);opacity:0.5
+}
+.take-with-you .kicker{margin-bottom:10px}
+.take-with-you p{font-size:14px;line-height:1.7;margin:0}
+
+/* Audio response */
+.audio-response{
+  margin-top:12px;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;color:var(--gold);
+  opacity:0;transform:translateY(4px);transition:opacity .3s ease, transform .3s ease;
+  pointer-events:none;
+}
+.audio-response.is-playing{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.audio-response{transition:none}}
+
+/* Threshold moment - quiet, non-blocking */
+.threshold-moment{
+  position:relative;
+  margin:0 auto;max-width:640px;padding:36px 24px 12px;
+  opacity:0;transform:translateY(8px);transition:opacity .8s ease, transform .8s ease;
+  pointer-events:none;
+}
+.threshold-moment.is-visible{opacity:1;transform:translateY(0);pointer-events:auto}
+.threshold-moment p{
+  font-family:var(--display);font-size:18px;line-height:1.5;color:var(--muted);margin:0 0 10px
+}
+.threshold-links{display:flex;flex-wrap:wrap;gap:12px 18px;margin-top:14px}
+.threshold-links a{
+  font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--muted);
+  border-bottom:1px solid rgba(237,233,227,0.18);padding-bottom:2px
+}
+.threshold-links a:hover{color:#fff;border-color:var(--gold)}
+@media(prefers-reduced-motion:reduce){.threshold-moment{transition:none}}
 </style>
 </head>
 <body>
-<header class="nav"><div class="mono logo">HUMAN LAB — HEL</div><div class="nav-right"><a href="/#hel">HEL</a><a href="/sessions/">Sessions</a><a href="/writing/">Writing</a><a href="/sound/">Sound</a><a href="/emergent-table/">Table</a><a href="#about">About</a></div></header>
+<header class="nav"><div class="mono logo">HUMAN LAB — HEL</div><div class="nav-right">
+  <a class="four-door-link" href="/#hel"><span class="label">HEL</span></a>
+  <a class="four-door-link" href="/sessions/" data-subtitle="bring what is alive"><span class="label">Sessions</span><span class="subtitle">bring what is alive</span></a>
+  <a class="four-door-link" href="/writing/" data-subtitle="a way of seeing"><span class="label">Writing</span><span class="subtitle">a way of seeing</span></a>
+  <a class="four-door-link" href="/sound/" data-subtitle="when words are not enough"><span class="label">Sound</span><span class="subtitle">when words are not enough</span></a>
+  <a class="four-door-link" href="/emergent-table/" data-subtitle="emergence, in the hands"><span class="label">Table</span><span class="subtitle">emergence, in the hands</span></a>
+  <a class="four-door-link" href="#about"><span class="label">About</span></a>
+</div></header>
 
 <section class="hero">
   <div class="hero-bg"></div><div class="hero-overlay"></div>
   <div class="hero-top"><div>The Human Lab — Home of HEL</div><div>Permissionless emergence</div></div>
   <div class="hero-content">
-    <h1>HEL lives here.</h1>
-    <div class="sub">Psychological depth. Creative form – Sessions – Writing – Sound – Table</div>
-    <div class="sub">A practice of permissionless emergence</div>
-    <div class="pill-row">
+    <h1 class="reveal-on-scroll">HEL lives here.</h1>
+    <div class="sub reveal-on-scroll">Psychological depth. Creative form – Sessions – Writing – Sound – Table</div>
+    <div class="sub reveal-on-scroll">A practice of permissionless emergence</div>
+    <div class="pill-row reveal-on-scroll" style="margin-top:22px">
       <a class="btn" href="#work-forms">Enter HEL</a>
       <a class="btn btn-gold" href="/sessions/">[ Book a 1:1 session ]</a>
     </div>
-    <div style="margin-top:28px; display:flex; justify-content:center;">
-      <audio id="hel-audio" controls loop style="width:240px; height:30px; opacity:0.6;">
+    <div style="margin-top:28px; display:flex; flex-direction:column; align-items:center;" class="broken-rule--extend">
+      <audio id="hel-audio" controls loop style="width:260px; height:30px; opacity:0.6;">
         <source src="hel-song.mp3" type="audio/mpeg">
       </audio>
+      <div id="hel-audio-response" class="audio-response" aria-live="polite">room holds — still here</div>
     </div>
   </div>
+  <div class="ghost-word ghost-word--center" aria-hidden="true" style="color:rgba(237,233,227,0.025)">HERE</div>
 </section>
 
 <main>
 
 <section class="section section-paper" id="work">
   <div class="narrow">
-    <div class="marginalia">say it out loud<br>two beats</div>
-    <span class="kicker">Pronunciation — start here</span>
-    <div style="display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin:6px 0 18px">
+    <!-- marginal reveal 1 -->
+    <div class="marginal-reveal" data-intrigue="marginal">
+      <button class="marginal-trigger" aria-expanded="false" aria-controls="m-reveal-1">say it out loud — two beats</button>
+      <span id="m-reveal-1" class="marginal-secondary">HAY-uhl. not hell. one breath.</span>
+    </div>
+    <div class="ghost-word ghost-word--tr" aria-hidden="true">ALIVE</div>
+    <span class="kicker reveal-on-scroll">Pronunciation — start here</span>
+    <div style="display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin:6px 0 18px" class="broken-rule--quote-out">
       <h2 class="h-big" style="margin:0; font-size:clamp(40px,6vw,56px);">HEL</h2>
       <span style="font-family:var(--mono); font-size:11px; letter-spacing:.03em; color:var(--fg); background:rgba(163,73,31,0.12); border:1px solid rgba(163,73,31,0.28); padding:4px 8px">(HAY-uhl)</span>
       <span style="font-family:var(--mono); font-size:11px; color:var(--muted2)">/ˈheɪ.əl/</span>
     </div>
-    <p class="p" style="color:#fff; font-family:var(--display); font-size:22px; line-height:1.4; margin:0">One breath. Two beats.</p>
+    <p class="p reveal-on-scroll" style="color:#fff; font-family:var(--display); font-size:22px; line-height:1.4; margin:0">One breath. Two beats.</p>
     <p class="p-mono" style="margin-top:10px;">Not <span style="color:#fff; text-decoration:line-through; text-decoration-color:var(--gold);">“hell.”</span> — <span style="color:#fff">HEL</span></p>
     <div class="divider"></div>
-    <p class="p"><strong>HEL is a psychology-led practice that brings psychological inquiry and creative expression into the same space.</strong></p>
+    <p class="p reveal-on-scroll"><strong>HEL is a psychology-led practice that brings psychological inquiry and creative expression into the same space.</strong></p>
     <p class="p">At the centre of HEL are private 1:1 psychological sessions. You may bring a decision you cannot resolve, conflicting feelings, a relationship or experience you cannot quite understand, a transition, an identity that no longer fits, or simply the sense that something beneath the surface needs closer attention.</p>
     <p class="p">Through focused conversation, questioning and interpretation, we explore the emotional conflicts, meanings, relationships, assumptions and experiences shaping what you are dealing with.</p>
     <p class="p">The aim is to make something more coherent than it was when you arrived. After the session, I return what became visible to you in a concise personal synthesis — something you can keep, revisit and think with.</p>
@@ -257,12 +415,13 @@ footer{padding:52px 24px;border-top:1px solid var(--line);text-align:center;back
 </section>
 
 <section class="section section-dark" id="work-forms">
-  <div class="wrap">
-    <span class="kicker">How HEL takes form</span>
-    <h2 class="h-big" style="max-width:620px;">Sessions. Writing. Sound. Table.</h2>
-    <p class="p" style="max-width:600px; font-size:18px;">Four ways HEL takes form. Different material. Same attention.</p>
+  <div class="wrap" style="position:relative">
+    <div class="ghost-word ghost-word--tl" aria-hidden="true">FORM</div>
+    <span class="kicker reveal-on-scroll">How HEL takes form</span>
+    <h2 class="h-big reveal-on-scroll" style="max-width:620px;">Sessions. Writing. Sound. Table.</h2>
+    <p class="p reveal-on-scroll" style="max-width:600px; font-size:17px;">Four ways HEL takes form. Different material. Same attention.</p>
     <div class="four-grid">
-      <div class="three-cell">
+      <div class="three-cell broken-rule--card-offset">
         <h4 class="mono">01 — Sessions</h4>
         <h3 class="h-small">Psychological depth, one-to-one.</h3>
         <p class="p" style="font-size:16px;line-height:1.65">A private psychological session for something that feels unresolved, conflicted or difficult to understand.</p>
@@ -305,9 +464,13 @@ footer{padding:52px 24px;border-top:1px solid var(--line);text-align:center;back
 
 <section class="section section-dark" id="hel">
   <div class="narrow">
-    <div class="ghost-word">threshold</div>
-    <span class="kicker">Field note 01</span>
-    <h3 class="h-small" style="margin-top:0">For humans at thresholds</h3>
+    <div class="ghost-word ghost-word--tr" aria-hidden="true">RETURN</div>
+    <div class="marginal-reveal" data-intrigue="marginal">
+      <button class="marginal-trigger" aria-expanded="false" aria-controls="m-reveal-2">still moving →</button>
+      <span id="m-reveal-2" class="marginal-secondary">thresholds don't announce themselves.</span>
+    </div>
+    <span class="kicker reveal-on-scroll">Field note 01</span>
+    <h3 class="h-small reveal-on-scroll" style="margin-top:0">For humans at thresholds</h3>
     <p class="p">Sometimes change begins before there is evidence for it.</p>
     <p class="p">Nothing dramatic may have happened. Your life may still look almost exactly the same.</p>
     <p class="p">But something that once made sense no longer does.</p>
@@ -315,27 +478,56 @@ footer{padding:52px 24px;border-top:1px solid var(--line);text-align:center;back
     <p class="p">You may not know what comes next.</p>
     <p class="p"><strong>You may only know that this is no longer quite true.</strong></p>
     <p class="p">That is a threshold.</p>
+
+    <div class="concept-links reveal-on-scroll">
+      <span class="concept-kicker">threads →</span>
+      <a href="/writing/?theme=thresholds">thresholds</a>
+      <a href="/writing/?theme=identity">identity</a>
+      <a href="/writing/?theme=contradiction">contradiction</a>
+      <a href="/writing/?theme=repetition">repetition</a>
+      <a href="/writing/?theme=body">body</a>
+      <a href="/writing/?theme=emergence">emergence</a>
+    </div>
+    <div class="concept-related">
+      <span>related —</span>
+      <a href="/writing/">Writing</a> · <a href="/sound/">Sound</a> · <a href="/emergent-table/">Table</a>
+    </div>
+
+    <div class="take-with-you reveal-on-scroll">
+      <span class="kicker">Take this with you</span>
+      <p class="p-mono" style="color:var(--muted)">That is a threshold — you may only know that this is no longer quite true.</p>
+    </div>
   </div>
 </section>
 
 <section class="section section-dark" id="principles">
   <div class="narrow hel-principles">
-    <span class="kicker">The HEL principles</span>
-    <div class="hel-principle"><span class="hel-principle-num">01</span><p>What is true does not need permission to exist.</p></div>
-    <div class="hel-principle"><span class="hel-principle-num">02</span><p>You do not have to cut away parts of yourself just to become easier to understand.</p></div>
-    <div class="hel-principle"><span class="hel-principle-num">03</span><p>Truth stays intact. The form it takes can change.</p></div>
-    <div class="hel-principle"><span class="hel-principle-num">04</span><p>Beauty alone is not enough. Form must carry meaning.</p></div>
-    <div class="hel-principle"><span class="hel-principle-num">05</span><p>Not everything needs to be explained or resolved.</p></div>
-    <div class="hel-principle"><span class="hel-principle-num">06</span><p>What reveals, heals or changes us does not always arrive gently.</p></div>
+    <div class="ghost-word ghost-word--br" aria-hidden="true">NOT YET</div>
+    <div class="marginal-reveal" data-intrigue="marginal">
+      <button class="marginal-trigger" aria-expanded="false" aria-controls="m-reveal-3">what changed here?</button>
+      <span id="m-reveal-3" class="marginal-secondary">the order moved last season.</span>
+    </div>
+    <span class="kicker reveal-on-scroll">The HEL principles</span>
+    <div class="hel-principle reveal-on-scroll"><span class="hel-principle-num">01</span><p>What is true does not need permission to exist.</p></div>
+    <div class="hel-principle reveal-on-scroll"><span class="hel-principle-num">02</span><p>You do not have to cut away parts of yourself just to become easier to understand.</p></div>
+    <div class="hel-principle reveal-on-scroll broken-rule--principle-shift"><span class="hel-principle-num">03</span><p>Truth stays intact. The form it takes can change.</p></div>
+    <div class="hel-principle reveal-on-scroll"><span class="hel-principle-num">04</span><p>Beauty alone is not enough. Form must carry meaning.</p></div>
+    <div class="hel-principle reveal-on-scroll"><span class="hel-principle-num">05</span><p>Not everything needs to be explained or resolved.</p></div>
+    <div class="hel-principle reveal-on-scroll"><span class="hel-principle-num">06</span><p>What reveals, heals or changes us does not always arrive gently.</p></div>
   </div>
 </section>
 
 <!-- ABOUT KAYLEE-JANE -->
 <section class="section section-paper" id="about" style="border-bottom:1px solid rgba(255,255,255,0.08);">
   <div class="narrow">
-    <span class="kicker">ABOUT KAYLEE-JANE</span>
-    <h2 class="h-small" style="margin-top:0;">The human source.</h2>
-    <div class="about-kj-grid">
+    <div class="ghost-word ghost-word--tl" aria-hidden="true">HERE</div>
+    <div class="marginal-reveal" data-intrigue="marginal">
+      <button class="marginal-trigger" aria-expanded="false" aria-controls="m-reveal-4">not yet named</button>
+      <span id="m-reveal-4" class="marginal-secondary">the name comes later. attention first.</span>
+    </div>
+    <span class="kicker reveal-on-scroll">ABOUT KAYLEE-JANE</span>
+    <h2 class="h-small reveal-on-scroll" style="margin-top:0;">The human source.</h2>
+    <div class="about-kj-grid broken-rule--image-break">
       <div class="about-kj-image">
         <img src="me.png" alt="Kaylee-Jane Inglis" loading="lazy">
       </div>
@@ -354,13 +546,25 @@ footer{padding:52px 24px;border-top:1px solid var(--line);text-align:center;back
 
 <section class="section section-paper" id="boundaries">
   <div class="narrow">
-    <div class="grid-break">
+    <div class="grid-break reveal-on-scroll">
       <span class="kicker">Boundaries</span>
       <p class="p">HEL does not coach, prescribe an identity or reduce a person to a diagnosis. Psychological depth does not remove professional boundaries.</p>
       <p class="p-mono" style="margin-top:12px">What is shared in a private session is treated confidentially, within applicable professional and legal boundaries.</p>
     </div>
   </div>
 </section>
+
+<!-- THRESHOLD MOMENT - once per visit, after scroll -->
+<div class="threshold-moment" id="threshold-moment" aria-live="polite">
+  <p>You are still here.</p>
+  <p style="font-family:var(--mono);font-size:11px;color:var(--muted2);letter-spacing:.03em">What are you looking for?</p>
+  <div class="threshold-links">
+    <a href="/sessions/">clarity</a>
+    <a href="/writing/">language</a>
+    <a href="/sound/">sound</a>
+    <a href="/#hel">something I cannot name</a>
+  </div>
+</div>
 
 </main>
 <footer>
@@ -373,5 +577,69 @@ footer{padding:52px 24px;border-top:1px solid var(--line);text-align:center;back
     <span style="letter-spacing:.04em; color:var(--gold)">Earth / Body / Intuition / Emergence</span>
   </div>
 </footer>
+
+<script>
+// INTRIGUE LAYER - reusable, accessible, reduced-motion aware
+(function(){
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Marginal reveals - click toggle + keyboard
+  document.querySelectorAll('.marginal-reveal').forEach(el=>{
+    const btn = el.querySelector('.marginal-trigger');
+    if(!btn) return;
+    btn.addEventListener('click', ()=>{
+      const isOpen = el.classList.contains('is-open');
+      el.classList.toggle('is-open', !isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+
+  // Responsive attention - fade on scroll
+  if(!prefersReduced && 'IntersectionObserver' in window){
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.reveal-on-scroll').forEach(el=>observer.observe(el));
+  } else {
+    document.querySelectorAll('.reveal-on-scroll').forEach(el=>el.classList.add('is-visible'));
+  }
+
+  // Audio response - when audio playing, show fragment
+  const audio = document.getElementById('hel-audio');
+  const response = document.getElementById('hel-audio-response');
+  if(audio && response){
+    const show = ()=>response.classList.add('is-playing');
+    const hide = ()=>response.classList.remove('is-playing');
+    audio.addEventListener('play', show);
+    audio.addEventListener('pause', hide);
+    audio.addEventListener('ended', hide);
+  }
+
+  // Threshold moment - once per visit, after meaningful scroll (75%)
+  const thresholdEl = document.getElementById('threshold-moment');
+  const SESSION_KEY = 'hel_threshold_shown';
+  if(thresholdEl && !sessionStorage.getItem(SESSION_KEY)){
+    let shown = false;
+    const maybeShow = ()=>{
+      if(shown) return;
+      const scrollDepth = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+      if(scrollDepth > 0.72){
+        shown = true;
+        thresholdEl.classList.add('is-visible');
+        sessionStorage.setItem(SESSION_KEY, '1');
+        window.removeEventListener('scroll', maybeShow);
+      }
+    };
+    window.addEventListener('scroll', maybeShow, {passive:true});
+    // also check after 12s if user is still reading
+    setTimeout(maybeShow, 12000);
+  }
+})();
+</script>
 </body>
 </html>
