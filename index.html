@@ -182,10 +182,11 @@ body::after{
 .hel-principle p{
   font-family:var(--display);font-size:20px;line-height:1.35;color:#fff;
   font-weight:400;letter-spacing:-.01em;
+}
 .about-kj-grid{
   display:grid;
-  grid-template-columns:160px 1fr;
-  gap:28px;
+  grid-template-columns:128px 1fr;
+  gap:24px;
   align-items:start;
   margin:28px 0 24px;
 }
@@ -195,8 +196,6 @@ body::after{
   overflow:hidden;
   background:var(--cell);
   border:1px solid var(--line2);
-  width:calc(100% + 12px);
-  margin-left:-12px;
 }
 .about-kj-image img{
   width:100%;height:100%;object-fit:cover;object-position:center 18%;
@@ -208,10 +207,11 @@ body::after{
 }
 @media(max-width:640px){
   .about-kj-grid{grid-template-columns:1fr}
-  .about-kj-image{width:100%;margin-left:0;max-width:240px}
+  .about-kj-image{max-width:220px}
 }
 .grid-break{margin-left:-16px;padding-left:16px;border-left:1px solid var(--line);}
 footer{padding:52px 24px;border-top:1px solid var(--line);text-align:center;background:#080807}
+
 /* ========== INTRIGUE LAYER - reusable ========== */
 /* Ghost words - 2-5% opacity, max one per section */
 .ghost-word{
@@ -424,9 +424,9 @@ footer{padding:52px 24px;border-top:1px solid var(--line);text-align:center;back
       <div class="three-cell broken-rule--card-offset">
         <h4 class="mono">01 — Sessions</h4>
         <h3 class="h-small">Psychological depth, one-to-one.</h3>
-        <p class="p" style="font-size:16px;line-height:1.65">A private psychological session for something unresolved, conflicted or difficult to understand.</p>
-        <p class="p" style="font-size:16px;line-height:1.65">Through focused conversation and interpretation, we work toward a clearer understanding of what is happening beneath the surface.</p>
-        <p class="p" style="font-size:16px;line-height:1.65"><strong>You leave with that understanding distilled into a concise personal synthesis you can return to.</strong></p>
+        <p class="p" style="font-size:16px;line-height:1.65">A private psychological session for something that feels unresolved, conflicted or difficult to understand.</p>
+        <p class="p" style="font-size:16px;line-height:1.65">Through conversation, questioning and interpretation, we explore what sits beneath the surface and work toward a more coherent understanding of what you are experiencing.</p>
+        <p class="p" style="font-size:16px;line-height:1.65"><strong>You leave with a clearer understanding of what became visible — followed by a concise personal synthesis you can return to.</strong></p>
         <div style="margin-top:20px">
           <a class="btn btn-gold" href="/sessions/">[ Explore sessions ]</a>
         </div>
@@ -546,9 +546,24 @@ footer{padding:52px 24px;border-top:1px solid var(--line);text-align:center;back
 
 <section class="section section-paper" id="boundaries">
   <div class="narrow">
+    <div class="grid-break reveal-on-scroll">
       <span class="kicker">Boundaries</span>
       <p class="p">HEL does not coach, prescribe an identity or reduce a person to a diagnosis. Psychological depth does not remove professional boundaries.</p>
       <p class="p-mono" style="margin-top:12px">What is shared in a private session is treated confidentially, within applicable professional and legal boundaries.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CURRENTLY STRIP -->
+<section class="currently-strip" id="currently">
+  <div class="narrow">
+    <span class="kicker">Currently — traces</span>
+    <div class="currently-traces">
+      <span>reading — Bion, Attention and Interpretation</span>
+      <span>listening — room tone, Durban 06.09</span>
+      <span>cooking — sourdough discard, charred lemon</span>
+      <span>writing — on thresholds that hold</span>
+      <span>noticing — how contradiction stays</span>
     </div>
   </div>
 </section>
